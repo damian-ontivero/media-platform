@@ -1,11 +1,10 @@
-version: "3.9"
 services:
 
   api:
     image: media-platform-api-v0
     build:
-      context: .
-      dockerfile: ./Dockerfile
+      context: ../../
+      dockerfile: ./etc/compose/Dockerfile
     container_name: media-platform-api-v0
     ports:
       - "8000:8000"

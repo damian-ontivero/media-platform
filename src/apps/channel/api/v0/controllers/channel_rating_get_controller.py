@@ -37,9 +37,8 @@ class ChannelRatingGetController(Controller):
             "page_number": 1,
         }
         content = self._content_searcher.run(criteria)
-        rating_avg = sum([content.rating for content in content]) / len(
-            content
-        )
+        rating_sum = sum([content.rating for content in content])
+        rating_avg = rating_sum / len(content) if len(content) > 0 else 0
         return Response(
             content=str(round(rating_avg, 2)),
             status_code=status.HTTP_200_OK,
