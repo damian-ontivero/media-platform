@@ -4,6 +4,11 @@ This repository contains the backend for the Media Platform project.
 
 ## Installation
 
+Requirements:
+
+1. python~=3.12
+2. virtualenv~=20.25
+
 To install and run the project locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/damian-ontivero/media-platform.git`
@@ -14,7 +19,7 @@ To install and run the project locally, follow these steps:
     - `python -m pip install --upgrade pip`
     - `pip install poetry~=1.8`
     - `poetry install`
-4. Run: poetry run uvicorn src.apps.channel.api.v0.main:app --reload
+4. Execute: `poetry run uvicorn src.apps.channel.api.v0.main:app --reload`
 
 
 ## Run with Docker
@@ -77,4 +82,5 @@ The criteria must be a base64 encoded *INLINE* JSON string with the following st
 ```
 
 To convert the JSON in one line you can use: https://www.text-utils.com/json-formatter/
+
 To convert the JSON into base64 you can use: https://www.base64encode.org/
