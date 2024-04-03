@@ -24,7 +24,7 @@ To install and run the project locally, follow these steps:
 
 ## Run with Docker
 
-To build and run the application with Docker, you can use the follow command:
+To build and run the application with Docker, you can execute the following command from the root directory:
 
 `docker compose -f ./etc/compose/compose.yaml up -d --build`
 
