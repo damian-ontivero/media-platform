@@ -6,8 +6,8 @@ This repository contains the backend for the Media Platform project.
 
 Requirements:
 
-1. python~=3.12
-2. virtualenv~=20.25
+1. `python~=3.12`
+2. `virtualenv~=20.25`
 
 To install and run the project locally, follow these steps:
 
