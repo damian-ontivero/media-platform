@@ -37,7 +37,21 @@ Swagger: http://127.0.0.1:8000/swagger
 Documentation: http://127.0.0.1:8000/documentation
 
 
-## Information:
+## About
+
+Stack:
+
+1. FastAPI
+2. SQLAlchemy
+3. Alembic
+4. SQLite
+5. Docker
+
+Another database engine like MySQL or PostgreSQL could be used.
+As the project implements the repository pattern and hexagonal architecture, the decision to change the
+DBMS should not be a problem. At the moment the migrations are running in the docker build and this is not the best aproach.
+If we would be using a CI/CD pipeline, de CD should be in charge of run migrations and the CI should deploy the env vars also. 
+
 
 This project implement:
 
@@ -46,7 +60,7 @@ This project implement:
 3. Dependency Injection
 4. Repository Pattern
 
-Note: Also is ready to implement CQRS.
+**Note:** Also is ready to implement CQRS.
 
 ### Domain-Driven Design
 
