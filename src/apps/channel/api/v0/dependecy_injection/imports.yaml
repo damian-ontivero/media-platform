@@ -1,0 +1,5 @@
+imports:
+  - { resource: ./database.yaml }
+  - { resource: ./repository.yaml }
+  - { resource: ./use_cases.yaml }
+  - { resource: ./controller.yaml }

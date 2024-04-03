@@ -1,0 +1,14 @@
+services:
+  ChannelRepository:
+    module: src.contexts.channel.channel.infrastructure.persistence.sqlite.channel_repository
+    class:
+      name: SqliteChannelRepository
+      arguments:
+        - !ref Database.Session
+  
+  ContentRepository:
+    module: src.contexts.channel.content.infrastructure.persistence.sqlite.content_repository
+    class:
+      name: SqliteContentRepository
+      arguments:
+        - !ref Database.Session

@@ -1,0 +1,5 @@
+services:
+  Database.Session:
+    module: src.contexts.shared.infrastructure.persistence.sqlite.db
+    variable:
+      name: SqliteSession
