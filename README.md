@@ -41,11 +41,12 @@ Documentation: http://127.0.0.1:8000/documentation
 
 Stack:
 
-1. FastAPI
-2. SQLAlchemy
-3. Alembic
-4. SQLite
-5. Docker
+1. FastAPI (https://fastapi.tiangolo.com)
+2. SQLAlchemy (https://www.sqlalchemy.org)
+3. Alembic (https://alembic.sqlalchemy.org)
+4. SQLite (https://www.sqlite.org)
+5. Docker (https://www.docker.com)
+6. ditainer (https://test.pypi.org/project/ditainer/ propietario)
 
 Another database engine like MySQL or PostgreSQL could be used.
 As the project implements the repository pattern and hexagonal architecture, the decision to change the
