@@ -1,5 +1,3 @@
-from typing import List
-
 from fastapi import (
     APIRouter,
     Body,
@@ -129,9 +127,7 @@ async def get_stream(
 
 
 @router.post(
-    "",
-    status_code=status.HTTP_201_CREATED,
-    description="Create Content",
+    "", status_code=status.HTTP_201_CREATED, description="Create Content"
 )
 async def create(
     request: Request,
@@ -162,9 +158,7 @@ async def create(
 
 
 @router.put(
-    "/{id}",
-    status_code=status.HTTP_200_OK,
-    description="Update Content",
+    "/{id}", status_code=status.HTTP_200_OK, description="Update Content"
 )
 async def update(
     request: Request,
@@ -183,9 +177,7 @@ async def update(
 
 
 @router.delete(
-    "/{id}",
-    status_code=status.HTTP_200_OK,
-    description="Delete Content",
+    "/{id}", status_code=status.HTTP_200_OK, description="Delete Content"
 )
 async def delete(
     request: Request,

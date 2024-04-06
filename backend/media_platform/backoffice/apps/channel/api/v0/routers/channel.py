@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Path, Query, Request, status
+from fastapi import APIRouter, Path, Request, status
 from typing_extensions import Annotated
 
 from ..dependecy_injection import container
@@ -45,9 +45,7 @@ async def find(
 
 
 @router.post(
-    "",
-    status_code=status.HTTP_201_CREATED,
-    description="Create Channel",
+    "", status_code=status.HTTP_201_CREATED, description="Create Channel"
 )
 async def create(request: Request, channel: ChannelCreateSchema):
     controller = container.get("ChannelPostController")
@@ -55,9 +53,7 @@ async def create(request: Request, channel: ChannelCreateSchema):
 
 
 @router.put(
-    "/{id}",
-    status_code=status.HTTP_200_OK,
-    description="Update Channel",
+    "/{id}", status_code=status.HTTP_200_OK, description="Update Channel"
 )
 async def update(
     request: Request,
@@ -76,9 +72,7 @@ async def update(
 
 
 @router.delete(
-    "/{id}",
-    status_code=status.HTTP_200_OK,
-    description="Delete Channel",
+    "/{id}", status_code=status.HTTP_200_OK, description="Delete Channel"
 )
 async def delete(
     request: Request,
