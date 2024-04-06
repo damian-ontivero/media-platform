@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: media_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../../database/postgres/data:/var/lib/postgresql/data
+
+  api:
+    image: media-platform-api-v0
+    build:
+      context: ../../
+      dockerfile: ./etc/compose/Dockerfile
+    container_name: media-platform-api-v0
+    env_file:
+      - ../../.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres

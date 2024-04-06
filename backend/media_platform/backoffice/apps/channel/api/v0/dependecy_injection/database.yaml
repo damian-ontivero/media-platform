@@ -1,0 +1,5 @@
+services:
+  Database.Session:
+    module: media_platform.backoffice.contexts.shared.infrastructure.persistence.postgresql.db
+    variable:
+      name: PostgreSQLSession
