@@ -19,10 +19,11 @@ python-multipart = "^0.0.9"
 sqlalchemy = "^2.0.29"
 uvicorn = "^0.29.0"
 werkzeug = "^3.0.1"
-ditainer = "^0.2.0"
 python-dotenv = "^1.0.1"
 psycopg2 = "^2.9.9"
 psycopg2-binary = "^2.9.9"
+pytest-mock = "^3.14.0"
+ditainer = "^0.4.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -37,8 +38,10 @@ pytest = "^8.1.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.black]
+line-length = 120
+skip-magic-trailing-comma = true
+
 [tool.isort]
 profile = "black"
-
-[tool.black]
-line-length = 79
+line_length = 120

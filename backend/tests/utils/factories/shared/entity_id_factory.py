@@ -1,5 +1,5 @@
 import factory
-from media_platform.backoffice.contexts.shared.domain import EntityId
+from src.backoffice.contexts.shared.domain import EntityId
 
 
 class EntityIdFactory(factory.Factory):

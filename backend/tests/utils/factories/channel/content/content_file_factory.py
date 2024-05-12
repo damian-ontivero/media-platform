@@ -1,7 +1,5 @@
 import factory
-from media_platform.backoffice.contexts.channel.content.domain import (
-    ContentFile,
-)
+from src.backoffice.contexts.channel.content.domain import ContentFile
 
 
 class ContentFileFactory(factory.Factory):

@@ -7,7 +7,7 @@ WORKDIR /app
 ENV PYTHONPATH=/app
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
-COPY ./media_platform/backoffice ./media_platform/backoffice
+COPY ./src/backoffice ./src/backoffice
 COPY ./poetry.lock ./pyproject.toml
 COPY ./pyproject.toml ./pyproject.toml
 
@@ -17,4 +17,4 @@ RUN pip install poetry~=1.8
 
 RUN poetry install
 
-CMD ["poetry", "run", "uvicorn", "media_platform.backoffice.apps.channel.api.v0.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["poetry", "run", "uvicorn", "src.backoffice.apps.channel.api.v0.main:app", "--host", "0.0.0.0", "--port", "8000"]

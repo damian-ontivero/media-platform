@@ -19,7 +19,7 @@ To install and run the project locally, follow these steps:
     - `python -m pip install --upgrade pip`
     - `pip install poetry~=1.8`
     - `poetry install`
-4. Execute: `poetry run uvicorn media_platform.backoffice.apps.channel.api.v0.main:app --reload`
+4. Execute: `poetry run uvicorn src.backoffice.apps.channel.api.v0.main:app --reload`
 
 
 ## Run with Docker

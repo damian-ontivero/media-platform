@@ -1,5 +1,5 @@
 import factory
-from media_platform.backoffice.contexts.shared.domain import Image
+from src.backoffice.contexts.shared.domain import Image
 
 
 class ImageFactory(factory.Factory):

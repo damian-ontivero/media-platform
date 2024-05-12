@@ -268,13 +268,13 @@ files = [
 
 [[package]]
 name = "ditainer"
-version = "0.2.0"
+version = "0.4.2"
 description = ""
 optional = false
 python-versions = ">=3.12,<4.0"
 files = [
-    {file = "ditainer-0.2.0-py3-none-any.whl", hash = "sha256:a8216d5f9c732f0e02654354ce69b0d282ea775666234354a591b530e5203dcc"},
-    {file = "ditainer-0.2.0.tar.gz", hash = "sha256:a995c6217ed422815f7781de3bdeabbf68ce9aa83c780f2910f69a3219a6bb29"},
+    {file = "ditainer-0.4.2-py3-none-any.whl", hash = "sha256:c3df5012660c2dadaec7635676f0c2ba10b091eb73a78428a73906fb9feae08b"},
+    {file = "ditainer-0.4.2.tar.gz", hash = "sha256:9935ef5a6b9cf26a2728efe42e4bf790517e256f3e948308d4e59baa8a62fc59"},
 ]
 
 [package.dependencies]
@@ -1080,6 +1080,23 @@ pluggy = ">=1.4,<2.0"
 testing = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "pytest-mock"
+version = "3.14.0"
+description = "Thin-wrapper around the mock package for easier use with pytest"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pytest-mock-3.14.0.tar.gz", hash = "sha256:2719255a1efeceadbc056d6bf3df3d1c5015530fb40cf347c0f9afac88410bd0"},
+    {file = "pytest_mock-3.14.0-py3-none-any.whl", hash = "sha256:0b72c38033392a5f4621342fe11e9219ac11ec9d375f8e2a0c164539e0d70f6f"},
+]
+
+[package.dependencies]
+pytest = ">=6.2.5"
+
+[package.extras]
+dev = ["pre-commit", "pytest-asyncio", "tox"]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
@@ -1401,4 +1418,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "3193d02f2d6b93ff5fcdfc355d2c02345314c7dcce588f2362737f8b6f7a5237"
+content-hash = "a8d80de72cab9617ab6c43d98c76ef5ede67f52de1bde41052a17760e9f74e8f"

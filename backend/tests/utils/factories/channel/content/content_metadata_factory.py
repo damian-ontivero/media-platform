@@ -1,7 +1,5 @@
 import factory
-from media_platform.backoffice.contexts.channel.content.domain import (
-    ContentMetadata,
-)
+from src.backoffice.contexts.channel.content.domain import ContentMetadata
 
 
 class ContentMetadataFactory(factory.Factory):
