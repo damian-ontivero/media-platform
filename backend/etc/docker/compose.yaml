@@ -1,0 +1,14 @@
+services:
+  media-platform-postgres:
+    extends:
+      file: ./postgres/compose.yaml
+      service: media-platform-postgres
+
+  media-platform-postgres-api-v0:
+    extends:
+      file: ./api/v0/compose.yaml
+      service: media-platform-api-v0
+
+networks:
+  media-platform:
+    name: media-platform

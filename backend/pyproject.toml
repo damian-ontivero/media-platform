@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "media_platform"
+name = "media-platform"
 version = "0.1.0"
 description = ""
 authors = ["Damian Ontivero <damian.ontivero@011h.com>"]
