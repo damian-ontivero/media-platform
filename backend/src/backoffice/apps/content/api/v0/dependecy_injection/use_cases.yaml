@@ -1,0 +1,35 @@
+services:
+  MovieSearcher:
+    module: src.backoffice.contexts.content.movies.application.movie_searcher
+    class:
+      name: MovieSearcher
+      arguments:
+        - !ref MovieRepository
+
+  MovieFinder:
+    module: src.backoffice.contexts.content.movies.application.movie_finder
+    class:
+      name: MovieFinder
+      arguments:
+        - !ref MovieRepository
+
+  MovieCreator:
+    module: src.backoffice.contexts.content.movies.application.movie_creator
+    class:
+      name: MovieCreator
+      arguments:
+        - !ref MovieRepository
+
+  MovieUpdater:
+    module: src.backoffice.contexts.content.movies.application.movie_updater
+    class:
+      name: MovieUpdater
+      arguments:
+        - !ref MovieRepository
+
+  MovieEliminator:
+    module: src.backoffice.contexts.content.movies.application.movie_eliminator
+    class:
+      name: MovieEliminator
+      arguments:
+        - !ref MovieRepository

@@ -9,9 +9,9 @@ def test_movie_eliminator__ok(mocker) -> None:
     mock_movie_repository.search.return_value = movie
     eliminator = MovieEliminator(mock_movie_repository)
 
-    eliminator.run(movie.get_id())
+    eliminator.run(movie.id)
 
-    mock_movie_repository.delete.assert_called_once_with(movie.get_id())
+    mock_movie_repository.delete.assert_called_once_with(movie.id)
 
 
 def test_movie_eliminator__not_found(mocker) -> None:

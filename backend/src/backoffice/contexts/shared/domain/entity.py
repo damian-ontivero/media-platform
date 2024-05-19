@@ -6,15 +6,12 @@ from .entity_id import EntityId
 class Entity(metaclass=ABCMeta):
 
     @abstractmethod
-    def __init__(self, id: EntityId, discarded: bool = False) -> None:
+    def __init__(self, id: EntityId) -> None:
         self._id = id
-        self._discarded = discarded
 
-    def get_id(self) -> str:
-        return self._id.value
-
-    def is_discarded(self) -> bool:
-        return self._discarded
+    @property
+    def id(self) -> EntityId:
+        return self._id
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Entity):

@@ -17,4 +17,4 @@ RUN pip install poetry~=1.8
 
 RUN poetry install
 
-CMD ["poetry", "run", "uvicorn", "src.backoffice.apps.channel.api.v0.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["poetry", "run", "uvicorn", "src.backoffice.apps.content.api.v0.main:app", "--host", "0.0.0.0", "--port", "8000"]

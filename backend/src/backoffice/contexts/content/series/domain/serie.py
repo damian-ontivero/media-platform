@@ -1,28 +1,31 @@
 from src.backoffice.contexts.shared.domain.aggregate_root import AggregateRoot
 from src.backoffice.contexts.shared.domain.entity_id import EntityId
 
-from .movie_metada import SerieMetadata
+from .serie_season import SerieSeason
 
 
 class Serie(AggregateRoot):
-    def __init__(self, id: EntityId, title: str, metadata: SerieMetadata):
-        self._id = id
+    def __init__(self, id: EntityId, title: str, seasons: list[SerieSeason]) -> None:
+        super().__init__(id)
         self._title = title
-        self._metadata = metadata
+        self._seasons = seasons
 
-    def get_title(self) -> str:
+    @property
+    def title(self) -> str:
         return self._title
 
-    def get_metadata(self) -> dict:
-        return self._metadata.value
+    @property
+    def seasons(self) -> list[SerieSeason]:
+        return self._seasons
 
     @classmethod
-    def create(cls, title: str, metadata: dict) -> "Serie":
-        return cls(EntityId.generate(), title, SerieMetadata(**metadata))
+    def create(cls, title: str, seasons: list) -> "Serie":
+        serie = cls(EntityId.generate(), title, seasons)
+        return serie
 
     @classmethod
-    def from_primitives(cls, id: EntityId, title: str, metadata: dict) -> "Serie":
-        return cls(id, title, SerieMetadata(**metadata))
+    def from_primitives(cls, id: str, title: str, seasons: list) -> "Serie":
+        return cls(EntityId(id), title, seasons)
 
     def to_primitives(self) -> dict:
-        return {"id": self._id.value, "title": self._title, "metadata": self._metadata.value}
+        return {"id": self._id.value, "title": self._title, "seasons": self._seasons.to_primitives()}

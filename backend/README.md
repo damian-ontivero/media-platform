@@ -19,7 +19,7 @@ To install and run the project locally, follow these steps:
     - `python -m pip install --upgrade pip`
     - `pip install poetry~=1.8`
     - `poetry install`
-4. Execute: `poetry run uvicorn src.backoffice.apps.channel.api.v0.main:app --reload`
+4. Execute: `poetry run uvicorn src.backoffice.apps.content.api.v0.main:app --reload`
 
 
 ## Run with Docker
@@ -65,7 +65,7 @@ This project implement:
 
 ### Domain-Driven Design
 
-Media Platform domain has (at the moment) one bounded context (Chanel) with two aggregates: Channel and Content.
+Media Platform domain has (at the moment) one bounded context (Content) with two aggregates: Movies and Series.
 
 
 ### Filter in API

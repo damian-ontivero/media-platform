@@ -9,7 +9,7 @@ def test_movie_finder__ok(mocker) -> None:
     mock_movie_repository.search.return_value = movie
     finder = MovieFinder(mock_movie_repository)
 
-    found_movie = finder.run(movie.get_id())
+    found_movie = finder.run(movie.id)
 
     assert found_movie == movie
 

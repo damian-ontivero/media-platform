@@ -9,7 +9,7 @@ def test_movie_updater__ok(mocker) -> None:
     mock_movie_repository.search.return_value = movie
     updater = MovieUpdater(mock_movie_repository)
 
-    updater.run(id=movie.get_id(), files=[], rating=3.5, metadata_={}, channel_id=movie.channel_id.value)
+    updater.run(id=movie.id, files=[], rating=3.5, metadata_={}, channel_id=movie.channel_id.value)
 
     mock_movie_repository.update.assert_called_once_with(movie)
 

@@ -1,6 +1,7 @@
 import os
 
 from dotenv import load_dotenv
+
 from src.backoffice.contexts.content.movies.domain.movie import Movie
 from src.backoffice.contexts.content.movies.domain.movie_repository import MovieRepository
 from src.backoffice.contexts.shared.infrastructure.file_manager import FileManager

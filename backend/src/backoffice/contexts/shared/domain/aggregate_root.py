@@ -4,8 +4,8 @@ from .entity_id import EntityId
 
 
 class AggregateRoot(Entity):
-    def __init__(self, id: EntityId, discarded: bool = False) -> None:
-        super().__init__(id, discarded)
+    def __init__(self, id: EntityId) -> None:
+        super().__init__(id)
         self._domain_events = []
 
     def pull_domain_events(self) -> list[DomainEvent]:

@@ -1,4 +1,5 @@
 import factory
+
 from src.backoffice.contexts.shared.domain import EntityId
 
 

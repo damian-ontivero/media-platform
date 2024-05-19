@@ -2,8 +2,9 @@
 name = "media-platform"
 version = "0.1.0"
 description = ""
-authors = ["Damian Ontivero <damian.ontivero@011h.com>"]
+authors = ["Damian Ontivero <damian.ontivero@icloud.com>"]
 readme = "README.md"
+packages = [{ include = "src" }]
 
 [[tool.poetry.source]]
 name = "test"
@@ -20,7 +21,6 @@ sqlalchemy = "^2.0.29"
 uvicorn = "^0.29.0"
 werkzeug = "^3.0.1"
 python-dotenv = "^1.0.1"
-psycopg2 = "^2.9.9"
 psycopg2-binary = "^2.9.9"
 pytest-mock = "^3.14.0"
 ditainer = "^0.4.2"

@@ -1,7 +1,8 @@
 from sqlalchemy import and_, or_
 from sqlalchemy.orm import Query
+
 from src.backoffice.contexts.shared.domain.criteria import Condition, Criteria, Filter, Sort
-from src.backoffice.contexts.shared.infrastructure.persistence.postgresql import db
+from src.backoffice.contexts.shared.infrastructure.persistence.postgres import db
 
 
 def equals_filter(m, k, v):

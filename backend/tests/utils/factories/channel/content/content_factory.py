@@ -1,4 +1,5 @@
 import factory
+
 from src.backoffice.contexts.channel.content.domain import Content
 from tests.utils.factories.shared.entity_id_factory import EntityIdFactory
 
