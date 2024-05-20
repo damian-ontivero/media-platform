@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "media-platform"
+name = "media_platform"
 version = "0.1.0"
 description = ""
 authors = ["Damian Ontivero <damian.ontivero@icloud.com>"]
@@ -21,9 +21,9 @@ sqlalchemy = "^2.0.29"
 uvicorn = "^0.29.0"
 werkzeug = "^3.0.1"
 python-dotenv = "^1.0.1"
-psycopg2-binary = "^2.9.9"
 pytest-mock = "^3.14.0"
 ditainer = "^0.4.2"
+psycopg2-binary = "^2.9.9"
 
 
 [tool.poetry.group.dev.dependencies]

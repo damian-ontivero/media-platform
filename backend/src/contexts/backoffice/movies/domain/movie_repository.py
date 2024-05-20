@@ -1,0 +1,19 @@
+from typing import Protocol
+
+from src.contexts.shared.domain.criteria import Criteria
+
+from .movie import Movie
+
+
+class MovieRepository(Protocol):
+    def search_all(self) -> list[Movie]: ...
+
+    def search(self, id: str) -> Movie | None: ...
+
+    def matching(self, criteria: Criteria) -> list[Movie]: ...
+
+    def count(self) -> int: ...
+
+    def save(self, beer: Movie) -> None: ...
+
+    def delete(self, id: str) -> None: ...

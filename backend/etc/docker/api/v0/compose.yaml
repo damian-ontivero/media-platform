@@ -1,18 +1,18 @@
 services:
-  media-platform-api-v0:
-    image: media-platform-api-v0
+  media_platform_api-v0:
+    image: media_platform_api-v0
     build:
       context: ../../../../
       dockerfile: ./etc/docker/api/v0/Dockerfile
-    container_name: media-platform-api-v0
+    container_name: media_platform_api-v0
     env_file:
       - ../../../../.env
     ports:
       - "8000:8000"
     networks:
-      - media-platform
+      - media_platform
 
 networks:
-  media-platform:
-    name: media-platform
+  media_platform:
+    name: media_platform
     external: true

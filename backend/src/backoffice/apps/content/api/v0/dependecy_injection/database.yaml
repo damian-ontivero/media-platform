@@ -1,5 +1,0 @@
-services:
-  Database.Session:
-    module: src.backoffice.contexts.shared.infrastructure.persistence.postgres.db
-    variable:
-      name: PostgresSession

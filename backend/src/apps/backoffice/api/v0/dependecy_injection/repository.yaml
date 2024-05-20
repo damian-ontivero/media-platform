@@ -1,0 +1,7 @@
+services:
+  MovieRepository:
+    module: src.contexts.backoffice.movies.infrastructure.persistence.postgres.movie_repository
+    class:
+      name: PostgresMovieRepository
+      arguments:
+        - !ref Database.Session

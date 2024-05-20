@@ -1,0 +1,19 @@
+from typing import Protocol
+
+from src.contexts.shared.domain.criteria import Criteria
+
+from .media import Media
+
+
+class MediaRepository(Protocol):
+    def search_all(self) -> list[Media]: ...
+
+    def search(self, id: str) -> Media | None: ...
+
+    def matching(self, criteria: Criteria) -> list[Media]: ...
+
+    def count(self) -> int: ...
+
+    def save(self, beer: Media) -> None: ...
+
+    def delete(self, id: str) -> None: ...

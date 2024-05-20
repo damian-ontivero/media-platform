@@ -1,0 +1,47 @@
+services:
+  HealthCheckController:
+    module: src.apps.backoffice.api.v0.controllers.health_check_controller
+    class:
+      name: HealthCheckController
+
+  MoviesGetController:
+    module: src.apps.backoffice.api.v0.controllers.movies_get_controller
+    class:
+      name: MoviesGetController
+      arguments:
+        - !ref MovieSearcher
+
+  MovieGetController:
+    module: src.apps.backoffice.api.v0.controllers.movie_get_controller
+    class:
+      name: MovieGetController
+      arguments:
+        - !ref MovieFinder
+
+  MovieFileGetController:
+    module: src.apps.backoffice.api.v0.controllers.movie_file_get_controller
+    class:
+      name: MovieFileGetController
+      arguments:
+        - !ref MovieFinder
+
+  MoviePostController:
+    module: src.apps.backoffice.api.v0.controllers.movie_post_controller
+    class:
+      name: MoviePostController
+      arguments:
+        - !ref MovieCreator
+
+  MoviePutController:
+    module: src.apps.backoffice.api.v0.controllers.movie_put_controller
+    class:
+      name: MoviePutController
+      arguments:
+        - !ref MovieUpdater
+
+  MovieDeleteController:
+    module: src.apps.backoffice.api.v0.controllers.movie_delete_controller
+    class:
+      name: MovieDeleteController
+      arguments:
+        - !ref MovieEliminator

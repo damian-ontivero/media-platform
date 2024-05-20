@@ -11,7 +11,7 @@ Requirements:
 
 To install and run the project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/damian-ontivero/media-platform.git`
+1. Clone the repository: `git clone https://github.com/damian-ontivero/media_platform.git`
 2. Create the virtual environment and activate it:
     - `python3 -m venv var/venv`
     - `source var/venv/bin/activate`
@@ -19,7 +19,7 @@ To install and run the project locally, follow these steps:
     - `python -m pip install --upgrade pip`
     - `pip install poetry~=1.8`
     - `poetry install`
-4. Execute: `poetry run uvicorn src.backoffice.apps.content.api.v0.main:app --reload`
+4. Execute: `poetry run uvicorn src.apps.backoffice.api.v0.main:app --reload`
 
 
 ## Run with Docker

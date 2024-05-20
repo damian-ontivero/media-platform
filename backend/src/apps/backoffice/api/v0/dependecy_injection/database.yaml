@@ -1,0 +1,4 @@
+services:
+  Database.Session:
+    module: src.contexts.shared.infrastructure.persistence.postgres.db
+    variable: PostgresSession
