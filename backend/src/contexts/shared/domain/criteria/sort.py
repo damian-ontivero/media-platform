@@ -18,13 +18,12 @@ class Sort:
     def direction(self) -> str:
         return self._direction.value
 
-    @property
     def is_none(self) -> bool:
-        return self._direction.is_none
+        return self._direction.is_none()
 
-    @staticmethod
-    def none() -> "Sort":
-        return Sort(SortField(""), SortDirection("NONE"))
+    @classmethod
+    def none(cls) -> "Sort":
+        return cls(SortField(""), SortDirection("NONE"))
 
     @classmethod
     def from_primitives(cls, field: str | None, direction: str) -> "Sort":

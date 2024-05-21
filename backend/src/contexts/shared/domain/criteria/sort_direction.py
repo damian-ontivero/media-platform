@@ -19,7 +19,6 @@ class SortDirection:
     def value(self) -> str:
         return self._value
 
-    @property
     def is_none(self) -> bool:
         return self._value == SortDirection.NONE
 

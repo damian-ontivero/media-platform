@@ -21,7 +21,6 @@ class Filter:
     def conditions(self) -> list[Condition]:
         return self._conditions
 
-    @property
     def is_empty(self) -> bool:
         return len(self._conditions) == 0
 
