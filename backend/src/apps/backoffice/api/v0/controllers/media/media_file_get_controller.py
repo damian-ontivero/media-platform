@@ -1,23 +1,23 @@
 import os
 
 from fastapi import Request, Response, status
-from src.contexts.backoffice.movies.application.movie_finder import MovieFinder
+from src.contexts.backoffice.media.application.media_finder import MediaFinder
 
-from .controller import Controller
+from ..controller import Controller
 
 
-class MovieFileGetController(Controller):
-    def __init__(self, finder: MovieFinder) -> None:
+class MediaFileGetController(Controller):
+    def __init__(self, finder: MediaFinder) -> None:
         self._finder = finder
 
     async def run(self, request: Request) -> Response:
-        movie = self._finder.run(request.path_params["id"])
+        media = self._finder.run(request.path_params["id"])
         range = request.headers.get("Range")
         start, end = range.replace("bytes=", "").split("-")
         start = int(start)
         end = int(start + (1024 * 1024))
 
-        for file in movie.files:
+        for file in media.files:
             if file.name == request.query_params["file_name"]:
                 with open(file.path, "rb") as f:
                     f.seek(start)

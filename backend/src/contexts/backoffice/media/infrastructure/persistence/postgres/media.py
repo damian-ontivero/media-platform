@@ -6,6 +6,7 @@ class PostgresMedia(Base):
     __tablename__ = "media"
 
     id = Column(String(36), primary_key=True)
+    title = Column(String(255))
     type_ = Column(String(255))
     size = Column(Integer)
     duration = Column(Integer)
@@ -15,7 +16,8 @@ class PostgresMedia(Base):
     def to_primitives(self) -> dict:
         return {
             "id": self.id,
-            "type": self.type_,
+            "title": self.title,
+            "type_": self.type_,
             "size": self.size,
             "duration": self.duration,
             "resolution": self.resolution,

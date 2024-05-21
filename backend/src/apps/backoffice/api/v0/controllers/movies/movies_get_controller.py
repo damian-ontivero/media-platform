@@ -4,8 +4,8 @@ import json
 from fastapi import Request, Response, status
 from src.contexts.backoffice.movies.application.movie_searcher import MovieSearcher
 
-from ..schemas import MoviePaginatedResponseSchema
-from .controller import Controller
+from ...schemas import MoviePaginatedResponseSchema
+from ..controller import Controller
 
 
 class MoviesGetController(Controller):

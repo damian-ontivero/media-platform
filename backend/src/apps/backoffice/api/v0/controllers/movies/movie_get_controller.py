@@ -1,8 +1,8 @@
 from fastapi import Request, Response, status
 from src.contexts.backoffice.movies.application.movie_finder import MovieFinder
 
-from ..schemas import MovieGetSchema
-from .controller import Controller
+from ...schemas import MovieGetSchema
+from ..controller import Controller
 
 
 class MovieGetController(Controller):

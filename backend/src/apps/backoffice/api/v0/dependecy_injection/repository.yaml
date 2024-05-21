@@ -5,3 +5,10 @@ services:
       name: PostgresMovieRepository
       arguments:
         - !ref Database.Session
+
+  MediaRepository:
+    module: src.contexts.backoffice.media.infrastructure.persistence.postgres.media_repository
+    class:
+      name: PostgresMediaRepository
+      arguments:
+        - !ref Database.Session

@@ -33,3 +33,38 @@ services:
       name: MovieEliminator
       arguments:
         - !ref MovieRepository
+
+  MediaSearcher:
+    module: src.contexts.backoffice.media.application.media_searcher
+    class:
+      name: MediaSearcher
+      arguments:
+        - !ref MediaRepository
+
+  MediaFinder:
+    module: src.contexts.backoffice.media.application.media_finder
+    class:
+      name: MediaFinder
+      arguments:
+        - !ref MediaRepository
+
+  MediaCreator:
+    module: src.contexts.backoffice.media.application.media_creator
+    class:
+      name: MediaCreator
+      arguments:
+        - !ref MediaRepository
+
+  MediaUpdater:
+    module: src.contexts.backoffice.media.application.media_updater
+    class:
+      name: MediaUpdater
+      arguments:
+        - !ref MediaRepository
+
+  MediaEliminator:
+    module: src.contexts.backoffice.media.application.media_eliminator
+    class:
+      name: MediaEliminator
+      arguments:
+        - !ref MediaRepository

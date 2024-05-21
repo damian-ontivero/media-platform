@@ -1,11 +1,11 @@
 from fastapi import Response, status
-from src.contexts.backoffice.movies.application.movie_eliminator import MovieEliminator
+from src.contexts.backoffice.media.application.media_eliminator import MediaEliminator
 
-from .controller import Controller
+from ..controller import Controller
 
 
-class MovieDeleteController(Controller):
-    def __init__(self, eliminator: MovieEliminator) -> None:
+class MediaDeleteController(Controller):
+    def __init__(self, eliminator: MediaEliminator) -> None:
         self._eliminator = eliminator
 
     async def run(self, id: str) -> Response:

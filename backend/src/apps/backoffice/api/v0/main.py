@@ -2,10 +2,9 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.responses import JSONResponse
-
 from src.apps.backoffice.api.v0.exception import EXCEPTION_TO_HTTP_STATUS_CODE
 
-from .routers import health_check_router, movie_router
+from .routers import health_check_router, media_router, movies_router, series_router
 
 app = FastAPI(
     title="Media Platform - API",
@@ -23,7 +22,9 @@ app.add_middleware(
 
 # Routers
 app.include_router(router=health_check_router)
-app.include_router(router=movie_router)
+app.include_router(router=media_router)
+app.include_router(router=movies_router)
+app.include_router(router=series_router)
 
 
 # Setups the exception handler

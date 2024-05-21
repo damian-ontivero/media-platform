@@ -1,8 +1,8 @@
 from fastapi import Response, status
 from src.contexts.backoffice.movies.application.movie_updater import MovieUpdater
 
-from ..schemas import MovieUpdateSchema
-from .controller import Controller
+from ...schemas import MovieUpdateSchema
+from ..controller import Controller
 
 
 class MoviePutController(Controller):

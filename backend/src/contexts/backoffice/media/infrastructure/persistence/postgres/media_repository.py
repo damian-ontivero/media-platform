@@ -35,6 +35,7 @@ class PostgresMediaRepository:
         with self._session() as session:
             media_db = PostgresMedia(
                 id=media.id.value,
+                title=media.title,
                 type_=media.type_,
                 size=media.size,
                 duration=media.duration,
