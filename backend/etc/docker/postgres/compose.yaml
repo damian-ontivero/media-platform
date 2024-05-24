@@ -1,16 +1,15 @@
 services:
   media_platform_postgres:
-    image: postgres:16.2
+    image: postgres:16.3-alpine
     container_name: media_platform_postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: media_platform
-      POSTGRES_HOST: media_platform_postgres
     ports:
       - "5432:5432"
     volumes:
-      - ./data:/var/lib/postgres/data
+      - ./data:/var/lib/postgresql/data
     networks:
       - media_platform
 

@@ -4,10 +4,10 @@ services:
       file: ./postgres/compose.yaml
       service: media_platform_postgres
 
-  media_platform_postgres-api-v0:
+  media_platform_postgres_api_v0:
     extends:
-      file: ./api/v0/compose.yaml
-      service: media_platform_api-v0
+      file: ./contexts/backoffice/api/v0/compose.yaml
+      service: media_platform_api_v0
 
 networks:
   media_platform:

@@ -12,7 +12,7 @@ class MediaFileGetController(Controller):
 
     async def run(self, request: Request) -> Response:
         media = self._finder.run(request.path_params["id"])
-        range = request.headers.get("Range")
+        range = request.headers["Range"]
         start, end = range.replace("bytes=", "").split("-")
         start = int(start)
         end = int(start + (1024 * 1024))
