@@ -1,3 +1,3 @@
-from .media import MediaCreateSchema, MediaGetSchema, MediaPaginatedResponseSchema, MediaUpdateSchema
-from .movies import MovieCreateSchema, MovieGetSchema, MoviePaginatedResponseSchema, MovieUpdateSchema
-from .series import SerieCreateSchema, SerieGetSchema, SeriePaginatedResponseSchema, SerieUpdateSchema
+from .media import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
+from .movies import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
+from .series import SeriePaginatedResponseSchema, SerieReadSchema, SerieWriteSchema

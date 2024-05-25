@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Header, Path, Query, status
+from fastapi import APIRouter, Path, Query, status
 from typing_extensions import Annotated
 
 from ..dependecy_injection import container
-from ..schemas import SerieCreateSchema, SerieGetSchema, SeriePaginatedResponseSchema, SerieUpdateSchema
+from ..schemas import SeriePaginatedResponseSchema, SerieReadSchema, SerieWriteSchema
 
 router = APIRouter(prefix="/series", tags=["Series"])
 
@@ -46,7 +46,7 @@ async def search(
     return controller.run(criteria)
 
 
-@router.get("/{id}", response_model=SerieGetSchema, status_code=status.HTTP_200_OK, description="Find Serie")
+@router.get("/{id}", response_model=SerieReadSchema, status_code=status.HTTP_200_OK, description="Find Serie")
 async def find(
     id: Annotated[str, Path(..., description="Id of the Serie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
@@ -55,7 +55,7 @@ async def find(
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Serie")
-async def create(serie: SerieCreateSchema):
+async def create(serie: SerieWriteSchema):
     controller = container.get("SeriePostController")
     return await controller.run(serie)
 
@@ -63,7 +63,7 @@ async def create(serie: SerieCreateSchema):
 @router.put("/{id}", status_code=status.HTTP_200_OK, description="Update Serie")
 async def update(
     id: Annotated[str, Path(..., description="Id of the Serie", example="123e4567-e89b-12d3-a456-426614174000")],
-    serie: SerieUpdateSchema,
+    serie: SerieWriteSchema,
 ):
     controller = container.get("SeriePutController")
     return await controller.run(id, serie)
@@ -75,13 +75,3 @@ async def delete(
 ):
     controller = container.get("SerieDeleteController")
     return await controller.run(id)
-
-
-@router.get("/{id}/file", status_code=status.HTTP_200_OK, description="Find Serie File")
-async def get_stream(
-    id: Annotated[str, Path(..., description="Id of the Serie", example="123e4567-e89b-12d3-a456-426614174000")],
-    file_name: Annotated[str, Query(..., description="File Name", example="file.txt")],
-    range: Annotated[str, Header(..., description="Range", example="bytes=0-100")],
-):
-    controller = container.get("SerieFileGetController")
-    return await controller.run(id, file_name, range)

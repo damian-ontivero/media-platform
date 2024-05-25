@@ -1,7 +1,7 @@
 import base64
 import json
 
-from fastapi import Request, Response, status
+from fastapi import Response, status
 from src.contexts.backoffice.movies.application.movie_searcher import MovieSearcher
 
 from ...schemas import MoviePaginatedResponseSchema

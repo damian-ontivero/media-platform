@@ -24,6 +24,7 @@ python-dotenv = "^1.0.1"
 pytest-mock = "^3.14.0"
 ditainer = "^0.4.2"
 psycopg2-binary = "^2.9.9"
+moviepy = "^1.0.3"
 
 
 [tool.poetry.group.dev.dependencies]

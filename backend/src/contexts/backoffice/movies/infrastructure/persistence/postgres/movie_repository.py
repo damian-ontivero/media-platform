@@ -33,7 +33,7 @@ class PostgresMovieRepository:
 
     def save(self, movie: Movie) -> None:
         with self._session() as session:
-            movie_db = PostgresMovie(id=movie.id, title=movie.title, media_id=movie.media_id)
+            movie_db = PostgresMovie(**movie.to_primitives())
             session.add(movie_db)
             session.commit()
 

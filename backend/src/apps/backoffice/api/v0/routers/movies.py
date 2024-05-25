@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Header, Path, Query, status
+from fastapi import APIRouter, Path, Query, status
 from typing_extensions import Annotated
 
 from ..dependecy_injection import container
-from ..schemas import MovieCreateSchema, MovieGetSchema, MoviePaginatedResponseSchema, MovieUpdateSchema
+from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
@@ -46,7 +46,7 @@ async def search(
     return controller.run(criteria)
 
 
-@router.get("/{id}", response_model=MovieGetSchema, status_code=status.HTTP_200_OK, description="Find Movie")
+@router.get("/{id}", response_model=MovieReadSchema, status_code=status.HTTP_200_OK, description="Find Movie")
 async def find(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
@@ -55,7 +55,7 @@ async def find(
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Movie")
-async def create(movie: MovieCreateSchema):
+async def create(movie: MovieWriteSchema):
     controller = container.get("MoviePostController")
     return await controller.run(movie)
 
@@ -63,7 +63,7 @@ async def create(movie: MovieCreateSchema):
 @router.put("/{id}", status_code=status.HTTP_200_OK, description="Update Movie")
 async def update(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")],
-    movie: MovieUpdateSchema,
+    movie: MovieWriteSchema,
 ):
     controller = container.get("MoviePutController")
     return await controller.run(id, movie)
@@ -75,13 +75,3 @@ async def delete(
 ):
     controller = container.get("MovieDeleteController")
     return await controller.run(id)
-
-
-@router.get("/{id}/file", status_code=status.HTTP_200_OK, description="Find Movie File")
-async def get_stream(
-    id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")],
-    file_name: Annotated[str, Query(..., description="File Name", example="file.txt")],
-    range: Annotated[str, Header(..., description="Range", example="bytes=0-100")],
-):
-    controller = container.get("MovieFileGetController")
-    return await controller.run(id, file_name, range)

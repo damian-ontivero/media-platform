@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 
 
-class SerieGetSchema(BaseModel):
+class SerieReadSchema(BaseModel):
     id: str = Field(..., description="Serie ID", examples=["123e4567-e89b-12d3-a456-426614174000"])
     title: str = Field(..., description="Serie Title", examples=["Amazing movie"])
     type_: str = Field(..., description="Serie Type", examples=["movie"])
@@ -11,7 +11,7 @@ class SerieGetSchema(BaseModel):
     path: str = Field(..., description="Serie Path", examples=["/path/to/media"])
 
 
-class SerieCreateSchema(BaseModel):
+class SerieWriteSchema(BaseModel):
     title: str = Field(..., description="Serie Title", examples=["Amazing movie"])
     type_: str = Field(..., description="Serie Type", examples=["movie"])
     size: int = Field(..., description="Serie Size", examples=[120])
@@ -20,17 +20,8 @@ class SerieCreateSchema(BaseModel):
     path: str = Field(..., description="Serie Path", examples=["/path/to/media"])
 
 
-class SerieUpdateSchema(BaseModel):
-    title: str = Field(None, description="Serie Title", examples=["Amazing movie"])
-    type_: str = Field(None, description="Serie Type", examples=["movie"])
-    size: int = Field(None, description="Serie Size", examples=[120])
-    duration: int = Field(None, description="Serie Duration", examples=[120])
-    resolution: str = Field(None, description="Serie Resolution", examples=["1080p"])
-    path: str = Field(None, description="Serie Path", examples=["/path/to/media"])
-
-
 class SeriePaginatedResponseSchema(BaseModel):
     page_size: int | None = Field(None, description="Number of items per page", examples=[1])
     page_number: int | None = Field(None, description="Current page number", examples=[1])
     total_pages: int | None = Field(None, description="Total number of pages", examples=[1])
-    items: list[SerieGetSchema] = Field(..., description="List of Serie")
+    items: list[SerieReadSchema] = Field(..., description="List of Serie")
