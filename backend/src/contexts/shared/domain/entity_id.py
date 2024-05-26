@@ -2,6 +2,15 @@ import uuid
 
 
 class EntityId:
+    """
+    Value object that represents the identity of an entity.
+
+    Entity IDs are used to uniquely identify entities. They are immutable and
+    cannot be changed once they are created.
+
+    Entity IDs are compared by value. Two entity IDs are considered equal if
+    they have the same value.
+    """
 
     __slots__ = ("_value",)
 
@@ -16,6 +25,9 @@ class EntityId:
 
     @classmethod
     def generate(cls) -> "EntityId":
+        """
+        Generates a new entity ID with a random UUID value.
+        """
         return cls(str(uuid.uuid4()))
 
     def __eq__(self, other: object) -> bool:
@@ -30,4 +42,4 @@ class EntityId:
         return hash(self._value)
 
     def __repr__(self) -> str:
-        return ("{c}(value={value!r})").format(c=self.__class__.__name__, value=self._value)
+        return f"{self.__class__.__name__}(value={self._value!r})"

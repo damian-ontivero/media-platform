@@ -79,6 +79,9 @@ FILTER_OPERATOR_MAPPER = {
 
 
 def criteria_to_sqlalchemy_query(query: Query, model: db.Base, criteria: Criteria) -> Query:
+    """
+    Convert a Criteria domain object to a SQLAlchemy query.
+    """
     filters = []
     if criteria.filter is not None:
         filters.append(_process_filter(criteria.filter, model))

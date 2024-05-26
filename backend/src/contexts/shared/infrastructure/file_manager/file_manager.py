@@ -2,6 +2,10 @@ import os
 
 
 class FileManager:
+    """
+    File manager class to save and retrieve files from the file system.
+    """
+
     def __init__(self, base_dir: str) -> None:
         self._base_dir = base_dir
 

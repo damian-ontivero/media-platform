@@ -8,6 +8,9 @@ load_dotenv(".env", override=True)
 
 
 class PostgresDB:
+    """
+    PostgresDB class to create a session with the database.
+    """
 
     @staticmethod
     def create_session(
@@ -30,4 +33,8 @@ PostgresSession = PostgresDB.create_session(
 
 
 class Base(DeclarativeBase):
+    """
+    Base class for all ORM classes to inherit from.
+    """
+
     pass

@@ -12,7 +12,3 @@ class DeleteEntityError(Exception):
 
 class ImageFormatError(Exception):
     pass
-
-
-class InformationFileUploadError(Exception):
-    pass

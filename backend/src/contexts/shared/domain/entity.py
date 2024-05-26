@@ -4,6 +4,16 @@ from .entity_id import EntityId
 
 
 class Entity(metaclass=ABCMeta):
+    """
+    Base class for entities.
+
+    Entities are objects that have an identity and are defined by their identity.
+
+    Entities are compared by identity, not by value. Two entities are considered
+    equal if they have the same identity, even if their attributes differ.
+
+    Once an entity is created, its identity cannot be changed.
+    """
 
     @abstractmethod
     def __init__(self, id: EntityId) -> None:
@@ -23,7 +33,3 @@ class Entity(metaclass=ABCMeta):
 
     def __hash__(self) -> int:
         return hash(self._id)
-
-
-class DiscardedEntityError(Exception):
-    pass
