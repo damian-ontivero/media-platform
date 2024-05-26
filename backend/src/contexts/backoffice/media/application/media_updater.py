@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from moviepy.editor import VideoFileClip
@@ -16,7 +17,7 @@ class MediaUpdater:
         if media is None:
             raise NotFound(f"Media: {id!r} not found")
         file_path = self._file_manager.save_file(title, file_name, file)
-        size = os.path.getsize(file_path) / 1024 / 1024
+        size = os.path.getsize(file_path)
         duration = VideoFileClip(file_path).duration
         media.update(title, size, duration, file_path)
         self._repository.save(media)
