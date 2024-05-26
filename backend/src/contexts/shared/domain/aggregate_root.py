@@ -14,8 +14,8 @@ class AggregateRoot(Entity):
     and ensuring that the aggregate remains in a consistent state.
 
     Aggregate roots can record domain events that occurred during the execution
-    of a use case. These domain events can be retrieved and used to notify other
-    parts of the application about something that happened in the domain.
+    of a use case. These domain events can be published to the event bus to notify
+    other parts of the system that something has happened.
     """
 
     def __init__(self, id: EntityId) -> None:
