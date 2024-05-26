@@ -1,4 +1,7 @@
 class File:
+    """
+    Value object to represent a file.
+    """
 
     __slots__ = ("_path",)
 
@@ -15,20 +18,16 @@ class File:
     def path(self) -> str:
         return self._path
 
-    @property
-    def __dict__(self) -> dict:
-        return {"path": self._path}
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, File):
             return NotImplemented
         return self._path == other._path
 
     def __ne__(self, other: object) -> bool:
-        return not self.__eq__(other)
+        return not self == other
 
     def __hash__(self) -> int:
         return hash(tuple(sorted(self._path)))
 
     def __repr__(self) -> str:
-        return "{c}(path={path!r})".format(c=self.__class__.__name__, path=self._path)
+        return f"{self.__class__.__name__}(path={self._path!r})"

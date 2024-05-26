@@ -7,10 +7,8 @@ class Entity(metaclass=ABCMeta):
     """
     Base class for entities.
 
-    Entities are objects that have an identity and are defined by their identity.
-
-    Entities are compared by identity, not by value. Two entities are considered
-    equal if they have the same identity, even if their attributes differ.
+    Entities are objects that have an identity. Two entities are considered equal
+    if they have the same identity.
 
     Once an entity is created, its identity cannot be changed.
     """

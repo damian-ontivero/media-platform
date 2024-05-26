@@ -1,45 +1,66 @@
 import datetime
+import uuid
 
 
 class DomainEvent:
     """
-    Base class for domain event.
+    Value object that represents a domain event.
 
-    Domain events are value objects that represent something that happened in
-    the domain. They are used to notify other parts of the application about
-    something that happened in the domain.
+    Domain events are used to communicate changes in the domain model. They are
+    immutable and cannot be changed once they are created.
 
-    Attributes are specified as keyword arguments and can be added
-    but not modified. This is to ensure that the domain event are immutable.
+    Domain events are compared by value. Two domain events are considered equal
+    if they have the same value.
     """
 
-    def __init__(self, **kwargs) -> None:
-        self.__dict__["occurred_on"] = datetime.datetime.now(datetime.UTC)
-        self.__dict__.update(kwargs)
+    __slots__ = ("_id", "_type", "_occurred_on", "_data")
 
-    def __setattr__(self, name: str, value: object) -> None:
-        """Prevents setting attributes that already exist."""
-        if hasattr(self, name):
-            raise AttributeError("Attributes can be added but not modified")
-        self.__dict__[name] = value
+    def __new__(cls, id: str, type_: str, occurred_on: str, data: dict) -> "DomainEvent":
+        instance = super().__new__(cls)
+        instance._id = id
+        instance._type = type_
+        instance._occurred_on = occurred_on
+        instance._data = data
+        return instance
 
-    def __delattr__(self, name: str) -> None:
-        """Prevents deleting attributes."""
-        raise AttributeError("Attributes can be added but not deleted")
+    @property
+    def id(self) -> str:
+        return str(self._id)
+
+    @property
+    def type_(self) -> str:
+        return str(self._type)
+
+    @property
+    def occurred_on(self) -> str:
+        return str(self._occurred_on)
+
+    @property
+    def data(self) -> dict:
+        return dict(self._data)
+
+    @classmethod
+    def create(cls, type_: str, data: dict) -> "DomainEvent":
+        return cls(str(uuid.uuid4()), type_, datetime.datetime.now(datetime.UTC).isoformat(), data)
 
     def __eq__(self, other: object) -> bool:
-        if isinstance(other, DomainEvent):
-            return self.__dict__ == other.__dict__
-        return NotImplemented
+        if not isinstance(other, DomainEvent):
+            return NotImplemented
+        return (
+            self._id == other._id
+            and self._type == other._type
+            and self._occurred_on == other._occurred_on
+            and self._data == other._data
+        )
 
     def __ne__(self, other: object) -> bool:
-        return not self.__eq__(other)
+        return not self == other
 
     def __hash__(self) -> int:
-        return hash(frozenset(self.__dict__.items()))
+        return hash((self._id, self._type, self._occurred_on, self._data))
 
     def __repr__(self) -> str:
-        return "{c}({args})".format(
-            c=self.__class__.__name__,
-            args=", ".join("{key}={value!r}".format(key=key, value=value) for key, value in self.__dict__.items()),
+        return (
+            f"{self.__class__.__name__}"
+            f"(id={self._id!r}, type_={self._type!r}, occurred_on={self._occurred_on!r}, data={self._data!r})"
         )
