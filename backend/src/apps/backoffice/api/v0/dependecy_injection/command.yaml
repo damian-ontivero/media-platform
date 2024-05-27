@@ -1,0 +1,61 @@
+services:
+  CommandBus:
+    module: src.contexts.shared.infrastructure.bus.command.in_memory_command_bus
+    class:
+      name: InMemoryCommandBus
+      arguments:
+        - !tagged command_handler
+
+  MediaCreateCommandHandler:
+    module: src.contexts.backoffice.media.application.command.create_command_handler
+    class:
+      name: MediaCreateCommandHandler
+      arguments:
+        - !ref MediaRepository
+    tags:
+      - name: command_handler
+
+  MediaUpdateCommandHandler:
+    module: src.contexts.backoffice.media.application.command.update_command_handler
+    class:
+      name: MediaUpdateCommandHandler
+      arguments:
+        - !ref MediaRepository
+    tags:
+      - name: command_handler
+
+  MediaDeleteCommandHandler:
+    module: src.contexts.backoffice.media.application.command.delete_command_handler
+    class:
+      name: MediaDeleteCommandHandler
+      arguments:
+        - !ref MediaRepository
+    tags:
+      - name: command_handler
+
+  MovieCreateCommandHandler:
+    module: src.contexts.backoffice.movie.application.command.create_command_handler
+    class:
+      name: MovieCreateCommandHandler
+      arguments:
+        - !ref MovieRepository
+    tags:
+      - name: command_handler
+
+  MovieUpdateCommandHandler:
+    module: src.contexts.backoffice.movie.application.command.update_command_handler
+    class:
+      name: MovieUpdateCommandHandler
+      arguments:
+        - !ref MovieRepository
+    tags:
+      - name: command_handler
+
+  MovieDeleteCommandHandler:
+    module: src.contexts.backoffice.movie.application.command.delete_command_handler
+    class:
+      name: MovieDeleteCommandHandler
+      arguments:
+        - !ref MovieRepository
+    tags:
+      - name: command_handler

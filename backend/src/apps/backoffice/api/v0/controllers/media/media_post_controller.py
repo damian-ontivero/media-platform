@@ -1,14 +1,16 @@
 from fastapi import Response, UploadFile, status
-from src.contexts.backoffice.media.application.media_creator import MediaCreator
+from src.contexts.backoffice.media.application.command import MediaCreateCommand
+from src.contexts.shared.domain.bus.command import CommandBus
 
 from ...schemas import MediaWriteSchema
 from ..controller import Controller
 
 
 class MediaPostController(Controller):
-    def __init__(self, creator: MediaCreator) -> None:
-        self._creator = creator
+    def __init__(self, command_bus: CommandBus) -> None:
+        self._command_bus = command_bus
 
     async def run(self, media: MediaWriteSchema, file: UploadFile) -> Response:
-        self._creator.run(**media.model_dump(), file_name=file.filename, file=await file.read())
-        return Response(content=None, status_code=status.HTTP_201_CREATED, media_type="application/json")
+        command = MediaCreateCommand(media.title, file.filename, await file.read())
+        await self._command_bus.dispatch(command)
+        return Response(content=None, status_code=status.HTTP_201_CREATED, media_type=None)

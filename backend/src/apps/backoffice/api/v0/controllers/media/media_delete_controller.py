@@ -1,13 +1,15 @@
 from fastapi import Response, status
-from src.contexts.backoffice.media.application.media_eliminator import MediaEliminator
+from src.contexts.backoffice.media.application.command import MediaDeleteCommand
+from src.contexts.shared.domain.bus.command import CommandBus
 
 from ..controller import Controller
 
 
 class MediaDeleteController(Controller):
-    def __init__(self, eliminator: MediaEliminator) -> None:
-        self._eliminator = eliminator
+    def __init__(self, command_bus: CommandBus) -> None:
+        self._command_bus = command_bus
 
     async def run(self, id: str) -> Response:
-        self._eliminator.run(id)
-        return Response(content=None, status_code=status.HTTP_200_OK, media_type="application/json")
+        command = MediaDeleteCommand(id=id)
+        await self._command_bus.dispatch(command)
+        return Response(content=None, status_code=status.HTTP_200_OK, media_type=None)
