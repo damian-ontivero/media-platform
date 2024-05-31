@@ -1,3 +1,5 @@
+from .count_query import MediaCountQuery
+from .count_query_handler import MediaCountQueryHandler
 from .find_by_id_query import MediaFindByIdQuery
 from .find_by_id_query_handler import MediaFindByIdQueryHandler
 from .search_by_criteria_query import MediaSearchByCriteriaQuery

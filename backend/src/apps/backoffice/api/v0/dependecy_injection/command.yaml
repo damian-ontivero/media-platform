@@ -34,7 +34,7 @@ services:
       - name: command_handler
 
   MovieCreateCommandHandler:
-    module: src.contexts.backoffice.movie.application.command.create_command_handler
+    module: src.contexts.backoffice.movies.application.command.create_command_handler
     class:
       name: MovieCreateCommandHandler
       arguments:
@@ -43,7 +43,7 @@ services:
       - name: command_handler
 
   MovieUpdateCommandHandler:
-    module: src.contexts.backoffice.movie.application.command.update_command_handler
+    module: src.contexts.backoffice.movies.application.command.update_command_handler
     class:
       name: MovieUpdateCommandHandler
       arguments:
@@ -52,7 +52,7 @@ services:
       - name: command_handler
 
   MovieDeleteCommandHandler:
-    module: src.contexts.backoffice.movie.application.command.delete_command_handler
+    module: src.contexts.backoffice.movies.application.command.delete_command_handler
     class:
       name: MovieDeleteCommandHandler
       arguments:

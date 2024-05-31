@@ -1,10 +1,10 @@
 services:
   QueryBus:
-  module: src.contexts.shared.infrastructure.bus.query.in_memory_query_bus
-  class:
-    name: InMemoryQueryBus
-    arguments:
-      - !tagged query_handler
+    module: src.contexts.shared.infrastructure.bus.query.in_memory_query_bus
+    class:
+      name: InMemoryQueryBus
+      arguments:
+        - !tagged query_handler
 
   MediaSearchByCriteriaQueryHandler:
     module: src.contexts.backoffice.media.application.query.search_by_criteria_query_handler
@@ -34,7 +34,7 @@ services:
       - name: query_handler
 
   MovieSearchByCriteriaQueryHandler:
-    module: src.contexts.backoffice.movie.application.query.search_by_criteria_query_handler
+    module: src.contexts.backoffice.movies.application.query.search_by_criteria_query_handler
     class:
       name: MovieSearchByCriteriaQueryHandler
       arguments:
@@ -43,7 +43,7 @@ services:
       - name: query_handler
 
   MovieFindByIdQueryHandler:
-    module: src.contexts.backoffice.movie.application.query.find_by_id_query_handler
+    module: src.contexts.backoffice.movies.application.query.find_by_id_query_handler
     class:
       name: MovieFindByIdQueryHandler
       arguments:
@@ -52,7 +52,7 @@ services:
       - name: query_handler
 
   MovieCountQueryHandler:
-    module: src.contexts.backoffice.movie.application.query.count_query_handler
+    module: src.contexts.backoffice.movies.application.query.count_query_handler
     class:
       name: MovieCountQueryHandler
       arguments:
