@@ -43,6 +43,9 @@ class DomainEvent:
     def create(cls, type_: str, data: dict) -> "DomainEvent":
         return cls(str(uuid.uuid4()), type_, datetime.datetime.now(datetime.UTC).isoformat(), data)
 
+    def to_primitives(self) -> dict:
+        return {"id": self._id, "type": self._type, "occurred_on": self._occurred_on, "data": self._data}
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, DomainEvent):
             return NotImplemented
