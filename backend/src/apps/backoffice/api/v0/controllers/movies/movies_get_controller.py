@@ -4,7 +4,7 @@ import json
 from fastapi import Response, status
 from src.apps.backoffice.api.v0.schemas import MoviePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.movies.application.query.search_by_criteria_query import MovieSearchByCriteriaQuery
+from src.contexts.backoffice.movies.application.query import MovieCountQuery, MovieSearchByCriteriaQuery
 from src.contexts.shared.domain.bus.query import QueryBus
 
 
@@ -18,7 +18,13 @@ class MoviesGetController(Controller):
             criteria = base64.b64encode(json.dumps(criteria).encode()).decode()
         criteria = json.loads(base64.b64decode(criteria).decode())
         movies = self._query_bus.ask(MovieSearchByCriteriaQuery(**criteria))
-        response = MoviePaginatedResponseSchema(items=[movie.to_primitives() for movie in movies])
+        total = self._query_bus.ask(MovieCountQuery())
+        response = MoviePaginatedResponseSchema(
+            page_size=criteria["page_size"],
+            page_number=criteria["page_number"],
+            total_pages=total // criteria["page_size"],
+            items=[movie.to_primitives() for movie in movies],
+        )
         return Response(
             content=response.model_dump_json(), status_code=status.HTTP_200_OK, media_type="application/json"
         )
