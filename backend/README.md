@@ -13,7 +13,7 @@ To install and run the project locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/damian-ontivero/media_platform.git`
 2. Create the virtual environment and activate it:
-    - `python3 -m venv var/venv`
+    - `python -m venv var/venv`
     - `source var/venv/bin/activate`
 3. Install dependencies:
     - `python -m pip install --upgrade pip`
