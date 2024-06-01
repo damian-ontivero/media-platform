@@ -85,20 +85,15 @@ def criteria_to_sqlalchemy_query(query: Query, model: db.Base, criteria: Criteri
     filters = []
     if criteria.filter is not None:
         filters.append(_process_filter(criteria.filter, model))
-
     if filters:
         query = query.filter(*filters)
-
     if criteria.sort is not None:
         for sort in criteria.sort:
             query = query.order_by(_process_sort(sort, model))
-
     if criteria.page_size is not None:
-        query = query.limit(criteria.page_size)
-
+        query = query.limit(criteria.page_size.value)
     if criteria.page_size is not None and criteria.page_number is not None:
-        query = query.offset((criteria.page_number - 1) * criteria.page_size)
-
+        query = query.offset((criteria.page_number.value - 1) * criteria.page_size.value)
     return query
 
 

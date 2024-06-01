@@ -1,4 +1,6 @@
 from .filter import Filter
+from .page_number import PageNumber
+from .page_size import PageSize
 from .sort import Sort
 
 
@@ -6,25 +8,9 @@ class Criteria:
 
     __slots__ = ("_filter", "_sort", "_page_size", "_page_number")
 
-    def __init__(self, filter: Filter | None, sort: list[Sort] | None, page_size: int | None, page_number: int | None):
-        if filter is not None:
-            if not isinstance(filter, Filter):
-                raise TypeError("Filter must be a Filter")
-        if sort is not None:
-            if not isinstance(sort, list):
-                raise TypeError("Sort must be a list")
-            if not all(isinstance(s, Sort) for s in sort):
-                raise TypeError("All elements of sort must be a Sort")
-        if page_size is not None:
-            if not isinstance(page_size, int):
-                raise TypeError("Page size must be an integer")
-            if page_size < 1:
-                raise ValueError("Page size must be greater than 0")
-        if page_number is not None:
-            if not isinstance(page_number, int):
-                raise TypeError("Page number must be an integer")
-            if page_number < 1:
-                raise ValueError("Page number must be greater than 0")
+    def __init__(
+        self, filter: Filter | None, sort: list[Sort] | None, page_size: PageSize | None, page_number: PageNumber | None
+    ) -> None:
         self._filter = filter
         self._sort = sort
         self._page_size = page_size
@@ -39,11 +25,11 @@ class Criteria:
         return self._sort
 
     @property
-    def page_size(self) -> int | None:
+    def page_size(self) -> PageSize | None:
         return self._page_size
 
     @property
-    def page_number(self) -> int | None:
+    def page_number(self) -> PageNumber | None:
         return self._page_number
 
     @classmethod
@@ -53,8 +39,8 @@ class Criteria:
         return cls(
             filter=Filter.from_primitives(**filter) if filter else None,
             sort=[Sort.from_primitives(**s) for s in sort] if sort else None,
-            page_size=page_size,
-            page_number=page_number,
+            page_size=PageSize(page_size) if page_size else None,
+            page_number=PageNumber(page_number) if page_number else None,
         )
 
     def __eq__(self, other: object) -> bool:

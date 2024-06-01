@@ -10,5 +10,5 @@ class InMemoryCommandBus(CommandBus):
     def dispatch(self, command: Command) -> None:
         handler = self._command_handler_map.get(type(command))
         if handler is None:
-            raise RegisteredCommandError(command)
+            raise RegisteredCommandError(f"Command handler not found for {command.__class__.__name__}")
         handler.handle(command)

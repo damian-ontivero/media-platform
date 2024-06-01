@@ -8,5 +8,5 @@ class InMemoryQueryBus(QueryBus):
     def ask(self, query: Query):
         handler = self._query_handler_map.get(type(query))
         if handler is None:
-            raise RegisteredQueryError(query)
+            raise RegisteredQueryError(f"Query handler not found for {query.__class__.__name__}")
         return handler.handle(query)

@@ -9,7 +9,6 @@ class Filter:
     def __init__(self, conjunction: str, conditions: Conditions):
         if conjunction not in ["AND", "OR"]:
             raise ValueError("Conjunction must be 'AND' or 'OR'")
-        self._type = type
         self._conjunction = conjunction
         self._conditions = conditions
 

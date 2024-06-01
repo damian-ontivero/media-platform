@@ -1,12 +1,12 @@
-class NotFound(Exception):
+class EntityNotFound(Exception):
     pass
 
 
-class AlreadyExists(Exception):
+class EntityAlreadyExists(Exception):
     pass
 
 
-class DeleteEntityError(Exception):
+class EntityDeleteError(Exception):
     pass
 
 
