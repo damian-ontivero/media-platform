@@ -14,9 +14,11 @@ class MediasGetController(Controller):
         self._query_bus = query_bus
 
     def run(self, criteria: str | None) -> Response:
-        if criteria is not None:
-            criteria = json.loads(base64.b64decode(criteria).decode())
-        medias = self._query_bus.ask(MediaSearchByCriteriaQuery(criteria=criteria))
+        if criteria is None:
+            criteria = {"filter": {}, "sort": [], "page_size": 10, "page_number": 1}
+            criteria = base64.b64encode(json.dumps(criteria).encode()).decode()
+        criteria = json.loads(base64.b64decode(criteria).decode())
+        medias = self._query_bus.ask(MediaSearchByCriteriaQuery(**criteria))
         response = MediaPaginatedResponseSchema(items=[media.to_primitives() for media in medias])
         return Response(
             content=response.model_dump_json(), status_code=status.HTTP_200_OK, media_type="application/json"

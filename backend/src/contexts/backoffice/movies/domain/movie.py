@@ -1,4 +1,4 @@
-from src.contexts.shared.domain import AggregateRoot, EntityId, VideoLink
+from src.contexts.shared.domain import AggregateRoot, EntityId
 
 
 class Movie(AggregateRoot):

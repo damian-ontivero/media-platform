@@ -1,13 +1,14 @@
 from fastapi import Response, status
-from src.contexts.backoffice.movies.application.movie_eliminator import MovieEliminator
+from src.contexts.backoffice.movies.application.command.delete_command import MovieDeleteCommand
+from src.contexts.shared.domain.bus.command import CommandBus
 
 from ..controller import Controller
 
 
 class MovieDeleteController(Controller):
-    def __init__(self, eliminator: MovieEliminator) -> None:
-        self._eliminator = eliminator
+    def __init__(self, command_bus: CommandBus) -> None:
+        self._command_bus = command_bus
 
     async def run(self, id: str) -> Response:
-        self._eliminator.run(id)
-        return Response(content=None, status_code=status.HTTP_200_OK, media_type="application/json")
+        self._command_bus.dispatch(MovieDeleteCommand(id))
+        return Response(content=None, status_code=status.HTTP_200_OK, media_type=None)

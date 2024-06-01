@@ -13,7 +13,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: query_handler
+      - query_handler
 
   MediaFindByIdQueryHandler:
     module: src.contexts.backoffice.media.application.query.find_by_id_query_handler
@@ -22,7 +22,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: query_handler
+      - query_handler
 
   MediaCountQueryHandler:
     module: src.contexts.backoffice.media.application.query.count_query_handler
@@ -31,7 +31,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: query_handler
+      - query_handler
 
   MovieSearchByCriteriaQueryHandler:
     module: src.contexts.backoffice.movies.application.query.search_by_criteria_query_handler
@@ -40,7 +40,7 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: query_handler
+      - query_handler
 
   MovieFindByIdQueryHandler:
     module: src.contexts.backoffice.movies.application.query.find_by_id_query_handler
@@ -49,7 +49,7 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: query_handler
+      - query_handler
 
   MovieCountQueryHandler:
     module: src.contexts.backoffice.movies.application.query.count_query_handler
@@ -58,4 +58,4 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: query_handler
+      - query_handler

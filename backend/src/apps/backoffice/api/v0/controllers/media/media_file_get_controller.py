@@ -1,17 +1,18 @@
 import os
 
 from fastapi import Response, status
-from src.contexts.backoffice.media.application.media_finder import MediaFinder
+from src.contexts.backoffice.media.application.query.find_by_id_query import MediaFindByIdQuery
+from src.contexts.shared.domain.bus.query import QueryBus
 
 from ..controller import Controller
 
 
 class MediaFileGetController(Controller):
-    def __init__(self, finder: MediaFinder) -> None:
-        self._finder = finder
+    def __init__(self, query_bus: QueryBus) -> None:
+        self._query_bus = query_bus
 
     async def run(self, id: str, range: str) -> Response:
-        media = self._finder.run(id)
+        media = self._query_bus.ask(MediaFindByIdQuery(id))
         start, end = range.replace("bytes=", "").split("-")
         start = int(start)
         end = int(start + (1024 * 1024))

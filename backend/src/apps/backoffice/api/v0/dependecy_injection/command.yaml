@@ -13,7 +13,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: command_handler
+      - command_handler
 
   MediaUpdateCommandHandler:
     module: src.contexts.backoffice.media.application.command.update_command_handler
@@ -22,7 +22,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: command_handler
+      - command_handler
 
   MediaDeleteCommandHandler:
     module: src.contexts.backoffice.media.application.command.delete_command_handler
@@ -31,7 +31,7 @@ services:
       arguments:
         - !ref MediaRepository
     tags:
-      - name: command_handler
+      - command_handler
 
   MovieCreateCommandHandler:
     module: src.contexts.backoffice.movies.application.command.create_command_handler
@@ -40,7 +40,7 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: command_handler
+      - command_handler
 
   MovieUpdateCommandHandler:
     module: src.contexts.backoffice.movies.application.command.update_command_handler
@@ -49,7 +49,7 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: command_handler
+      - command_handler
 
   MovieDeleteCommandHandler:
     module: src.contexts.backoffice.movies.application.command.delete_command_handler
@@ -58,4 +58,4 @@ services:
       arguments:
         - !ref MovieRepository
     tags:
-      - name: command_handler
+      - command_handler
