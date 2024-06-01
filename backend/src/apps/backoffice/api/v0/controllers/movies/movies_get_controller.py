@@ -2,11 +2,10 @@ import base64
 import json
 
 from fastapi import Response, status
+from src.apps.backoffice.api.v0.schemas import MoviePaginatedResponseSchema
+from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.movies.application.query.search_by_criteria_query import MovieSearchByCriteriaQuery
 from src.contexts.shared.domain.bus.query import QueryBus
-
-from ...schemas import MoviePaginatedResponseSchema
-from ..controller import Controller
 
 
 class MoviesGetController(Controller):

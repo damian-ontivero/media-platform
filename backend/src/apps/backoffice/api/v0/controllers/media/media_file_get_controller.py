@@ -1,10 +1,9 @@
 import os
 
 from fastapi import Response, status
+from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.media.application.query.find_by_id_query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.query import QueryBus
-
-from ..controller import Controller
 
 
 class MediaFileGetController(Controller):
