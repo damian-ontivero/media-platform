@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
-from src.contexts.backoffice.media.domain import Media
+from src.contexts.backoffice.media.domain import Media, MediaRepository
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
 
 from .media import PostgresMedia
 
 
-class PostgresMediaRepository:
+class PostgresMediaRepository(MediaRepository):
     def __init__(self, session: Session) -> None:
         self._session = session
 

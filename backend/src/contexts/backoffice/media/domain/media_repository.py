@@ -1,19 +1,38 @@
-from typing import Protocol
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain.criteria import Criteria
 
 from .media import Media
 
 
-class MediaRepository(Protocol):
-    def search_all(self) -> list[Media]: ...
+class MediaRepository(ABC):
+    """
+    Media repository interface.
 
-    def search(self, id: str) -> Media | None: ...
+    This interface defines the methods that must be provided by the
+    repository of media.
+    """
 
-    def matching(self, criteria: Criteria) -> list[Media]: ...
+    @abstractmethod
+    def search_all(self) -> list[Media]:
+        raise NotImplementedError
 
-    def count(self) -> int: ...
+    @abstractmethod
+    def search(self, id: str) -> Media | None:
+        raise NotImplementedError
 
-    def save(self, beer: Media) -> None: ...
+    @abstractmethod
+    def matching(self, criteria: Criteria) -> list[Media]:
+        raise NotImplementedError
 
-    def delete(self, id: str) -> None: ...
+    @abstractmethod
+    def count(self) -> int:
+        raise NotImplementedError
+
+    @abstractmethod
+    def save(self, beer: Media) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def delete(self, id: str) -> None:
+        raise NotImplementedError

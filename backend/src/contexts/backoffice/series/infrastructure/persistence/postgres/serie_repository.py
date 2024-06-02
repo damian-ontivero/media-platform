@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from src.contexts.backoffice.series.domain import Serie
+from src.contexts.backoffice.series.domain import Serie, SerieRepository
 from src.contexts.shared.domain.criteria import Criteria
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
 
@@ -8,7 +8,7 @@ from .serie_episode import PostgresSerieEpisode
 from .serie_season import PostgresSerieSeason
 
 
-class PostgresSerieRepository:
+class PostgresSerieRepository(SerieRepository):
     def __init__(self, session: Session) -> None:
         self._session = session
 

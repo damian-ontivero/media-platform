@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .query import Query
 
 
-class QueryHandler(metaclass=ABCMeta):
+class QueryHandler(ABC):
     """
     Interface for query handlers.
 

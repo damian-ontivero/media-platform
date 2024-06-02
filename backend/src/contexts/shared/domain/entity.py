@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .entity_id import EntityId
 
 
-class Entity(metaclass=ABCMeta):
+class Entity(ABC):
     """
     Base class for entities.
 

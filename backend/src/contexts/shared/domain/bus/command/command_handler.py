@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .command import Command
 
 
-class CommandHandler(metaclass=ABCMeta):
+class CommandHandler(ABC):
     """
     Interface for command handlers.
 

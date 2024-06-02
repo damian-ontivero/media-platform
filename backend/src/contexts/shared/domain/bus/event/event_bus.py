@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain import DomainEvent
 
 
-class EventBus(metaclass=ABCMeta):
+class EventBus(ABC):
     """
     Interface for event buses.
 

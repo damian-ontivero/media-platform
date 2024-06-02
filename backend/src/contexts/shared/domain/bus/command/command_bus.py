@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .command import Command
 
 
-class CommandBus(metaclass=ABCMeta):
+class CommandBus(ABC):
     """
     Interface for command buses.
 

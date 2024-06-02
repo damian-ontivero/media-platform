@@ -1,9 +1,9 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .query import Query
 
 
-class QueryBus(metaclass=ABCMeta):
+class QueryBus(ABC):
     """
     Interface for query buses.
 
