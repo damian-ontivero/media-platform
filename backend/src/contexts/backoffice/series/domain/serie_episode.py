@@ -1,4 +1,12 @@
+from typing import TypedDict
+
 from src.contexts.shared.domain import Entity, EntityId
+
+
+class SerieEpisodeDict(TypedDict):
+    number: int
+    title: str
+    duration: int
 
 
 class SerieEpisode(Entity):

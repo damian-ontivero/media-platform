@@ -1,6 +1,13 @@
+from typing import TypedDict
+
 from src.contexts.shared.domain import Entity, EntityId
 
-from .serie_episode import SerieEpisode
+from .serie_episode import SerieEpisode, SerieEpisodeDict
+
+
+class SerieSeasonDict(TypedDict):
+    number: int
+    episodes: list[SerieEpisodeDict]
 
 
 class SerieSeason(Entity):
@@ -18,7 +25,7 @@ class SerieSeason(Entity):
         return self._episodes
 
     @classmethod
-    def create(cls, number: str, episodes: list) -> "SerieSeason":
+    def create(cls, number: str, episodes: list[SerieEpisodeDict]) -> "SerieSeason":
         season = cls(EntityId.generate(), number, [SerieEpisode.create(**episode) for episode in episodes])
         return season
 

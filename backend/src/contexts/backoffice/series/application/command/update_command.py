@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from src.contexts.backoffice.series.domain import SerieSeasonDict
 from src.contexts.shared.domain.bus.command import Command
 
 
@@ -7,4 +8,4 @@ from src.contexts.shared.domain.bus.command import Command
 class SerieUpdateCommand(Command):
     id: str
     title: str
-    seasons: list
+    seasons: list[SerieSeasonDict]

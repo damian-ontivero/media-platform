@@ -1,4 +1,4 @@
 from .serie import Serie
-from .serie_episode import SerieEpisode
+from .serie_episode import SerieEpisode, SerieEpisodeDict
 from .serie_repository import SerieRepository
-from .serie_season import SerieSeason
+from .serie_season import SerieSeason, SerieSeasonDict

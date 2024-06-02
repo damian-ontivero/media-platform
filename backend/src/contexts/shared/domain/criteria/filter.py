@@ -1,8 +1,13 @@
-from typing import List, Type, Union
+from typing import List, Type, TypedDict, Union
 
 from .condition import Condition
 
 Conditions = List[Union[Condition, Type["Filter"]]]
+
+
+class FilterDict(TypedDict):
+    conjunction: str
+    conditions: list
 
 
 class Filter:

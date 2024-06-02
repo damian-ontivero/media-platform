@@ -1,7 +1,7 @@
-from .filter import Filter
+from .filter import Filter, FilterDict
 from .page_number import PageNumber
 from .page_size import PageSize
-from .sort import Sort
+from .sort import Sort, SortDict
 
 
 class Criteria:
@@ -34,7 +34,7 @@ class Criteria:
 
     @classmethod
     def from_primitives(
-        cls, filter: dict | None, sort: list[dict] | None, page_size: int | None, page_number: int | None
+        cls, filter: FilterDict | None, sort: list[SortDict] | None, page_size: int | None, page_number: int | None
     ) -> "Criteria":
         return cls(
             filter=Filter.from_primitives(**filter) if filter else None,
