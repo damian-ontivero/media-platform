@@ -1,4 +1,11 @@
 services:
+  MediaRepository:
+    module: src.contexts.backoffice.media.infrastructure.persistence.postgres.media_repository
+    class:
+      name: PostgresMediaRepository
+      arguments:
+        - !ref Database.Session
+
   MovieRepository:
     module: src.contexts.backoffice.movies.infrastructure.persistence.postgres.movie_repository
     class:
@@ -6,9 +13,9 @@ services:
       arguments:
         - !ref Database.Session
 
-  MediaRepository:
-    module: src.contexts.backoffice.media.infrastructure.persistence.postgres.media_repository
+  SerieRepository:
+    module: src.contexts.backoffice.series.infrastructure.persistence.postgres.serie_repository
     class:
-      name: PostgresMediaRepository
+      name: PostgresSerieRepository
       arguments:
         - !ref Database.Session

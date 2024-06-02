@@ -9,7 +9,7 @@ class PostgresSerieSeason(Base):
     id = Column(String(36), primary_key=True)
     number = Column(String(255))
     serie_id = Column(ForeignKey("series.id"))
-    episodes = relationship("PostgresSerieEpisode", back_populates="serie_season")
+    episodes = relationship("PostgresSerieEpisode")
 
     def to_primitives(self) -> dict:
         return {

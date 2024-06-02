@@ -59,3 +59,30 @@ services:
         - !ref MovieRepository
     tags:
       - command_handler
+
+  SerieCreateCommandHandler:
+    module: src.contexts.backoffice.series.application.command.create_command_handler
+    class:
+      name: SerieCreateCommandHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - command_handler
+
+  SerieUpdateCommandHandler:
+    module: src.contexts.backoffice.series.application.command.update_command_handler
+    class:
+      name: SerieUpdateCommandHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - command_handler
+
+  SerieDeleteCommandHandler:
+    module: src.contexts.backoffice.series.application.command.delete_command_handler
+    class:
+      name: SerieDeleteCommandHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - command_handler

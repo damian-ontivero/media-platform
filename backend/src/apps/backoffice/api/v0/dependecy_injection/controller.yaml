@@ -80,3 +80,38 @@ services:
       name: MovieDeleteController
       arguments:
         - !ref CommandBus
+
+  SeriesGetController:
+    module: src.apps.backoffice.api.v0.controllers.series.series_get_controller
+    class:
+      name: SeriesGetController
+      arguments:
+        - !ref QueryBus
+
+  SerieGetController:
+    module: src.apps.backoffice.api.v0.controllers.series.serie_get_controller
+    class:
+      name: SerieGetController
+      arguments:
+        - !ref QueryBus
+
+  SeriePostController:
+    module: src.apps.backoffice.api.v0.controllers.series.serie_post_controller
+    class:
+      name: SeriePostController
+      arguments:
+        - !ref CommandBus
+
+  SeriePutController:
+    module: src.apps.backoffice.api.v0.controllers.series.serie_put_controller
+    class:
+      name: SeriePutController
+      arguments:
+        - !ref CommandBus
+
+  SerieDeleteController:
+    module: src.apps.backoffice.api.v0.controllers.series.serie_delete_controller
+    class:
+      name: SerieDeleteController
+      arguments:
+        - !ref CommandBus

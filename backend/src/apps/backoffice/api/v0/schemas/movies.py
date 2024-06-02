@@ -4,12 +4,12 @@ from pydantic import BaseModel, Field
 class MovieReadSchema(BaseModel):
     id: str = Field(..., description="Movie ID", examples=["123e4567-e89b-12d3-a456-426614174000"])
     title: str = Field(..., description="Movie Title", examples=["Amazing movie"])
-    metadata_: dict = Field(..., description="Movie Metadata", examples=[{"duration": 120}])
+    media_id: str = Field(..., description="Media ID", examples=["123e4567-e89b-12d3-a456-426614174000"])
 
 
 class MovieWriteSchema(BaseModel):
     title: str = Field(..., description="Movie Title", examples=["Amazing movie"])
-    metadata_: dict = Field(..., description="Movie Metadata", examples=[{"duration": 120}])
+    media_id: str = Field(..., description="Media ID", examples=["123e4567-e89b-12d3-a456-426614174000"])
 
 
 class MoviePaginatedResponseSchema(BaseModel):

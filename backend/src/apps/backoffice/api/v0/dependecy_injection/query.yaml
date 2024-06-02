@@ -59,3 +59,30 @@ services:
         - !ref MovieRepository
     tags:
       - query_handler
+
+  SerieSearchByCriteriaQueryHandler:
+    module: src.contexts.backoffice.series.application.query.search_by_criteria_query_handler
+    class:
+      name: SerieSearchByCriteriaQueryHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - query_handler
+
+  SerieFindByIdQueryHandler:
+    module: src.contexts.backoffice.series.application.query.find_by_id_query_handler
+    class:
+      name: SerieFindByIdQueryHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - query_handler
+
+  SerieCountQueryHandler:
+    module: src.contexts.backoffice.series.application.query.count_query_handler
+    class:
+      name: SerieCountQueryHandler
+      arguments:
+        - !ref SerieRepository
+    tags:
+      - query_handler

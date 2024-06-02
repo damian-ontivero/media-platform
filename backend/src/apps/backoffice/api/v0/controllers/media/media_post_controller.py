@@ -11,5 +11,5 @@ class MediaPostController(Controller):
 
     async def run(self, media: MediaWriteSchema, file: UploadFile) -> Response:
         command = MediaCreateCommand(media.title, file.filename, await file.read())
-        await self._command_bus.dispatch(command)
+        self._command_bus.dispatch(command)
         return Response(content=None, status_code=status.HTTP_201_CREATED, media_type=None)

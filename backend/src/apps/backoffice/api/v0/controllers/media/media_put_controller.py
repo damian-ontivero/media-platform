@@ -11,5 +11,5 @@ class MediaPutController(Controller):
 
     async def run(self, id: str, media: MediaWriteSchema, file: UploadFile) -> Response:
         command = MediaUpdateCommand(id, media.title, file.filename, await file.read())
-        await self._command_bus.dispatch(command)
+        self._command_bus.dispatch(command)
         return Response(content=None, status_code=status.HTTP_200_OK, media_type=None)

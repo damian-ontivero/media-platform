@@ -48,8 +48,8 @@ class PostgresSerieRepository:
                                 id=episode.id.value,
                                 number=episode.number,
                                 title=episode.title,
-                                duration=episode.duration,
-                                release_date=episode.release_date,
+                                media_id=episode.media_id.value,
+                                serie_season_id=season.id.value,
                             )
                             for episode in season.episodes
                         ],

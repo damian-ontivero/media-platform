@@ -10,5 +10,5 @@ class MoviePutController(Controller):
         self._command_bus = command_bus
 
     async def run(self, id: str, movie: MovieWriteSchema) -> Response:
-        self._command_bus.dispatch(MovieUpdateCommand(id, **movie.model_json_schema()))
+        self._command_bus.dispatch(MovieUpdateCommand(id, **movie.model_dump()))
         return Response(content=None, status_code=status.HTTP_200_OK, media_type=None)

@@ -8,7 +8,7 @@ class PostgresSerie(Base):
 
     id = Column(String(36), primary_key=True)
     title = Column(String(255), index=True)
-    seasons = relationship("PostgresSerieSeason", back_populates="serie")
+    seasons = relationship("PostgresSerieSeason")
 
     def to_primitives(self):
         return {"id": self.id, "title": self.title, "seasons": [season.to_primitives() for season in self.seasons]}

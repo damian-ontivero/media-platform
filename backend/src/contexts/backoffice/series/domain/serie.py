@@ -20,12 +20,20 @@ class Serie(AggregateRoot):
 
     @classmethod
     def create(cls, title: str, seasons: list) -> "Serie":
-        serie = cls(EntityId.generate(), title, seasons)
+        serie = cls(EntityId.generate(), title, [SerieSeason.create(**season) for season in seasons])
         return serie
 
     @classmethod
     def from_primitives(cls, id: str, title: str, seasons: list) -> "Serie":
-        return cls(EntityId(id), title, seasons)
+        return cls(EntityId(id), title, [SerieSeason.from_primitives(**season) for season in seasons])
+
+    def update(self, title: str, seasons: list) -> None:
+        self._title = title
+        self._seasons = [SerieSeason.create(**season) for season in seasons]
 
     def to_primitives(self) -> dict:
-        return {"id": self._id.value, "title": self._title, "seasons": self._seasons.to_primitives()}
+        return {
+            "id": self._id.value,
+            "title": self._title,
+            "seasons": [season.to_primitives() for season in self._seasons],
+        }
