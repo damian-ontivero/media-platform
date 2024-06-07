@@ -33,8 +33,12 @@ class PostgresMediaRepository(MediaRepository):
 
     def save(self, media: Media) -> None:
         with self._session() as session:
-            media_db = PostgresMedia(**media.to_primitives())
-            session.merge(media_db)
+            media_db = session.get(PostgresMedia, media.id.value)
+            if media_db is None:
+                media_db = PostgresMedia.from_entity(media)
+                session.add(media_db)
+            else:
+                media_db.update(media)
             session.commit()
 
     def delete(self, id: str) -> None:

@@ -36,28 +36,12 @@ class PostgresSerieRepository(SerieRepository):
 
     def save(self, serie: Serie) -> None:
         with self._session() as session:
-            serie_db = PostgresSerie(
-                id=serie.id.value,
-                title=serie.title,
-                seasons=[
-                    PostgresSerieSeason(
-                        id=season.id.value,
-                        number=season.number,
-                        episodes=[
-                            PostgresSerieEpisode(
-                                id=episode.id.value,
-                                number=episode.number,
-                                title=episode.title,
-                                media_id=episode.media_id.value,
-                                serie_season_id=season.id.value,
-                            )
-                            for episode in season.episodes
-                        ],
-                    )
-                    for season in serie.seasons
-                ],
-            )
-            session.add(serie_db)
+            serie_db = session.get(PostgresSerie, serie.id.value)
+            if serie_db is None:
+                serie_db = PostgresSerie.from_entity(serie)
+                session.add(serie_db)
+            else:
+                serie_db.update(serie)
             session.commit()
 
     def delete(self, id: str) -> None:
