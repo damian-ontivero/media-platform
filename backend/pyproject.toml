@@ -22,7 +22,7 @@ uvicorn = "^0.29.0"
 werkzeug = "^3.0.1"
 python-dotenv = "^1.0.1"
 pytest-mock = "^3.14.0"
-ditainer = "^0.4.2"
+ditainer = "^0.4.7"
 psycopg2-binary = "^2.9.9"
 moviepy = "^1.0.3"
 
