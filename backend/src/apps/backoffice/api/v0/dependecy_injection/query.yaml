@@ -1,88 +1,78 @@
 services:
-  QueryBus:
+  - id: QueryBus
     module: src.contexts.shared.infrastructure.bus.query.in_memory_query_bus
-    class:
-      name: InMemoryQueryBus
-      arguments:
-        - !tagged query_handler
+    class: InMemoryQueryBus
+    arguments:
+      - !tagged query_handler
 
-  MediaSearchByCriteriaQueryHandler:
+  - id: MediaSearchByCriteriaQueryHandler
     module: src.contexts.backoffice.media.application.query.search_by_criteria_query_handler
-    class:
-      name: MediaSearchByCriteriaQueryHandler
-      arguments:
-        - !ref MediaRepository
+    class: MediaSearchByCriteriaQueryHandler
+    arguments:
+      - !ref MediaRepository
     tags:
       - query_handler
 
-  MediaFindByIdQueryHandler:
+  - id: MediaFindByIdQueryHandler
     module: src.contexts.backoffice.media.application.query.find_by_id_query_handler
-    class:
-      name: MediaFindByIdQueryHandler
-      arguments:
-        - !ref MediaRepository
+    class: MediaFindByIdQueryHandler
+    arguments:
+      - !ref MediaRepository
     tags:
       - query_handler
 
-  MediaCountQueryHandler:
+  - id: MediaCountQueryHandler
     module: src.contexts.backoffice.media.application.query.count_query_handler
-    class:
-      name: MediaCountQueryHandler
-      arguments:
-        - !ref MediaRepository
+    class: MediaCountQueryHandler
+    arguments:
+      - !ref MediaRepository
     tags:
       - query_handler
 
-  MovieSearchByCriteriaQueryHandler:
+  - id: MovieSearchByCriteriaQueryHandler
     module: src.contexts.backoffice.movies.application.query.search_by_criteria_query_handler
-    class:
-      name: MovieSearchByCriteriaQueryHandler
-      arguments:
-        - !ref MovieRepository
+    class: MovieSearchByCriteriaQueryHandler
+    arguments:
+      - !ref MovieRepository
     tags:
       - query_handler
 
-  MovieFindByIdQueryHandler:
+  - id: MovieFindByIdQueryHandler
     module: src.contexts.backoffice.movies.application.query.find_by_id_query_handler
-    class:
-      name: MovieFindByIdQueryHandler
-      arguments:
-        - !ref MovieRepository
+    class: MovieFindByIdQueryHandler
+    arguments:
+      - !ref MovieRepository
     tags:
       - query_handler
 
-  MovieCountQueryHandler:
+  - id: MovieCountQueryHandler
     module: src.contexts.backoffice.movies.application.query.count_query_handler
-    class:
-      name: MovieCountQueryHandler
-      arguments:
-        - !ref MovieRepository
+    class: MovieCountQueryHandler
+    arguments:
+      - !ref MovieRepository
     tags:
       - query_handler
 
-  SerieSearchByCriteriaQueryHandler:
+  - id: SerieSearchByCriteriaQueryHandler
     module: src.contexts.backoffice.series.application.query.search_by_criteria_query_handler
-    class:
-      name: SerieSearchByCriteriaQueryHandler
-      arguments:
-        - !ref SerieRepository
+    class: SerieSearchByCriteriaQueryHandler
+    arguments:
+      - !ref SerieRepository
     tags:
       - query_handler
 
-  SerieFindByIdQueryHandler:
+  - id: SerieFindByIdQueryHandler
     module: src.contexts.backoffice.series.application.query.find_by_id_query_handler
-    class:
-      name: SerieFindByIdQueryHandler
-      arguments:
-        - !ref SerieRepository
+    class: SerieFindByIdQueryHandler
+    arguments:
+      - !ref SerieRepository
     tags:
       - query_handler
 
-  SerieCountQueryHandler:
+  - id: SerieCountQueryHandler
     module: src.contexts.backoffice.series.application.query.count_query_handler
-    class:
-      name: SerieCountQueryHandler
-      arguments:
-        - !ref SerieRepository
+    class: SerieCountQueryHandler
+    arguments:
+      - !ref SerieRepository
     tags:
       - query_handler

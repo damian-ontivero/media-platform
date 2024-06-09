@@ -1,117 +1,100 @@
 services:
-  HealthCheckController:
+  - id: HealthCheckController
     module: src.apps.backoffice.api.v0.controllers.health_check_controller
-    class:
-      name: HealthCheckController
+    class: HealthCheckController
 
-  MediasGetController:
+  - id: MediasGetController
     module: src.apps.backoffice.api.v0.controllers.media.medias_get_controller
-    class:
-      name: MediasGetController
-      arguments:
-        - !ref QueryBus
+    class: MediasGetController
+    arguments:
+      - !ref QueryBus
 
-  MediaGetController:
+  - id: MediaGetController
     module: src.apps.backoffice.api.v0.controllers.media.media_get_controller
-    class:
-      name: MediaGetController
-      arguments:
-        - !ref QueryBus
+    class: MediaGetController
+    arguments:
+      - !ref QueryBus
 
-  MediaFileGetController:
+  - id: MediaFileGetController
     module: src.apps.backoffice.api.v0.controllers.media.media_file_get_controller
-    class:
-      name: MediaFileGetController
-      arguments:
-        - !ref QueryBus
+    class: MediaFileGetController
+    arguments:
+      - !ref QueryBus
 
-  MediaPostController:
+  - id: MediaPostController
     module: src.apps.backoffice.api.v0.controllers.media.media_post_controller
-    class:
-      name: MediaPostController
-      arguments:
-        - !ref CommandBus
+    class: MediaPostController
+    arguments:
+      - !ref CommandBus
 
-  MediaPutController:
+  - id: MediaPutController
     module: src.apps.backoffice.api.v0.controllers.media.media_put_controller
-    class:
-      name: MediaPutController
-      arguments:
-        - !ref CommandBus
+    class: MediaPutController
+    arguments:
+      - !ref CommandBus
 
-  MediaDeleteController:
+  - id: MediaDeleteController
     module: src.apps.backoffice.api.v0.controllers.media.media_delete_controller
-    class:
-      name: MediaDeleteController
-      arguments:
-        - !ref CommandBus
+    class: MediaDeleteController
+    arguments:
+      - !ref CommandBus
 
-  MoviesGetController:
+  - id: MoviesGetController
     module: src.apps.backoffice.api.v0.controllers.movies.movies_get_controller
-    class:
-      name: MoviesGetController
-      arguments:
-        - !ref QueryBus
+    class: MoviesGetController
+    arguments:
+      - !ref QueryBus
 
-  MovieGetController:
+  - id: MovieGetController
     module: src.apps.backoffice.api.v0.controllers.movies.movie_get_controller
-    class:
-      name: MovieGetController
-      arguments:
-        - !ref QueryBus
+    class: MovieGetController
+    arguments:
+      - !ref QueryBus
 
-  MoviePostController:
+  - id: MoviePostController
     module: src.apps.backoffice.api.v0.controllers.movies.movie_post_controller
-    class:
-      name: MoviePostController
-      arguments:
-        - !ref CommandBus
+    class: MoviePostController
+    arguments:
+      - !ref CommandBus
 
-  MoviePutController:
+  - id: MoviePutController
     module: src.apps.backoffice.api.v0.controllers.movies.movie_put_controller
-    class:
-      name: MoviePutController
-      arguments:
-        - !ref CommandBus
+    class: MoviePutController
+    arguments:
+      - !ref CommandBus
 
-  MovieDeleteController:
+  - id: MovieDeleteController
     module: src.apps.backoffice.api.v0.controllers.movies.movie_delete_controller
-    class:
-      name: MovieDeleteController
-      arguments:
-        - !ref CommandBus
+    class: MovieDeleteController
+    arguments:
+      - !ref CommandBus
 
-  SeriesGetController:
+  - id: SeriesGetController
     module: src.apps.backoffice.api.v0.controllers.series.series_get_controller
-    class:
-      name: SeriesGetController
-      arguments:
-        - !ref QueryBus
+    class: SeriesGetController
+    arguments:
+      - !ref QueryBus
 
-  SerieGetController:
+  - id: SerieGetController
     module: src.apps.backoffice.api.v0.controllers.series.serie_get_controller
-    class:
-      name: SerieGetController
-      arguments:
-        - !ref QueryBus
+    class: SerieGetController
+    arguments:
+      - !ref QueryBus
 
-  SeriePostController:
+  - id: SeriePostController
     module: src.apps.backoffice.api.v0.controllers.series.serie_post_controller
-    class:
-      name: SeriePostController
-      arguments:
-        - !ref CommandBus
+    class: SeriePostController
+    arguments:
+      - !ref CommandBus
 
-  SeriePutController:
+  - id: SeriePutController
     module: src.apps.backoffice.api.v0.controllers.series.serie_put_controller
-    class:
-      name: SeriePutController
-      arguments:
-        - !ref CommandBus
+    class: SeriePutController
+    arguments:
+      - !ref CommandBus
 
-  SerieDeleteController:
+  - id: SerieDeleteController
     module: src.apps.backoffice.api.v0.controllers.series.serie_delete_controller
-    class:
-      name: SerieDeleteController
-      arguments:
-        - !ref CommandBus
+    class: SerieDeleteController
+    arguments:
+      - !ref CommandBus
