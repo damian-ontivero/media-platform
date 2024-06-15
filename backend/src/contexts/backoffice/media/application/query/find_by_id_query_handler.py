@@ -1,7 +1,6 @@
-from src.contexts.backoffice.media.domain import Media, MediaRepository
+from src.contexts.backoffice.media.domain import Media, MediaDoesNotExist, MediaRepository
+from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .find_by_id_query import MediaFindByIdQuery
 
 
 class MediaFindByIdQueryHandler(QueryHandler):
@@ -14,5 +13,5 @@ class MediaFindByIdQueryHandler(QueryHandler):
     def handle(self, query: MediaFindByIdQuery) -> Media:
         media = self.repository.search(query.id)
         if media is None:
-            raise ValueError(f"Media: {query.id!r} not found")
+            raise MediaDoesNotExist(f"Media with id {query.id!r} does not exist")
         return media
