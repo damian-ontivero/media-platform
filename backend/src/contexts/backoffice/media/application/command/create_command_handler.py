@@ -7,13 +7,13 @@ from src.contexts.shared.infrastructure.file_manager import FileManager
 
 from .create_command import MediaCreateCommand
 
-CONTENT_STORAGE_PATH = os.getenv("CONTENT_STORAGE_PATH")
+MEDIA_STORAGE_PATH = os.getenv("MEDIA_STORAGE_PATH")
 
 
 class MediaCreateCommandHandler(CommandHandler):
     def __init__(self, repository: MediaRepository) -> None:
         self._repository = repository
-        self._file_manager = FileManager("var/storage/media/")
+        self._file_manager = FileManager(MEDIA_STORAGE_PATH)
 
     def subscribed_to(self) -> Command:
         return MediaCreateCommand
