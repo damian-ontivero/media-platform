@@ -1,11 +1,13 @@
 import factory
 from src.contexts.backoffice.movies.domain import Movie
+from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
 
 
-class MovieFactory:
+class MovieFactory(factory.Factory):
 
     class Meta:
         model = Movie
 
-    title = factory.Faker("sentence", nb_words=4)
-    links = factory.Faker("url")
+    id = factory.SubFactory(EntityIdFactory)
+    title = factory.Faker("name")
+    media_id = factory.SubFactory(EntityIdFactory)
