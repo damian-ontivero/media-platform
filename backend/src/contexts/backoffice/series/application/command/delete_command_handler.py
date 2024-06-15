@@ -1,5 +1,4 @@
-from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
-from src.contexts.shared.domain import EntityNotFound
+from src.contexts.backoffice.series.domain import SerieDoesNotExist, SerieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 
 from .delete_command import SerieDeleteCommand
@@ -15,5 +14,5 @@ class SerieDeleteCommandHandler(CommandHandler):
     def handle(self, command: SerieDeleteCommand) -> None:
         serie = self._repository.search(command.id)
         if serie is None:
-            raise EntityNotFound(f"Serie: {command.id!r} not found")
+            raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
         self._repository.delete(command.id)

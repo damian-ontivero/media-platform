@@ -1,0 +1,6 @@
+from .create_command import MovieCreateCommand
+from .create_command_handler import MovieCreateCommandHandler
+from .delete_command import MovieDeleteCommand
+from .delete_command_handler import MovieDeleteCommandHandler
+from .update_command import MovieUpdateCommand
+from .update_command_handler import MovieUpdateCommandHandler

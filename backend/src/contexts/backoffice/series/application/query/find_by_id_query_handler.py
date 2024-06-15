@@ -1,6 +1,5 @@
+from src.contexts.backoffice.series.domain import SerieDoesNotExist, SerieRepository
 from src.contexts.backoffice.series.domain.serie import Serie
-from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
-from src.contexts.shared.domain import EntityNotFound
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 
 from .find_by_id_query import SerieFindByIdQuery
@@ -16,5 +15,5 @@ class SerieFindByIdQueryHandler(QueryHandler):
     def handle(self, query: SerieFindByIdQuery) -> Serie:
         serie = self.repository.search(query.id)
         if serie is None:
-            raise EntityNotFound(f"Serie: {query.id!r} not found")
+            raise SerieDoesNotExist(f"Serie with id {query.id!r} does not exist")
         return serie
