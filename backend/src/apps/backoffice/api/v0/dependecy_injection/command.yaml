@@ -31,21 +31,19 @@ services:
 
   - id: MovieCreateCommandHandler
     module: src.contexts.backoffice.movies.application.command.create_command_handler
-    class:
-      name: MovieCreateCommandHandler
-      arguments:
-        - !ref MovieRepository
-        - !ref QueryBus
+    class: MovieCreateCommandHandler
+    arguments:
+      - !ref MovieRepository
+      - !ref QueryBus
     tags:
       - command_handler
 
   - id: MovieUpdateCommandHandler
     module: src.contexts.backoffice.movies.application.command.update_command_handler
-    class:
-      name: MovieUpdateCommandHandler
-      arguments:
-        - !ref MovieRepository
-        - !ref QueryBus
+    class: MovieUpdateCommandHandler
+    arguments:
+      - !ref MovieRepository
+      - !ref QueryBus
     tags:
       - command_handler
 
