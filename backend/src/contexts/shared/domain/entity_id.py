@@ -30,6 +30,10 @@ class EntityId:
         """
         return cls(str(uuid.uuid4()))
 
+    @classmethod
+    def from_string(cls, value: str) -> "EntityId":
+        return cls(value)
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, EntityId):
             return NotImplemented
