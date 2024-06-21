@@ -16,11 +16,11 @@ class MovieUpdateCommandHandler(CommandHandler):
         return MovieUpdateCommand
 
     def handle(self, command: MovieUpdateCommand) -> None:
+        self._ensure_title_is_available(command)
+        self._ensure_media_is_available(command)
         movie = self._repository.search(command.id)
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {command.id!r} does not exist")
-        self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command.media_id)
         movie.update(command.title, command.media_id)
         self._repository.save(movie)
 

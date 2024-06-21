@@ -20,10 +20,10 @@ class MediaUpdateCommandHandler(CommandHandler):
         return MediaUpdateCommand
 
     def handle(self, command: MediaUpdateCommand) -> None:
+        self._ensure_title_is_available(command)
         media = self._repository.search(command.id)
         if media is None:
             raise MediaDoesNotExist(f"Media with id {command.id!r} does not exist")
-        self._ensure_title_is_available(command)
         file_path = self._file_manager.save_file(command.title, command.file_name, command.file)
         size = os.path.getsize(file_path)
         duration = VideoFileClip(file_path).duration

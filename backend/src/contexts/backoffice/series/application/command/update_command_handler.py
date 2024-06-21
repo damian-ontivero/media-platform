@@ -16,11 +16,11 @@ class SerieUpdateCommandHandler(CommandHandler):
         return SerieUpdateCommand
 
     def handle(self, command: SerieUpdateCommand) -> None:
+        self._ensure_title_is_available(command)
+        self._ensure_media_is_available(command)
         serie = self._repository.search(command.id)
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
-        self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command)
         serie.update(command.title, command.seasons)
         self._repository.save(serie)
 
