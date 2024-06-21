@@ -31,7 +31,7 @@ class SerieSeason(Entity):
 
     @classmethod
     def from_primitives(cls, id: str, number: str, episodes: list) -> "SerieSeason":
-        return cls(EntityId(id), number, [SerieEpisode.from_primitives(**episode) for episode in episodes])
+        return cls(EntityId.from_string(id), number, [SerieEpisode.from_primitives(**episode) for episode in episodes])
 
     def to_primitives(self) -> dict:
         return {

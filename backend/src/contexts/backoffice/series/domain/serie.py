@@ -25,7 +25,7 @@ class Serie(AggregateRoot):
 
     @classmethod
     def from_primitives(cls, id: str, title: str, seasons: list[SerieSeasonDict]) -> "Serie":
-        return cls(EntityId(id), title, [SerieSeason.from_primitives(**season) for season in seasons])
+        return cls(EntityId.from_string(id), title, [SerieSeason.from_primitives(**season) for season in seasons])
 
     def update(self, title: str, seasons: list[SerieSeasonDict]) -> None:
         self._title = title

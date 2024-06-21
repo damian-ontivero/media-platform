@@ -30,12 +30,12 @@ class SerieEpisode(Entity):
 
     @classmethod
     def create(cls, number: str, title: str, media_id: str) -> "SerieEpisode":
-        episode = cls(EntityId.generate(), number, title, EntityId(media_id))
+        episode = cls(EntityId.generate(), number, title, EntityId.from_string(media_id))
         return episode
 
     @classmethod
     def from_primitives(cls, id: str, number: str, title: str, media_id: str) -> "SerieEpisode":
-        return cls(EntityId(id), number, title, EntityId(media_id))
+        return cls(EntityId.from_string(id), number, title, EntityId.from_string(media_id))
 
     def to_primitives(self) -> dict:
         return {"id": self._id.value, "number": self._number, "title": self._title, "media_id": self._media_id.value}

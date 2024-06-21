@@ -32,7 +32,7 @@ class Media(AggregateRoot):
 
     @classmethod
     def from_primitives(cls, id: str, title: str, size: int, duration: int, path: str) -> "Media":
-        return cls(EntityId(id), title, size, duration, path)
+        return cls(EntityId.from_string(id), title, size, duration, path)
 
     def update(self, title: str, size: int, duration: int, path: str) -> None:
         self._title = title

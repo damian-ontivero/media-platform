@@ -17,16 +17,16 @@ class Movie(AggregateRoot):
 
     @classmethod
     def create(cls, title: str, media_id: str) -> "Movie":
-        movie = cls(EntityId.generate(), title, EntityId(media_id))
+        movie = cls(EntityId.generate(), title, EntityId.from_string(media_id))
         return movie
 
     @classmethod
     def from_primitives(cls, id: str, title: str, media_id: str) -> "Movie":
-        return cls(EntityId(id), title, EntityId(media_id))
+        return cls(EntityId.from_string(id), title, EntityId.from_string(media_id))
 
     def update(self, title: str, media_id: str) -> None:
         self._title = title
-        self._media_id = EntityId(media_id)
+        self._media_id = EntityId.from_string(media_id)
 
     def to_primitives(self) -> dict:
         return {"id": self._id.value, "title": self._title, "media_id": self._media_id.value}
