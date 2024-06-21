@@ -1,7 +1,8 @@
-from src.contexts.backoffice.movies.domain import MovieDoesNotExist, MovieRepository
+from src.contexts.backoffice.movies.domain import MovieAlreadyExists, MovieDoesNotExist, MovieRepository
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.query import QueryBus
+from src.contexts.shared.domain.criteria import Criteria
 
 from .update_command import MovieUpdateCommand
 
@@ -15,12 +16,27 @@ class MovieUpdateCommandHandler(CommandHandler):
         return MovieUpdateCommand
 
     def handle(self, command: MovieUpdateCommand) -> None:
-        self._ensure_media_exists(command.media_id)
         movie = self._repository.search(command.id)
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {command.id!r} does not exist")
+        self._ensure_title_is_available(command)
+        self._ensure_media_is_available(command.media_id)
         movie.update(command.title, command.media_id)
         self._repository.save(movie)
 
-    def _ensure_media_exists(self, media_id: str) -> None:
-        self._query_bus.ask(MediaFindByIdQuery(media_id))
+    def _ensure_title_is_available(self, command: MovieUpdateCommand) -> None:
+        criteria = Criteria.from_primitives(
+            filter={
+                "conjunction": "AND",
+                "conditions": [{"field": "title", "operator": "EQUALS", "value": command.title}],
+            },
+            sort=None,
+            page_size=None,
+            page_number=None,
+        )
+        movies = self._repository.matching(criteria)
+        if movies:
+            raise MovieAlreadyExists("A movie with the same title already exists")
+
+    def _ensure_media_is_available(self, command: MovieUpdateCommand) -> None:
+        self._query_bus.ask(MediaFindByIdQuery(command.media_id))
