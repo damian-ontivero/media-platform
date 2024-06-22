@@ -1,5 +1,4 @@
-from src.contexts.shared.domain.aggregate_root import AggregateRoot
-from src.contexts.shared.domain.entity_id import EntityId
+from src.contexts.shared.domain import AggregateRoot, EntityId
 
 from .serie_season import SerieSeason, SerieSeasonDict
 
