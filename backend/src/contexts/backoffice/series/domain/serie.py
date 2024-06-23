@@ -8,6 +8,7 @@ class Serie(AggregateRoot):
         super().__init__(id)
         self._title = title
         self._seasons = seasons
+        self._ensure_seasons()
 
     @property
     def title(self) -> str:
@@ -36,3 +37,11 @@ class Serie(AggregateRoot):
             "title": self._title,
             "seasons": [season.to_primitives() for season in self._seasons],
         }
+
+    def _ensure_seasons(self) -> None:
+        import ipdb
+
+        ipdb.set_trace()
+        duplicated_seasons = [season for season in self._seasons if self._seasons.count(season) > 1]
+        if duplicated_seasons:
+            raise ValueError(f"Seasons {duplicated_seasons} are duplicated")

@@ -1,8 +1,8 @@
 """Initial Alembic
 
-Revision ID: 887de3ffb5e1
+Revision ID: 98fac2f84a20
 Revises: 
-Create Date: 2024-05-21 23:41:01.753389
+Create Date: 2024-06-24 01:15:40.074132
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '887de3ffb5e1'
+revision: str = '98fac2f84a20'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -23,10 +23,8 @@ def upgrade() -> None:
     op.create_table('media',
     sa.Column('id', sa.String(length=36), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=True),
-    sa.Column('type_', sa.String(length=255), nullable=True),
     sa.Column('size', sa.Integer(), nullable=True),
     sa.Column('duration', sa.Integer(), nullable=True),
-    sa.Column('resolution', sa.String(length=255), nullable=True),
     sa.Column('path', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -46,14 +44,14 @@ def upgrade() -> None:
     op.create_index(op.f('ix_movies_title'), 'movies', ['title'], unique=False)
     op.create_table('serie_seasons',
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('number', sa.String(length=255), nullable=True),
+    sa.Column('number', sa.Integer(), nullable=True),
     sa.Column('serie_id', sa.String(length=36), nullable=True),
     sa.ForeignKeyConstraint(['serie_id'], ['series.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('serie_episodes',
     sa.Column('id', sa.String(length=36), nullable=False),
-    sa.Column('number', sa.String(length=255), nullable=True),
+    sa.Column('number', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=255), nullable=True),
     sa.Column('media_id', sa.String(length=36), nullable=True),
     sa.Column('serie_season_id', sa.String(length=36), nullable=True),

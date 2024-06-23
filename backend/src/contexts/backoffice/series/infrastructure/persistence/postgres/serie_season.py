@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, String
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from src.contexts.shared.infrastructure.persistence.postgres.db import Base
 
@@ -7,7 +7,7 @@ class PostgresSerieSeason(Base):
     __tablename__ = "serie_seasons"
 
     id = Column(String(36), primary_key=True)
-    number = Column(String(255))
+    number = Column(Integer)
     serie_id = Column(ForeignKey("series.id"))
     episodes = relationship("PostgresSerieEpisode")
 
