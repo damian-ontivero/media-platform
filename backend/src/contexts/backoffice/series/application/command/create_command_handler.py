@@ -37,5 +37,5 @@ class SerieCreateCommandHandler(CommandHandler):
 
     def _ensure_media_is_available(self, command: SerieCreateCommand) -> None:
         for season in command.seasons:
-            for episode in season.episodes:
-                self._query_bus.ask(MediaFindByIdQuery(episode.media_id))
+            for episode in season["episodes"]:
+                self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))
