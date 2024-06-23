@@ -60,6 +60,7 @@ services:
     class: SerieCreateCommandHandler
     arguments:
       - !ref SerieRepository
+      - !ref QueryBus
     tags:
       - command_handler
 
@@ -68,6 +69,7 @@ services:
     class: SerieUpdateCommandHandler
     arguments:
       - !ref SerieRepository
+      - !ref QueryBus
     tags:
       - command_handler
 
