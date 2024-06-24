@@ -13,7 +13,7 @@ export class Media {
     private readonly duration: number;
     private readonly path: string;
 
-    constructor(id: string, title: string, size: number, duration: number, path: string) {
+    constructor({ id, title, size, duration, path }: MediaParams) {
         this.id = id;
         this.title = title;
         this.size = size;

@@ -9,7 +9,7 @@ export class Movie {
     private readonly title: string;
     private readonly mediaId: string;
 
-    constructor(id: string, title: string, mediaId: string) {
+    constructor({ id, title, mediaId }: MovieParams) {
         this.id = id;
         this.title = title;
         this.mediaId = mediaId;

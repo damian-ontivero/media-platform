@@ -1,11 +1,5 @@
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 import { Serie } from "./Serie";
-
-export type PaginatedResponse<T> = {
-    pageSize: number;
-    pageNumber: number;
-    totalPages: number;
-    items: T[];
-};
 
 export interface SerieRepository {
     matching(): Promise<PaginatedResponse<Serie>>;

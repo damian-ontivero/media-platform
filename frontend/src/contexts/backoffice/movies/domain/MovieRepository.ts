@@ -1,11 +1,5 @@
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 import { Movie } from "./Movie";
-
-export type PaginatedResponse<T> = {
-    pageSize: number;
-    pageNumber: number;
-    totalPages: number;
-    items: T[];
-};
 
 export interface MovieRepository {
     matching(): Promise<PaginatedResponse<Movie>>;

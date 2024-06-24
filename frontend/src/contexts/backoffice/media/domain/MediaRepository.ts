@@ -1,11 +1,5 @@
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 import { Media } from "./Media";
-
-export type PaginatedResponse<T> = {
-    pageSize: number;
-    pageNumber: number;
-    totalPages: number;
-    items: T[];
-};
 
 export interface MediaRepository {
     matching(): Promise<PaginatedResponse<Media>>;

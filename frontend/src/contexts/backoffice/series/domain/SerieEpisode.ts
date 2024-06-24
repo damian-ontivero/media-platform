@@ -11,7 +11,7 @@ export class SerieEpisode {
     private readonly title: string;
     private readonly mediaId: string;
 
-    constructor(id: string, number: number, title: string, mediaId: string) {
+    constructor({ id, number, title, mediaId }: SerieEpisodeParams) {
         this.id = id;
         this.number = number;
         this.title = title;

@@ -11,7 +11,7 @@ export class SerieSeason {
     private readonly number: number;
     private readonly episodes: SerieEpisode[];
 
-    constructor(id: string, number: number, episodes: SerieEpisode[]) {
+    constructor({ id, number, episodes }: SerieSeasonParams) {
         this.id = id;
         this.number = number;
         this.episodes = episodes;

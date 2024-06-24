@@ -1,5 +1,6 @@
 import { Movie, MovieParams } from "@/contexts/backoffice/movies/domain/Movie";
-import { MovieRepository, PaginatedResponse } from "@/contexts/backoffice/movies/domain/MovieRepository";
+import { MovieRepository } from "@/contexts/backoffice/movies/domain/MovieRepository";
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
 const API_URL = "http://localhost:8000/api/v0/movies";
 
@@ -11,14 +12,16 @@ export class HTTPMovieRepository implements MovieRepository {
             pageSize: paginatedResponse.pageSize,
             pageNumber: paginatedResponse.pageNumber,
             totalPages: paginatedResponse.totalPages,
-            items: paginatedResponse.items.map((movie: MovieParams) => new Movie(movie.id, movie.title, movie.mediaId)),
+            items: paginatedResponse.items.map(
+                (movie: MovieParams) => new Movie({ id: movie.id, title: movie.title, mediaId: movie.mediaId })
+            ),
         };
     }
 
     async search(id: string): Promise<Movie | null> {
         const response = await fetch(`${API_URL}/${id}`);
         const movie = await response.json();
-        return new Movie(movie.id, movie.title, movie.mediaId);
+        return new Movie({ id: movie.id, title: movie.title, mediaId: movie.mediaId });
     }
 
     async create(movie: Movie): Promise<void> {

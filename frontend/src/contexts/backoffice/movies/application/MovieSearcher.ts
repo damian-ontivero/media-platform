@@ -1,5 +1,6 @@
 import { Movie } from "@/contexts/backoffice/movies/domain/Movie";
-import { MovieRepository, PaginatedResponse } from "@/contexts/backoffice/movies/domain/MovieRepository";
+import { MovieRepository } from "@/contexts/backoffice/movies/domain/MovieRepository";
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
 export class MovieSearcher {
     private readonly movieRepository: MovieRepository;

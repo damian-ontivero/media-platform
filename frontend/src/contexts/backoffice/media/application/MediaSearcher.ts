@@ -1,5 +1,6 @@
 import { Media } from "@/contexts/backoffice/media/domain/Media";
-import { MediaRepository, PaginatedResponse } from "@/contexts/backoffice/media/domain/MediaRepository";
+import { MediaRepository } from "@/contexts/backoffice/media/domain/MediaRepository";
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
 export class MediaSearcher {
     private readonly mediaRepository: MediaRepository;

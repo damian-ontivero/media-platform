@@ -1,5 +1,6 @@
 import { Serie } from "@/contexts/backoffice/series/domain/Serie";
-import { PaginatedResponse, SerieRepository } from "@/contexts/backoffice/series/domain/SerieRepository";
+import { SerieRepository } from "@/contexts/backoffice/series/domain/SerieRepository";
+import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
 export class SerieSearcher {
     private readonly serieRepository: SerieRepository;
