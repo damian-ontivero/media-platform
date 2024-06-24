@@ -9,9 +9,10 @@ class PostgresMovieRepository(MovieRepository):
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def search_all(self) -> list[Movie]:
+    def matching(self, criteria) -> list[Movie]:
         with self._session() as session:
             query = session.query(PostgresMovie)
+            query = criteria_to_sqlalchemy_query(query, PostgresMovie, criteria)
             return [Movie.from_primitives(**movie_db.to_primitives()) for movie_db in query.all()]
 
     def search(self, id: str) -> Movie | None:
@@ -20,12 +21,6 @@ class PostgresMovieRepository(MovieRepository):
             if movie_db is None:
                 return None
             return Movie.from_primitives(**movie_db.to_primitives())
-
-    def matching(self, criteria) -> list[Movie]:
-        with self._session() as session:
-            query = session.query(PostgresMovie)
-            query = criteria_to_sqlalchemy_query(query, PostgresMovie, criteria)
-            return [Movie.from_primitives(**movie_db.to_primitives()) for movie_db in query.all()]
 
     def count(self) -> int:
         with self._session() as session:

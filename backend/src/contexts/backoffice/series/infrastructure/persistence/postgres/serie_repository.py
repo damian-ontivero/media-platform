@@ -12,9 +12,10 @@ class PostgresSerieRepository(SerieRepository):
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def search_all(self) -> list[Serie]:
+    def matching(self, criteria: Criteria) -> list[Serie]:
         with self._session() as session:
             query = session.query(PostgresSerie)
+            query = criteria_to_sqlalchemy_query(query, PostgresSerie, criteria)
             return [Serie.from_primitives(**serie_db.to_primitives()) for serie_db in query.all()]
 
     def search(self, id: str) -> Serie | None:
@@ -23,12 +24,6 @@ class PostgresSerieRepository(SerieRepository):
             if serie_db is None:
                 return None
             return Serie.from_primitives(**serie_db.to_primitives())
-
-    def matching(self, criteria: Criteria) -> list[Serie]:
-        with self._session() as session:
-            query = session.query(PostgresSerie)
-            query = criteria_to_sqlalchemy_query(query, PostgresSerie, criteria)
-            return [Serie.from_primitives(**serie_db.to_primitives()) for serie_db in query.all()]
 
     def count(self) -> int:
         with self._session() as session:

@@ -14,15 +14,11 @@ class MediaRepository(ABC):
     """
 
     @abstractmethod
-    def search_all(self) -> list[Media]:
+    def matching(self, criteria: Criteria) -> list[Media]:
         raise NotImplementedError
 
     @abstractmethod
     def search(self, id: str) -> Media | None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def matching(self, criteria: Criteria) -> list[Media]:
         raise NotImplementedError
 
     @abstractmethod

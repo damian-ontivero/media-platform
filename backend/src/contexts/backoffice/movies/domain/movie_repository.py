@@ -14,15 +14,11 @@ class MovieRepository(ABC):
     """
 
     @abstractmethod
-    def search_all(self) -> list[Movie]:
+    def matching(self, criteria: Criteria) -> list[Movie]:
         raise NotImplementedError
 
     @abstractmethod
     def search(self, id: str) -> Movie | None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def matching(self, criteria: Criteria) -> list[Movie]:
         raise NotImplementedError
 
     @abstractmethod

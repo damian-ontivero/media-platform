@@ -9,9 +9,10 @@ class PostgresMediaRepository(MediaRepository):
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def search_all(self) -> list[Media]:
+    def matching(self, criteria) -> list[Media]:
         with self._session() as session:
             query = session.query(PostgresMedia)
+            query = criteria_to_sqlalchemy_query(query, PostgresMedia, criteria)
             return [Media.from_primitives(**media_db.to_primitives()) for media_db in query.all()]
 
     def search(self, id: str) -> Media | None:
@@ -20,12 +21,6 @@ class PostgresMediaRepository(MediaRepository):
             if media_db is None:
                 return None
             return Media.from_primitives(**media_db.to_primitives())
-
-    def matching(self, criteria) -> list[Media]:
-        with self._session() as session:
-            query = session.query(PostgresMedia)
-            query = criteria_to_sqlalchemy_query(query, PostgresMedia, criteria)
-            return [Media.from_primitives(**media_db.to_primitives()) for media_db in query.all()]
 
     def count(self) -> int:
         with self._session() as session:

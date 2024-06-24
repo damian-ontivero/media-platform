@@ -14,15 +14,11 @@ class SerieRepository(ABC):
     """
 
     @abstractmethod
-    def search_all(self) -> list[Serie]:
+    def matching(self, criteria: Criteria) -> list[Serie]:
         raise NotImplementedError
 
     @abstractmethod
     def search(self, id: str) -> Serie | None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def matching(self, criteria: Criteria) -> list[Serie]:
         raise NotImplementedError
 
     @abstractmethod
