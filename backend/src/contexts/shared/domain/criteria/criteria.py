@@ -32,17 +32,6 @@ class Criteria:
     def page_number(self) -> PageNumber | None:
         return self._page_number
 
-    @classmethod
-    def from_primitives(
-        cls, filter: FilterDict | None, sort: list[SortDict] | None, page_size: int | None, page_number: int | None
-    ) -> "Criteria":
-        return cls(
-            filter=Filter.from_primitives(**filter) if filter else None,
-            sort=[Sort.from_primitives(**s) for s in sort] if sort else None,
-            page_size=PageSize(page_size) if page_size else None,
-            page_number=PageNumber(page_number) if page_number else None,
-        )
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Criteria):
             return NotImplemented
@@ -68,4 +57,15 @@ class Criteria:
             sort=self._sort,
             page_size=self._page_size,
             page_number=self._page_number,
+        )
+
+    @classmethod
+    def from_primitives(
+        cls, filter: FilterDict | None, sort: list[SortDict] | None, page_size: int | None, page_number: int | None
+    ) -> "Criteria":
+        return cls(
+            filter=Filter.from_primitives(**filter) if filter else None,
+            sort=[Sort.from_primitives(**s) for s in sort] if sort else None,
+            page_size=PageSize(page_size) if page_size else None,
+            page_number=PageNumber(page_number) if page_number else None,
         )

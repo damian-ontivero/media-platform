@@ -18,10 +18,6 @@ class Image:
     def value(self) -> str:
         return self._value
 
-    @classmethod
-    def from_path(cls, path: str) -> "Image":
-        return cls(path)
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Image):
             return NotImplemented
@@ -34,4 +30,8 @@ class Image:
         return hash(tuple(sorted(self._value)))
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}(value={self._value!r})"
+        return "{c}(value={value!r})".format(c=self.__class__.__name__, value=self._value)
+
+    @classmethod
+    def from_path(cls, path: str) -> "Image":
+        return cls(path)

@@ -25,19 +25,6 @@ class Filter:
     def conditions(self) -> list[Condition]:
         return self._conditions
 
-    def is_empty(self) -> bool:
-        return len(self._conditions) == 0
-
-    @classmethod
-    def from_primitives(cls, conjunction: str, conditions: list) -> "Filter":
-        _conditions = []
-        for condition in conditions:
-            if "conditions" in condition:
-                _conditions.append(Filter.from_primitives(**condition))
-            else:
-                _conditions.append(Condition.from_primitives(**condition))
-        return cls(conjunction, _conditions)
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Filter):
             return NotImplemented
@@ -53,3 +40,16 @@ class Filter:
         return ("{c}(conjunction={conjunction!r}, conditions={conditions!r})").format(
             c=self.__class__.__name__, conjunction=self._conjunction, conditions=self._conditions
         )
+
+    @classmethod
+    def from_primitives(cls, conjunction: str, conditions: list) -> "Filter":
+        _conditions = []
+        for condition in conditions:
+            if "conditions" in condition:
+                _conditions.append(Filter.from_primitives(**condition))
+            else:
+                _conditions.append(Condition.from_primitives(**condition))
+        return cls(conjunction, _conditions)
+
+    def is_empty(self) -> bool:
+        return len(self._conditions) == 0

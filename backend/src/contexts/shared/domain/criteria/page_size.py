@@ -25,4 +25,4 @@ class PageSize:
         return hash(self.value)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}(value={self.value})"
+        return "{c}(value={value!r})".format(c=self.__class__.__name__, value=self._value)

@@ -24,13 +24,6 @@ class Condition:
     def value(self) -> str:
         return self._value.value
 
-    @classmethod
-    def from_primitives(cls, field: str, operator: str, value: str) -> "Condition":
-        return cls(ConditionField(field), ConditionOperator(operator), ConditionValue(value))
-
-    def to_primitives(self) -> dict:
-        return {"field": self._field.value, "operator": self._operator.value, "value": self._value.value}
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Condition):
             return NotImplemented
@@ -46,3 +39,10 @@ class Condition:
         return ("{c}(field={field!r}, operator={operator!r}, value={value!r})").format(
             c=self.__class__.__name__, field=self._field, operator=self._operator, value=self._value
         )
+
+    @classmethod
+    def from_primitives(cls, field: str, operator: str, value: str) -> "Condition":
+        return cls(ConditionField(field), ConditionOperator(operator), ConditionValue(value))
+
+    def to_primitives(self) -> dict:
+        return {"field": self._field.value, "operator": self._operator.value, "value": self._value.value}

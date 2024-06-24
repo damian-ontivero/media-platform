@@ -25,22 +25,6 @@ class Sort:
     def direction(self) -> str:
         return self._direction.value
 
-    def is_none(self) -> bool:
-        return self._direction.is_none()
-
-    @classmethod
-    def none(cls) -> "Sort":
-        return cls(SortField(""), SortDirection("NONE"))
-
-    @classmethod
-    def from_primitives(cls, field: str | None, direction: str) -> "Sort":
-        if field is None:
-            return cls.none()
-        return cls(SortField(field), SortDirection(direction))
-
-    def to_primitives(self) -> dict:
-        return {"field": self._field.value, "direction": self._direction.value}
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Sort):
             return NotImplemented
@@ -56,3 +40,19 @@ class Sort:
         return "{c}(field={field!r}, direction={direction!r})".format(
             c=self.__class__.__name__, field=self._field, direction=self._direction
         )
+
+    @classmethod
+    def none(cls) -> "Sort":
+        return cls(SortField(""), SortDirection("NONE"))
+
+    @classmethod
+    def from_primitives(cls, field: str | None, direction: str) -> "Sort":
+        if field is None:
+            return cls.none()
+        return cls(SortField(field), SortDirection(direction))
+
+    def to_primitives(self) -> dict:
+        return {"field": self._field.value, "direction": self._direction.value}
+
+    def is_none(self) -> bool:
+        return self._direction.is_none()

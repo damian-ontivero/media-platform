@@ -23,17 +23,6 @@ class EntityId:
     def value(self) -> str:
         return str(self._value)
 
-    @classmethod
-    def generate(cls) -> "EntityId":
-        """
-        Generates a new entity ID with a random UUID value.
-        """
-        return cls(str(uuid.uuid4()))
-
-    @classmethod
-    def from_string(cls, value: str) -> "EntityId":
-        return cls(value)
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, EntityId):
             return NotImplemented
@@ -46,4 +35,15 @@ class EntityId:
         return hash(self._value)
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}(value={self._value!r})"
+        return "{c}(value={value!r})".format(c=self.__class__.__name__, value=self._value)
+
+    @classmethod
+    def generate(cls) -> "EntityId":
+        """
+        Generates a new entity ID with a random UUID value.
+        """
+        return cls(str(uuid.uuid4()))
+
+    @classmethod
+    def from_string(cls, value: str) -> "EntityId":
+        return cls(value)

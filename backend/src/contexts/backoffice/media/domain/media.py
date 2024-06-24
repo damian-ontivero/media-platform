@@ -25,6 +25,16 @@ class Media(AggregateRoot):
     def path(self) -> str:
         return self._path
 
+    def __repr__(self) -> str:
+        return "{c}(id={id!r}, title={title!r}, size={size!r}, duration={duration!r}, path={path!r})".format(
+            c=self.__class__.__name__,
+            id=self._id,
+            title=self._title,
+            size=self._size,
+            duration=self._duration,
+            path=self._path,
+        )
+
     @classmethod
     def create(cls, title: str, size: int, duration: int, path: str) -> "Media":
         media = cls(EntityId.generate(), title, size, duration, path)

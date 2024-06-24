@@ -15,6 +15,11 @@ class Movie(AggregateRoot):
     def media_id(self) -> EntityId:
         return self._media_id
 
+    def __repr__(self) -> str:
+        return "{c}(id={id!r}, title={title!r}, media_id={media_id!r})".format(
+            c=self.__class__.__name__, id=self._id, title=self._title, media_id=self._media_id
+        )
+
     @classmethod
     def create(cls, title: str, media_id: str) -> "Movie":
         movie = cls(EntityId.generate(), title, EntityId.from_string(media_id))

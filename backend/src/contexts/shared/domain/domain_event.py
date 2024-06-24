@@ -41,13 +41,6 @@ class DomainEvent:
     def data(self) -> dict:
         return dict(self._data)
 
-    @classmethod
-    def create(cls, data: dict) -> "DomainEvent":
-        return cls(str(uuid.uuid4()), cls.EVENT_TYPE, datetime.datetime.now(datetime.UTC).isoformat(), data)
-
-    def to_primitives(self) -> dict:
-        return {"id": self._id, "type": self._type, "occurred_on": self._occurred_on, "data": self._data}
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, DomainEvent):
             return NotImplemented
@@ -65,7 +58,13 @@ class DomainEvent:
         return hash((self._id, self._type, self._occurred_on, self._data))
 
     def __repr__(self) -> str:
-        return (
-            f"{self.__class__.__name__}"
-            f"(id={self._id!r}, type_={self._type!r}, occurred_on={self._occurred_on!r}, data={self._data!r})"
+        return "{c}(id={id!r}, type_={type_!r}, occurred_on={occurred_on!r}, data={data!r})".format(
+            c=self.__class__.__name__, id=self._id, type_=self._type, occurred_on=self._occurred_on, data=self._data
         )
+
+    @classmethod
+    def create(cls, data: dict) -> "DomainEvent":
+        return cls(str(uuid.uuid4()), cls.EVENT_TYPE, datetime.datetime.now(datetime.UTC).isoformat(), data)
+
+    def to_primitives(self) -> dict:
+        return {"id": self._id, "type": self._type, "occurred_on": self._occurred_on, "data": self._data}
