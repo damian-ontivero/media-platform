@@ -8,7 +8,6 @@ class Serie(AggregateRoot):
         super().__init__(id)
         self._title = title
         self._seasons = seasons
-        self._ensure_seasons()
 
     @property
     def title(self) -> str:
@@ -18,9 +17,15 @@ class Serie(AggregateRoot):
     def seasons(self) -> list[SerieSeason]:
         return self._seasons
 
+    def __repr__(self) -> str:
+        return "{c}(id={id!r}, title={title!r}, seasons={seasons!r})".format(
+            c=self.__class__.__name__, id=self._id, title=self._title, seasons=self._seasons
+        )
+
     @classmethod
     def create(cls, title: str, seasons: list[SerieSeasonDict]) -> "Serie":
         serie = cls(EntityId.generate(), title, [SerieSeason.create(**season) for season in seasons])
+        serie._ensure_seasons()
         return serie
 
     @classmethod
@@ -30,6 +35,7 @@ class Serie(AggregateRoot):
     def update(self, title: str, seasons: list[SerieSeasonDict]) -> None:
         self._title = title
         self._seasons = [SerieSeason.create(**season) for season in seasons]
+        self._ensure_seasons()
 
     def to_primitives(self) -> dict:
         return {
@@ -39,9 +45,9 @@ class Serie(AggregateRoot):
         }
 
     def _ensure_seasons(self) -> None:
-        import ipdb
-
-        ipdb.set_trace()
-        duplicated_seasons = [season for season in self._seasons if self._seasons.count(season) > 1]
+        seasons_numbers = [season.number for season in self._seasons]
+        duplicated_seasons = set(
+            [season_number for season_number in seasons_numbers if seasons_numbers.count(season_number) > 1]
+        )
         if duplicated_seasons:
-            raise ValueError(f"Seasons {duplicated_seasons} are duplicated")
+            raise ValueError("Duplicated seasons: {}".format(", ".join(map(str, duplicated_seasons))))
