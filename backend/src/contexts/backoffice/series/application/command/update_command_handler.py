@@ -28,7 +28,10 @@ class SerieUpdateCommandHandler(CommandHandler):
         criteria = Criteria.from_primitives(
             filter={
                 "conjunction": "AND",
-                "conditions": [{"field": "title", "operator": "EQUALS", "value": command.title}],
+                "conditions": [
+                    {"field": "id", "operator": "NOT_EQUALS", "value": command.id},
+                    {"field": "title", "operator": "EQUALS", "value": command.title},
+                ],
             },
             sort=None,
             page_size=None,
