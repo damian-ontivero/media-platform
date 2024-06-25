@@ -14,7 +14,8 @@ app = FastAPI(
     title="Media Platform - API",
     description="This is the API documentation for the Media Platform API.",
     version="0.1.0",
-    root_path="/api/v0",
+    root_path="/backoffice/api/v0",
+    openapi_url="/openapi.json",
     docs_url=None,
     redoc_url=None,
 )
@@ -41,9 +42,9 @@ def exception_handler(request: Request, exception: Exception):
 
 @app.get("/swagger", include_in_schema=False)
 def overridden_swagger():
-    return get_swagger_ui_html(openapi_url="/openapi.json", title="Media Platform - API")
+    return get_swagger_ui_html(title=app.title, openapi_url=app.root_path + app.openapi_url)
 
 
 @app.get("/documentation", include_in_schema=False)
 def overridden_redoc():
-    return get_redoc_html(openapi_url="/openapi.json", title="Media Platform - API")
+    return get_redoc_html(title=app.title, openapi_url=app.root_path + app.openapi_url)
