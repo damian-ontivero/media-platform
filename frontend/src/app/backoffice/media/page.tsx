@@ -1,5 +1,5 @@
 "use client";
-import { useMedias } from "@/app/backoffice/_hooks/media/useMedias";
+import { useMedias } from "./_hooks/useMedias";
 
 export default function MediaPage() {
     const { data, isLoading } = useMedias();

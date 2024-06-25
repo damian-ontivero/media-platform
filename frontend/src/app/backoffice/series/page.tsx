@@ -1,5 +1,5 @@
 "use client";
-import { useSeries } from "@/app/backoffice/_hooks/series/useSeries";
+import { useSeries } from "./_hooks/useSeries";
 
 export default function SeriePage() {
     const { data, isLoading } = useSeries();

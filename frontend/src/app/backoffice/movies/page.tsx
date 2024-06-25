@@ -1,5 +1,5 @@
 "use client";
-import { useMovies } from "@/app/backoffice/_hooks/movies/useMovies";
+import { useMovies } from "./_hooks/useMovies";
 
 export default function MoviePage() {
     const { data, isLoading } = useMovies();
