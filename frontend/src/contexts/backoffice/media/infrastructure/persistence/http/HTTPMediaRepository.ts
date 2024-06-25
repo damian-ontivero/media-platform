@@ -2,7 +2,7 @@ import { Media, MediaParams } from "@/contexts/backoffice/media/domain/Media";
 import { MediaRepository } from "@/contexts/backoffice/media/domain/MediaRepository";
 import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
-const API_URL = "http://localhost:8000/api/v0/media";
+const API_URL = "http://localhost:8000/backoffice/api/v0/media";
 
 export class HTTPMediaRepository implements MediaRepository {
     async matching(): Promise<PaginatedResponse<Media>> {

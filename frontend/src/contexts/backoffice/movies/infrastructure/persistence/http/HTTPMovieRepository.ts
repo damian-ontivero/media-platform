@@ -2,7 +2,7 @@ import { Movie, MovieParams } from "@/contexts/backoffice/movies/domain/Movie";
 import { MovieRepository } from "@/contexts/backoffice/movies/domain/MovieRepository";
 import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
-const API_URL = "http://localhost:8000/api/v0/movies";
+const API_URL = "http://localhost:8000/backoffice/api/v0/movies";
 
 export class HTTPMovieRepository implements MovieRepository {
     async matching(): Promise<PaginatedResponse<Movie>> {

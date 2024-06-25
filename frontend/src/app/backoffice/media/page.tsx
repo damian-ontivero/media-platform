@@ -1,13 +1,18 @@
-import { useMedias } from "@/app/_hooks/useMedias";
+"use client";
+import { useMedias } from "@/app/backoffice/_hooks/media/useMedias";
 
-export default async function MediaPage() {
-    const medias = await useMedias();
+export default function MediaPage() {
+    const { data, isLoading } = useMedias();
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
             <h1>Media</h1>
             <ul>
-                {medias.items?.map((media) => (
+                {data?.items.map((media) => (
                     <li key={media.getId()}>
                         <p>{media.getId() + " - " + media.getTitle()}</p>
                     </li>

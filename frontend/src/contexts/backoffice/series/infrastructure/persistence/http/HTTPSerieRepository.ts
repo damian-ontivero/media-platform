@@ -2,7 +2,7 @@ import { Serie, SerieParams } from "@/contexts/backoffice/series/domain/Serie";
 import { SerieRepository } from "@/contexts/backoffice/series/domain/SerieRepository";
 import { PaginatedResponse } from "@/contexts/shared/domain/PaginatedResponse";
 
-const API_URL = "http://localhost:8000/api/v0/series";
+const API_URL = "http://localhost:8000/backoffice/api/v0/series";
 
 export class HTTPSerieRepository implements SerieRepository {
     async matching(): Promise<PaginatedResponse<Serie>> {
