@@ -5,11 +5,12 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: media_platform
+      POSTGRES_MULTIPLE_DATABASES: media_platform_backoffice,media_platform_catalog
     ports:
       - "5432:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - media_platform
 

@@ -1,0 +1,12 @@
+services:
+    - id: MovieRepository
+      module: src.contexts.catalog.movies.infrastructure.persistence.postgres.movie_repository
+      class: PostgresMovieRepository
+      arguments:
+          - !ref Database.Session
+
+    - id: SerieRepository
+      module: src.contexts.catalog.series.infrastructure.persistence.postgres.serie_repository
+      class: PostgresSerieRepository
+      arguments:
+          - !ref Database.Session

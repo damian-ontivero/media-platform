@@ -11,8 +11,8 @@ dotenv.load_dotenv(".env", override=True)
 
 
 app = FastAPI(
-    title="Media Platform - API",
-    description="This is the API documentation for the Media Platform API.",
+    title="Media Platform - Backoffice - API",
+    description="This is the API documentation for the Media Platform Backoffice API.",
     version="0.1.0",
     root_path="/backoffice/api/v0",
     openapi_url="/openapi.json",

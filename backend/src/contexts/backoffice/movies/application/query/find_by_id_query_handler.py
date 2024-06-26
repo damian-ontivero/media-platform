@@ -1,5 +1,4 @@
-from src.contexts.backoffice.movies.domain import MovieDoesNotExist, MovieRepository
-from src.contexts.backoffice.movies.domain.movie import Movie
+from src.contexts.backoffice.movies.domain import Movie, MovieDoesNotExist, MovieRepository
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 
 from .find_by_id_query import MovieFindByIdQuery

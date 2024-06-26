@@ -1,0 +1,54 @@
+services:
+    - id: QueryBus
+      module: src.contexts.shared.infrastructure.bus.query.in_memory_query_bus
+      class: InMemoryQueryBus
+      arguments:
+          - !tagged query_handler
+
+    - id: MovieSearchByCriteriaQueryHandler
+      module: src.contexts.catalog.movies.application.query.search_by_criteria_query_handler
+      class: MovieSearchByCriteriaQueryHandler
+      arguments:
+          - !ref MovieRepository
+      tags:
+          - query_handler
+
+    - id: MovieFindByIdQueryHandler
+      module: src.contexts.catalog.movies.application.query.find_by_id_query_handler
+      class: MovieFindByIdQueryHandler
+      arguments:
+          - !ref MovieRepository
+      tags:
+          - query_handler
+
+    - id: MovieCountQueryHandler
+      module: src.contexts.catalog.movies.application.query.count_query_handler
+      class: MovieCountQueryHandler
+      arguments:
+          - !ref MovieRepository
+      tags:
+          - query_handler
+
+    - id: SerieSearchByCriteriaQueryHandler
+      module: src.contexts.catalog.series.application.query.search_by_criteria_query_handler
+      class: SerieSearchByCriteriaQueryHandler
+      arguments:
+          - !ref SerieRepository
+      tags:
+          - query_handler
+
+    - id: SerieFindByIdQueryHandler
+      module: src.contexts.catalog.series.application.query.find_by_id_query_handler
+      class: SerieFindByIdQueryHandler
+      arguments:
+          - !ref SerieRepository
+      tags:
+          - query_handler
+
+    - id: SerieCountQueryHandler
+      module: src.contexts.catalog.series.application.query.count_query_handler
+      class: SerieCountQueryHandler
+      arguments:
+          - !ref SerieRepository
+      tags:
+          - query_handler

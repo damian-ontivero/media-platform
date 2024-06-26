@@ -1,5 +1,4 @@
-from src.contexts.backoffice.series.domain import SerieDoesNotExist, SerieRepository
-from src.contexts.backoffice.series.domain.serie import Serie
+from src.contexts.backoffice.series.domain import Serie, SerieDoesNotExist, SerieRepository
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 
 from .find_by_id_query import SerieFindByIdQuery

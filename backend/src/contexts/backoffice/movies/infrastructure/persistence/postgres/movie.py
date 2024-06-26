@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, String
 from src.contexts.backoffice.movies.domain.movie import Movie
-from src.contexts.shared.infrastructure.persistence.postgres.db import Base
+from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 
 
 class PostgresMovie(Base):

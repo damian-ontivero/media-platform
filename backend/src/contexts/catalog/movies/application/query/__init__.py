@@ -1,0 +1,6 @@
+from .count_query import MovieCountQuery
+from .count_query_handler import MovieCountQueryHandler
+from .find_by_id_query import MovieFindByIdQuery
+from .find_by_id_query_handler import MovieFindByIdQueryHandler
+from .search_by_criteria_query import MovieSearchByCriteriaQuery
+from .search_by_criteria_query_handler import MovieSearchByCriteriaQueryHandler

@@ -4,8 +4,6 @@ from src.contexts.shared.domain.criteria import Criteria
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
 
 from .serie import PostgresSerie
-from .serie_episode import PostgresSerieEpisode
-from .serie_season import PostgresSerieSeason
 
 
 class PostgresSerieRepository(SerieRepository):

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from src.contexts.shared.infrastructure.persistence.postgres.db import Base
+from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 
 
 class PostgresSerieSeason(Base):

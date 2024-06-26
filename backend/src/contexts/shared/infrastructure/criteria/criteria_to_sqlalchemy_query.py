@@ -1,7 +1,6 @@
 from sqlalchemy import and_, or_
-from sqlalchemy.orm import Query
+from sqlalchemy.orm import DeclarativeBase, Query
 from src.contexts.shared.domain.criteria import Condition, Criteria, Filter, Sort
-from src.contexts.shared.infrastructure.persistence.postgres import db
 
 
 def equals_filter(m, k, v):
@@ -78,7 +77,7 @@ FILTER_OPERATOR_MAPPER = {
 }
 
 
-def criteria_to_sqlalchemy_query(query: Query, model: db.Base, criteria: Criteria) -> Query:
+def criteria_to_sqlalchemy_query(query: Query, model: DeclarativeBase, criteria: Criteria) -> Query:
     """
     Convert a Criteria domain object to a SQLAlchemy query.
     """
@@ -97,7 +96,7 @@ def criteria_to_sqlalchemy_query(query: Query, model: db.Base, criteria: Criteri
     return query
 
 
-def _process_filter(filter: Filter, model: db.Base):
+def _process_filter(filter: Filter, model: DeclarativeBase):
     filters = []
     for condition in filter.conditions:
         if not hasattr(condition, "conjunction"):
@@ -109,9 +108,9 @@ def _process_filter(filter: Filter, model: db.Base):
     return or_(*filters)
 
 
-def _process_condition(condition: Condition, model: db.Base):
+def _process_condition(condition: Condition, model: DeclarativeBase):
     return FILTER_OPERATOR_MAPPER[condition.operator](model, condition.field, condition.value)
 
 
-def _process_sort(sort: Sort, model: db.Base):
+def _process_sort(sort: Sort, model: DeclarativeBase):
     return getattr(model, sort.field).asc() if sort.direction == "ASC" else getattr(model, sort.field).desc()

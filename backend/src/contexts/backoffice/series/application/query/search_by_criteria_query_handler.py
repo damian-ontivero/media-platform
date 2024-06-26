@@ -1,5 +1,4 @@
-from src.contexts.backoffice.series.domain.serie import Serie
-from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
+from src.contexts.backoffice.series.domain import Serie, SerieRepository
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 from src.contexts.shared.domain.criteria import Criteria
 
