@@ -33,11 +33,9 @@
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
-        },
+        }
     },
-    "prettier.printWidth":120,
+    "prettier.printWidth": 120,
     "prettier.tabWidth": 4,
-    "conventionalCommits.scopes": [
-        "backend"
-    ]
+    "conventionalCommits.scopes": ["backend", "frontend"]
 }
