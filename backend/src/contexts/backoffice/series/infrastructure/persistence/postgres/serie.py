@@ -1,6 +1,5 @@
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-
 from src.contexts.backoffice.series.domain.serie import Serie
 from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 
@@ -13,7 +12,7 @@ class PostgresSerie(Base):
 
     id = Column(String(36), primary_key=True)
     title = Column(String(255), index=True)
-    seasons = relationship("PostgresSerieSeason")
+    seasons = relationship("PostgresSerieSeason", cascade="all, delete-orphan")
 
     @classmethod
     def from_entity(cls, serie: Serie) -> "PostgresSerie":

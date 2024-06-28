@@ -18,4 +18,4 @@ class MediaDeleteCommandHandler(CommandHandler):
         if media is None:
             raise MediaDoesNotExist(f"Media with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish(MediaDeleted.create({"id": command.id}))
+        self._event_bus.publish([MediaDeleted.create({"id": command.id})])

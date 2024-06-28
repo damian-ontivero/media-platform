@@ -18,4 +18,4 @@ class MovieDeleteCommandHandler(CommandHandler):
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish(MovieDeleted.create({"id": command.id}))
+        self._event_bus.publish([MovieDeleted.create({"id": command.id})])

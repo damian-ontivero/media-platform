@@ -18,4 +18,4 @@ class SerieDeleteCommandHandler(CommandHandler):
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish(SerieDeleted.create({"id": command.id}))
+        self._event_bus.publish([SerieDeleted.create({"id": command.id})])

@@ -1,6 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-
 from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 
 
@@ -10,7 +9,7 @@ class PostgresSerieSeason(Base):
     id = Column(String(36), primary_key=True)
     number = Column(Integer)
     serie_id = Column(ForeignKey("series.id"))
-    episodes = relationship("PostgresSerieEpisode")
+    episodes = relationship("PostgresSerieEpisode", cascade="all, delete-orphan")
 
     def to_primitives(self) -> dict:
         return {
