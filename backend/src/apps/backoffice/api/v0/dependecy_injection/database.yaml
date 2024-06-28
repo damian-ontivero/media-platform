@@ -1,5 +1,5 @@
 services:
-  - id: Database.Session
-    module: src.contexts.backoffice.shared.infrastructure.persistence.postgres.db
-    class: PostgresSession
-    factory: create_session
+    - id: Database.Session
+      module: src.contexts.backoffice.shared.infrastructure.persistence.postgres.db
+      class: PostgresSession
+      factory: create_session

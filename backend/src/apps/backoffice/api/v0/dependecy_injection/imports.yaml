@@ -1,6 +1,7 @@
 imports:
-  - { resource: ./database.yaml }
-  - { resource: ./repository.yaml }
-  - { resource: ./command.yaml }
-  - { resource: ./query.yaml }
-  - { resource: ./controller.yaml }
+    - { resource: ./database.yaml }
+    - { resource: ./repository.yaml }
+    - { resource: ./command.yaml }
+    - { resource: ./query.yaml }
+    - { resource: ./event.yaml }
+    - { resource: ./controller.yaml }

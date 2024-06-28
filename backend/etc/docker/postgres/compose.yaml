@@ -1,19 +1,19 @@
 services:
-  media_platform_postgres:
-    image: postgres:16.3-alpine
-    container_name: media_platform_postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_MULTIPLE_DATABASES: media_platform_backoffice,media_platform_catalog
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - media_platform
+    media_platform_postgres:
+        image: postgres:16.3-alpine
+        container_name: media_platform_postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_MULTIPLE_DATABASES: media_platform_backoffice,media_platform_catalog
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./data:/var/lib/postgresql/data
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        networks:
+            - media_platform
 
 networks:
-  media_platform:
-    name: media_platform
+    media_platform:
+        name: media_platform
