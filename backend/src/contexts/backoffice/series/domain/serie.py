@@ -1,5 +1,6 @@
 from src.contexts.shared.domain import AggregateRoot, EntityId
 
+from .serie_events import SerieCreated, SerieUpdated
 from .serie_season import SerieSeason, SerieSeasonDict
 
 
@@ -26,6 +27,7 @@ class Serie(AggregateRoot):
     def create(cls, title: str, seasons: list[SerieSeasonDict]) -> "Serie":
         serie = cls(EntityId.generate(), title, [SerieSeason.create(**season) for season in seasons])
         serie._ensure_seasons()
+        serie.record(SerieCreated.create(serie.to_primitives()))
         return serie
 
     @classmethod
@@ -36,6 +38,7 @@ class Serie(AggregateRoot):
         self._title = title
         self._seasons = [SerieSeason.create(**season) for season in seasons]
         self._ensure_seasons()
+        self.record(SerieUpdated.create(self.to_primitives()))
 
     def to_primitives(self) -> dict:
         return {

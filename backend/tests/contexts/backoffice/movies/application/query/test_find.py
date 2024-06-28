@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.movies.application.query import MovieFindByIdQuery, MovieFindByIdQueryHandler
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 

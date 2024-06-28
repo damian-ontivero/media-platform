@@ -1,4 +1,5 @@
 from fastapi import status
+
 from src.contexts.backoffice.media.domain import MediaAlreadyExists, MediaDoesNotExist
 from src.contexts.backoffice.movies.domain import MovieAlreadyExists, MovieDoesNotExist
 from src.contexts.backoffice.series.domain import SerieAlreadyExists, SerieDoesNotExist

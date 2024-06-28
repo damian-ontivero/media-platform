@@ -1,6 +1,7 @@
 from src.contexts.backoffice.series.domain import SerieAlreadyExists, SerieDoesNotExist, SerieRepository
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
+from src.contexts.shared.domain.bus.event.event_bus import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 from src.contexts.shared.domain.criteria import Criteria
 
@@ -8,21 +9,23 @@ from .update_command import SerieUpdateCommand
 
 
 class SerieUpdateCommandHandler(CommandHandler):
-    def __init__(self, repository: SerieRepository, query_bus: QueryBus) -> None:
+    def __init__(self, repository: SerieRepository, query_bus: QueryBus, event_bus: EventBus) -> None:
         self._repository = repository
         self._query_bus = query_bus
+        self._event_bus = event_bus
 
     def subscribed_to(self) -> Command:
         return SerieUpdateCommand
 
     def handle(self, command: SerieUpdateCommand) -> None:
-        self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command)
         serie = self._repository.search(command.id)
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
+        self._ensure_title_is_available(command)
+        self._ensure_media_is_available(command)
         serie.update(command.title, command.seasons)
         self._repository.save(serie)
+        self._event_bus.publish(serie.pull_domain_events())
 
     def _ensure_title_is_available(self, command: SerieUpdateCommand) -> None:
         criteria = Criteria.from_primitives(

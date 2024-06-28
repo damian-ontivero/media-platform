@@ -1,4 +1,5 @@
 import faker
+
 from src.contexts.backoffice.media.application.query import (
     MediaSearchByCriteriaQuery,
     MediaSearchByCriteriaQueryHandler,

@@ -1,9 +1,11 @@
 from src.contexts.shared.domain import AggregateRoot, EntityId
 
+from .media_events import MediaCreated, MediaUpdated
+
 
 class Media(AggregateRoot):
     def __init__(self, id: EntityId, title: str, size: int, duration: int, path: str) -> None:
-        self._id = id
+        super().__init__(id)
         self._title = title
         self._size = size
         self._duration = duration
@@ -38,6 +40,7 @@ class Media(AggregateRoot):
     @classmethod
     def create(cls, title: str, size: int, duration: int, path: str) -> "Media":
         media = cls(EntityId.generate(), title, size, duration, path)
+        media.record(MediaCreated.create(media.to_primitives()))
         return media
 
     @classmethod
@@ -49,6 +52,7 @@ class Media(AggregateRoot):
         self._size = size
         self._duration = duration
         self._path = path
+        self.record(MediaUpdated.create(self.to_primitives()))
 
     def to_primitives(self) -> dict:
         return {

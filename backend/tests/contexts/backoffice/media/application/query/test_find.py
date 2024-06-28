@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.media.application.query import MediaFindByIdQueryHandler
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory

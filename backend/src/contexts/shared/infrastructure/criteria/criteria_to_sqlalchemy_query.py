@@ -1,5 +1,6 @@
 from sqlalchemy import and_, or_
 from sqlalchemy.orm import DeclarativeBase, Query
+
 from src.contexts.shared.domain.criteria import Condition, Criteria, Filter, Sort
 
 

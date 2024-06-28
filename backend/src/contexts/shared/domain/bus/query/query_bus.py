@@ -15,5 +15,5 @@ class QueryBus(ABC):
         raise NotImplementedError
 
 
-class RegisteredQueryError(Exception):
+class QueryHandlerNotFound(Exception):
     pass

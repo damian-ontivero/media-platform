@@ -2,6 +2,7 @@ import json
 import os
 
 import pika
+
 from src.contexts.shared.domain import DomainEvent
 from src.contexts.shared.domain.bus.event import EventBus
 

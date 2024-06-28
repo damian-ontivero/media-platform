@@ -1,4 +1,5 @@
 import factory
+
 from src.contexts.shared.domain import EntityId
 
 

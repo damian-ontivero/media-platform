@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.catalog.movies.domain import Movie, MovieRepository
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
 

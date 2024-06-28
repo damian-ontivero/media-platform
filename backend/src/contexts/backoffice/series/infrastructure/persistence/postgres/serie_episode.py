@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
+
 from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 
 

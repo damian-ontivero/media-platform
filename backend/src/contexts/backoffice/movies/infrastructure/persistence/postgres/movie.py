@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, String
+
 from src.contexts.backoffice.movies.domain.movie import Movie
 from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 

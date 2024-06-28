@@ -1,5 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from src.contexts.catalog.shared.infrastructure.persistence.postgres.db import Base
 
 

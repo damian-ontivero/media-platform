@@ -2,6 +2,7 @@ import base64
 import json
 
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas import MoviePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.movies.application.query import MovieCountQuery, MovieSearchByCriteriaQuery

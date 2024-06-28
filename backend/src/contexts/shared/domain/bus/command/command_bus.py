@@ -16,5 +16,5 @@ class CommandBus(ABC):
         raise NotImplementedError
 
 
-class RegisteredCommandError(Exception):
+class CommandHandlerNotFound(Exception):
     pass

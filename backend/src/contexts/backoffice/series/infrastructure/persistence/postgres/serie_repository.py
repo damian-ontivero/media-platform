@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.backoffice.series.domain import Serie, SerieRepository
 from src.contexts.shared.domain.criteria import Criteria
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query

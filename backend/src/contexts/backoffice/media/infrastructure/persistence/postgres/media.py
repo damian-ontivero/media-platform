@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+
 from src.contexts.backoffice.media.domain.media import Media
 from src.contexts.backoffice.shared.infrastructure.persistence.postgres.db import Base
 

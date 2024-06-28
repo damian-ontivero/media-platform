@@ -13,5 +13,5 @@ class EventBus(ABC):
     """
 
     @abstractmethod
-    def publish(self, domain_event: DomainEvent) -> None:
+    def publish(self, domain_events: list[DomainEvent]) -> None:
         raise NotImplementedError

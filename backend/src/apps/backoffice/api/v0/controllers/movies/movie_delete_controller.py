@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.movies.application.command.delete_command import MovieDeleteCommand
 from src.contexts.shared.domain.bus.command import CommandBus

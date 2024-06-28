@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.backoffice.media.domain import Media, MediaRepository
 from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
 

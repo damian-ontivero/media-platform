@@ -1,4 +1,4 @@
-from src.contexts.shared.domain.bus.command import Command, CommandBus, CommandHandler, RegisteredCommandError
+from src.contexts.shared.domain.bus.command import Command, CommandBus, CommandHandler, CommandHandlerNotFound
 
 
 class InMemoryCommandBus(CommandBus):
@@ -10,5 +10,5 @@ class InMemoryCommandBus(CommandBus):
     def dispatch(self, command: Command) -> None:
         handler = self._command_handler_map.get(type(command))
         if handler is None:
-            raise RegisteredCommandError(f"Command handler not found for {command.__class__.__name__}")
+            raise CommandHandlerNotFound(f"Command handler not found for {command.__class__.__name__}")
         handler.handle(command)

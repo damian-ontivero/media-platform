@@ -1,4 +1,4 @@
-from src.contexts.shared.domain.bus.query import Query, QueryBus, QueryHandler, RegisteredQueryError
+from src.contexts.shared.domain.bus.query import Query, QueryBus, QueryHandler, QueryHandlerNotFound
 
 
 class InMemoryQueryBus(QueryBus):
@@ -8,5 +8,5 @@ class InMemoryQueryBus(QueryBus):
     def ask(self, query: Query):
         handler = self._query_handler_map.get(type(query))
         if handler is None:
-            raise RegisteredQueryError(f"Query handler not found for {query.__class__.__name__}")
+            raise QueryHandlerNotFound(f"Query handler not found for {query.__class__.__name__}")
         return handler.handle(query)
