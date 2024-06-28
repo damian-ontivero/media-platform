@@ -1,6 +1,5 @@
 import faker
 import pytest
-
 from src.contexts.backoffice.media.application.command import MediaDeleteCommand, MediaDeleteCommandHandler
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
@@ -16,6 +15,7 @@ def test_media_delete__ok(mocker) -> None:
     handler.handle(command)
 
     mock_media_repository.delete.assert_called_once_with(media.id.value)
+    mock_event_bus.publish.assert_called_once()
 
 
 def test_media_delete__not_found(mocker) -> None:

@@ -1,5 +1,4 @@
 import faker
-
 from src.contexts.backoffice.movies.application.command import MovieCreateCommand, MovieCreateCommandHandler
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
@@ -17,3 +16,4 @@ def test_movie_create__ok(mocker) -> None:
     handler.handle(command)
 
     mock_movie_repository.save.assert_called_once()
+    mock_event_bus.publish.assert_called_once()

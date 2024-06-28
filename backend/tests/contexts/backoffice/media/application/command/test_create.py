@@ -1,5 +1,4 @@
 import faker
-
 from src.contexts.backoffice.media.application.command import MediaCreateCommand, MediaCreateCommandHandler
 
 
@@ -14,3 +13,4 @@ def test_media_create__ok(mocker) -> None:
         handler.handle(command)
 
         mock_media_repository.save.assert_called_once()
+        mock_event_bus.publish.assert_called_once()

@@ -1,6 +1,5 @@
 import faker
 import pytest
-
 from src.contexts.backoffice.series.application.command import SerieUpdateCommand, SerieUpdateCommandHandler
 from src.contexts.backoffice.series.domain import SerieDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
@@ -36,6 +35,7 @@ def test_serie_update__ok(mocker) -> None:
     handler.handle(command)
 
     mock_serie_repository.save.assert_called_once_with(serie)
+    mock_event_bus.publish.assert_called_once()
 
 
 def test_serie_update__not_found(mocker) -> None:
