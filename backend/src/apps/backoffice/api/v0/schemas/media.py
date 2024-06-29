@@ -5,14 +5,14 @@ from pydantic import BaseModel, Field, model_validator
 
 class MediaReadSchema(BaseModel):
     id: str = Field(..., description="Media ID", examples=["123e4567-e89b-12d3-a456-426614174000"])
-    title: str = Field(..., description="Media Title", examples=["Amazing movie"])
+    title: str = Field(..., description="Media Title", examples=["Amazing media"])
     size: int = Field(..., description="Media Size", examples=[120])
     duration: int = Field(..., description="Media Duration", examples=[120])
     path: str = Field(..., description="Media Path", examples=["/path/to/media"])
 
 
 class MediaWriteSchema(BaseModel):
-    title: str = Field(..., description="Media Title", examples=["Amazing movie"])
+    title: str = Field(..., description="Media Title", examples=["Amazing media"])
 
     @model_validator(mode="before")
     @classmethod

@@ -17,7 +17,7 @@ class SerieUpdateCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return SerieUpdateCommand
 
-    def handle(self, command: SerieUpdateCommand) -> None:
+    async def handle(self, command: SerieUpdateCommand) -> None:
         serie = self._repository.search(command.id)
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
@@ -25,7 +25,7 @@ class SerieUpdateCommandHandler(CommandHandler):
         self._ensure_media_is_available(command)
         serie.update(command.title, command.seasons)
         self._repository.save(serie)
-        self._event_bus.publish(serie.pull_domain_events())
+        await self._event_bus.publish(serie.pull_domain_events())
 
     def _ensure_title_is_available(self, command: SerieUpdateCommand) -> None:
         criteria = Criteria.from_primitives(
@@ -44,7 +44,7 @@ class SerieUpdateCommandHandler(CommandHandler):
         if series:
             raise SerieAlreadyExists("A serie with the same title already exists")
 
-    def _ensure_media_is_available(self, command: SerieUpdateCommand) -> None:
+    async def _ensure_media_is_available(self, command: SerieUpdateCommand) -> None:
         for season in command.seasons:
             for episode in season["episodes"]:
-                self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))
+                await self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))

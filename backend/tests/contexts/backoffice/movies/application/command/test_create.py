@@ -13,7 +13,7 @@ def test_movie_create__ok(mocker) -> None:
     handler = MovieCreateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
     command = MovieCreateCommand(title=faker.Faker().name(), media_id=media.id.value)
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_movie_repository.save.assert_called_once()
     mock_event_bus.publish.assert_called_once()

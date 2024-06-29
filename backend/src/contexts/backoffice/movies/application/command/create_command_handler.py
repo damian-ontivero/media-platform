@@ -17,12 +17,12 @@ class MovieCreateCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return MovieCreateCommand
 
-    def handle(self, command: MovieCreateCommand) -> None:
+    async def handle(self, command: MovieCreateCommand) -> None:
         self._ensure_title_is_available(command)
         self._ensure_media_is_available(command)
         movie = Movie.create(command.title, command.media_id)
         self._repository.save(movie)
-        self._event_bus.publish(movie.pull_domain_events())
+        await self._event_bus.publish(movie.pull_domain_events())
 
     def _ensure_title_is_available(self, command: MovieCreateCommand) -> None:
         criteria = Criteria.from_primitives(
@@ -38,5 +38,5 @@ class MovieCreateCommandHandler(CommandHandler):
         if movies:
             raise MovieAlreadyExists("A movie with the same title already exists")
 
-    def _ensure_media_is_available(self, command: MovieCreateCommand) -> None:
-        self._query_bus.ask(MediaFindByIdQuery(command.media_id))
+    async def _ensure_media_is_available(self, command: MovieCreateCommand) -> None:
+        await self._query_bus.ask(MediaFindByIdQuery(command.media_id))

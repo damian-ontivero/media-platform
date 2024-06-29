@@ -27,7 +27,7 @@ def test_serie_create__ok(mocker) -> None:
         ],
     )
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_serie_repository.save.assert_called_once()
     mock_event_bus.publish.assert_called_once()

@@ -11,5 +11,5 @@ class SerieCountQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return SerieCountQuery
 
-    def handle(self, query: SerieCountQuery) -> int:
+    async def handle(self, query: SerieCountQuery) -> int:
         return self.repository.count()

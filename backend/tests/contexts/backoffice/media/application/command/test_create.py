@@ -10,7 +10,7 @@ def test_media_create__ok(mocker) -> None:
         command = MediaCreateCommand(title=faker.Faker().name(), file_name="video.mp4", file=file.read())
         handler = MediaCreateCommandHandler(mock_media_repository, mock_event_bus)
 
-        handler.handle(command)
+        await handler.handle(command)
 
         mock_media_repository.save.assert_called_once()
         mock_event_bus.publish.assert_called_once()

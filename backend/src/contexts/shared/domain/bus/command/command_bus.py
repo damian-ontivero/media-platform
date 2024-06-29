@@ -12,7 +12,7 @@ class CommandBus(ABC):
     """
 
     @abstractmethod
-    def dispatch(self, command: Command) -> None:
+    async def dispatch(self, command: Command) -> None:
         raise NotImplementedError
 
 

@@ -2,7 +2,6 @@ import contextlib
 import os
 
 import dotenv
-import pika
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
@@ -10,19 +9,20 @@ from fastapi.responses import JSONResponse
 from src.apps.backoffice.api.v0.exception import EXCEPTION_TO_HTTP_STATUS_CODE
 
 from .routers import health_check_router, media_router, movies_router, series_router
+from .setup_rabbitmq import declare_exchange, declare_vhost
 
 dotenv.load_dotenv(".env", override=True)
 
-RABBITMQ_URL = os.getenv("RABBITMQ_URL")
+RABBITMQ_API = os.getenv("RABBITMQ_API")
+RABBITMQ_URI = os.getenv("RABBITMQ_URI")
+RABIITMQ_EXCHANGE = "backoffice.domain_events"
 
 
 @contextlib.asynccontextmanager
-async def declare_rabbitmq_exchange(app: FastAPI):
-    connection = pika.BlockingConnection(pika.URLParameters(RABBITMQ_URL))
-    channel = connection.channel()
-    channel.exchange_declare(exchange="backoffice.domain_events", exchange_type="direct")
+async def setup_rabbitmq(app: FastAPI):
+    await declare_vhost(RABBITMQ_API, RABBITMQ_URI)
+    await declare_exchange(RABBITMQ_URI, RABIITMQ_EXCHANGE)
     yield
-    connection.close()
 
 
 app = FastAPI(
@@ -33,7 +33,7 @@ app = FastAPI(
     openapi_url="/openapi.json",
     docs_url=None,
     redoc_url=None,
-    lifespan=declare_rabbitmq_exchange,
+    lifespan=setup_rabbitmq,
 )
 
 # CORS

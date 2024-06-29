@@ -1,5 +1,4 @@
 from fastapi import Response, status
-
 from src.apps.backoffice.api.v0.schemas import MovieWriteSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.movies.application.command.create_command_handler import MovieCreateCommand
@@ -11,5 +10,5 @@ class MoviePostController(Controller):
         self._command_bus = command_bus
 
     async def run(self, movie: MovieWriteSchema) -> Response:
-        self._command_bus.dispatch(MovieCreateCommand(**movie.model_dump()))
+        await self._command_bus.dispatch(MovieCreateCommand(**movie.model_dump()))
         return Response(content=None, status_code=status.HTTP_201_CREATED, media_type=None)

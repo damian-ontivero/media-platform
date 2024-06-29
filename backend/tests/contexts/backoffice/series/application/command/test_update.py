@@ -32,7 +32,7 @@ def test_serie_update__ok(mocker) -> None:
         ],
     )
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_serie_repository.save.assert_called_once_with(serie)
     mock_event_bus.publish.assert_called_once()
@@ -47,4 +47,4 @@ def test_serie_update__not_found(mocker) -> None:
     command = SerieUpdateCommand(id=faker.Faker().uuid4(), title=faker.Faker().name(), seasons=[])
 
     with pytest.raises(SerieDoesNotExist):
-        handler.handle(command)
+        await handler.handle(command)

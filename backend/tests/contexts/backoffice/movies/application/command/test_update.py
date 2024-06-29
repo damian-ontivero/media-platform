@@ -18,7 +18,7 @@ def test_movie_update__ok(mocker) -> None:
     command = MovieUpdateCommand(id=movie.id.value, title=faker.Faker().name(), media_id=media.id.value)
     handler = MovieUpdateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_movie_repository.save.assert_called_once_with(movie)
     mock_event_bus.publish.assert_called_once()
@@ -35,4 +35,4 @@ def test_movie_update__not_found(mocker) -> None:
     handler = MovieUpdateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
 
     with pytest.raises(MovieDoesNotExist):
-        handler.handle(command)
+        await handler.handle(command)

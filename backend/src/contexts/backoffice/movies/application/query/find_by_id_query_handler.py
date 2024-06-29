@@ -11,7 +11,7 @@ class MovieFindByIdQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return MovieFindByIdQuery
 
-    def handle(self, query: MovieFindByIdQuery) -> Movie:
+    async def handle(self, query: MovieFindByIdQuery) -> Movie:
         movie = self.repository.search(query.id)
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {query.id!r} does not exist")

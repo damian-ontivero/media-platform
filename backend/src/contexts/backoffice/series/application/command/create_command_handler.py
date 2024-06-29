@@ -17,12 +17,12 @@ class SerieCreateCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return SerieCreateCommand
 
-    def handle(self, command: SerieCreateCommand) -> None:
+    async def handle(self, command: SerieCreateCommand) -> None:
         self._ensure_title_is_available(command)
         self._ensure_media_is_available(command)
         serie = Serie.create(command.title, command.seasons)
         self._repository.save(serie)
-        self._event_bus.publish(serie.pull_domain_events())
+        await self._event_bus.publish(serie.pull_domain_events())
 
     def _ensure_title_is_available(self, command: SerieCreateCommand) -> None:
         criteria = Criteria.from_primitives(
@@ -38,7 +38,7 @@ class SerieCreateCommandHandler(CommandHandler):
         if series:
             raise SerieAlreadyExists("A serie with the same title already exists")
 
-    def _ensure_media_is_available(self, command: SerieCreateCommand) -> None:
+    async def _ensure_media_is_available(self, command: SerieCreateCommand) -> None:
         for season in command.seasons:
             for episode in season["episodes"]:
-                self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))
+                await self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))

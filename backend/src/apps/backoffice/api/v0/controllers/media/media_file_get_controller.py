@@ -1,7 +1,6 @@
 import os
 
 from fastapi import Response, status
-
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.query import QueryBus
@@ -12,7 +11,7 @@ class MediaFileGetController(Controller):
         self._query_bus = query_bus
 
     async def run(self, id: str, range: str) -> Response:
-        media = self._query_bus.ask(MediaFindByIdQuery(id))
+        media = await self._query_bus.ask(MediaFindByIdQuery(id))
         start, end = range.replace("bytes=", "").split("-")
         start = int(start)
         end = int(start + (1024 * 1024))

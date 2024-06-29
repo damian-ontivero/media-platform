@@ -1,7 +1,6 @@
 import os
 
 from moviepy.editor import VideoFileClip
-
 from src.contexts.backoffice.media.domain import Media, MediaAlreadyExists, MediaRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event import EventBus
@@ -22,14 +21,14 @@ class MediaCreateCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return MediaCreateCommand
 
-    def handle(self, command: MediaCreateCommand) -> None:
+    async def handle(self, command: MediaCreateCommand) -> None:
         self._ensure_title_is_available(command)
         file_path = self._file_manager.save_file(command.title, command.file_name, command.file)
         size = os.path.getsize(file_path)
         duration = VideoFileClip(file_path).duration
         media = Media.create(command.title, size, duration, file_path)
         self._repository.save(media)
-        self._event_bus.publish(media.pull_domain_events())
+        await self._event_bus.publish(media.pull_domain_events())
 
     def _ensure_title_is_available(self, command: MediaCreateCommand) -> None:
         criteria = Criteria.from_primitives(

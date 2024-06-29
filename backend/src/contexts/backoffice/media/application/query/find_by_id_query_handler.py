@@ -10,7 +10,7 @@ class MediaFindByIdQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return MediaFindByIdQuery
 
-    def handle(self, query: MediaFindByIdQuery) -> Media:
+    async def handle(self, query: MediaFindByIdQuery) -> Media:
         media = self.repository.search(query.id)
         if media is None:
             raise MediaDoesNotExist(f"Media with id {query.id!r} does not exist")

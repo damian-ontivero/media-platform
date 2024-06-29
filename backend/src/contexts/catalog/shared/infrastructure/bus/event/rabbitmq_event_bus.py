@@ -1,50 +1,46 @@
 import json
+import logging
 import os
 
-import pika
+from aio_pika import Message, connect_robust
 from src.contexts.shared.domain import DomainEvent
 from src.contexts.shared.domain.bus.event import EventBus
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+RABBITMQ_URI = os.getenv("RABBITMQ_URI")
 
 
 class RabbitMQEventBus(EventBus):
 
     _EXCHANGE = "catalog.domain_events"
 
-    def __init__(self, url: str) -> None:
-        if not url:
-            raise RabbitMQEventBusError("URL is required")
-        if not isinstance(url, str):
-            raise RabbitMQEventBusError("URL must be a string")
-        self._url = url
-
-    def __enter__(self) -> "RabbitMQEventBus":
-        self._connect()
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback) -> None:
-        self._disconnect()
+    def __init__(self, uri: str) -> None:
+        if not uri:
+            raise RabbitMQEventBusError("URI is required")
+        if not isinstance(uri, str):
+            raise RabbitMQEventBusError("URI must be a string")
+        self._uri = uri
 
     @classmethod
-    def create(cls, url: str = os.getenv("RABBITMQ_URL")) -> "RabbitMQEventBus":
-        return cls(url)
+    def create(cls, uri: str = RABBITMQ_URI) -> "RabbitMQEventBus":
+        return cls(uri)
 
-    def _connect(self) -> None:
-        self._connection = pika.BlockingConnection(pika.URLParameters(self._url))
-        self._channel = self._connection.channel()
-
-    def _disconnect(self) -> None:
-        if self._connection and not self._connection.is_closed:
-            self._connection.close()
-
-    def publish(self, domain_events: list[DomainEvent]) -> None:
-        with self:
-            for domain_event in domain_events:
-                self._channel.basic_publish(
-                    exchange=self._EXCHANGE,
-                    routing_key=domain_event.type_,
-                    body=json.dumps(domain_event.to_primitives()),
-                    properties=pika.BasicProperties(content_type="application/json"),
-                )
+    async def publish(self, domain_events: list[DomainEvent]) -> None:
+        try:
+            connection = await connect_robust(self._uri)
+            async with connection:
+                channel = await connection.channel()
+                exchange = await channel.get_exchange(self._EXCHANGE)
+                for domain_event in domain_events:
+                    await exchange.publish(
+                        Message(body=json.dumps(domain_event.to_primitives()).encode()), routing_key=domain_event.type_
+                    )
+        except Exception as e:
+            logger.error(f"Failed to publish domain events: {e}")
+            raise RabbitMQEventBusError("Failed to publish domain events")
 
 
 class RabbitMQEventBusError(Exception):

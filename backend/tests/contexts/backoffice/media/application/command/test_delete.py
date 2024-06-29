@@ -12,7 +12,7 @@ def test_media_delete__ok(mocker) -> None:
     command = MediaDeleteCommand(media.id.value)
     handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_media_repository.delete.assert_called_once_with(media.id.value)
     mock_event_bus.publish.assert_called_once()
@@ -26,4 +26,4 @@ def test_media_delete__not_found(mocker) -> None:
     handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
 
     with pytest.raises(Exception):
-        handler.handle(command)
+        await handler.handle(command)

@@ -12,7 +12,7 @@ def test_serie_delete__ok(mocker) -> None:
     command = SerieDeleteCommand(serie.id.value)
     handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_serie_repository.delete.assert_called_once_with(serie.id.value)
     mock_event_bus.publish.assert_called_once()
@@ -26,4 +26,4 @@ def test_serie_delete__not_found(mocker) -> None:
     handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
 
     with pytest.raises(Exception):
-        handler.handle(command)
+        await handler.handle(command)

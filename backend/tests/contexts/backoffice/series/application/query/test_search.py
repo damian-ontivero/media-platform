@@ -12,7 +12,7 @@ def test_searcher__ok(mocker):
     query = SerieSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
     handler = SerieSearchByCriteriaQueryHandler(mock_content_repository)
 
-    found_series = handler.handle(query)
+    found_series = await handler.handle(query)
 
     assert len(found_series) == 10
 
@@ -32,6 +32,6 @@ def test_searcher__with_criteria__ok(mocker):
     )
     handler = SerieSearchByCriteriaQueryHandler(mock_serie_repository)
 
-    found_series = handler.handle(query)
+    found_series = await handler.handle(query)
 
     assert found_series == [serie]

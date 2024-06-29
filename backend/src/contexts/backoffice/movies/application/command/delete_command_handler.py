@@ -13,9 +13,9 @@ class MovieDeleteCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return MovieDeleteCommand
 
-    def handle(self, command: MovieDeleteCommand) -> None:
+    async def handle(self, command: MovieDeleteCommand) -> None:
         movie = self._repository.search(command.id)
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish([MovieDeleted.create({"id": command.id})])
+        await self._event_bus.publish([MovieDeleted.create({"id": command.id})])

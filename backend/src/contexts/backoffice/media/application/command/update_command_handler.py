@@ -1,7 +1,6 @@
 import os
 
 from moviepy.editor import VideoFileClip
-
 from src.contexts.backoffice.media.domain import MediaAlreadyExists, MediaDoesNotExist, MediaRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event.event_bus import EventBus
@@ -22,7 +21,7 @@ class MediaUpdateCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return MediaUpdateCommand
 
-    def handle(self, command: MediaUpdateCommand) -> None:
+    async def handle(self, command: MediaUpdateCommand) -> None:
         media = self._repository.search(command.id)
         if media is None:
             raise MediaDoesNotExist(f"Media with id {command.id!r} does not exist")
@@ -32,7 +31,7 @@ class MediaUpdateCommandHandler(CommandHandler):
         duration = VideoFileClip(file_path).duration
         media.update(command.title, size, duration, file_path)
         self._repository.save(media)
-        self._event_bus.publish(media.pull_domain_events())
+        await self._event_bus.publish(media.pull_domain_events())
 
     def _ensure_title_is_available(self, command: MediaUpdateCommand) -> None:
         criteria = Criteria.from_primitives(

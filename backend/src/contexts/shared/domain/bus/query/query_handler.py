@@ -21,5 +21,5 @@ class QueryHandler(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def handle(self, query: Query):
+    async def handle(self, query: Query):
         raise NotImplementedError

@@ -43,7 +43,7 @@ async def search(
     ] = None
 ):
     controller = container.get("SeriesGetController")
-    return controller.run(criteria)
+    return await controller.run(criteria)
 
 
 @router.get("/{id}", response_model=SerieReadSchema, status_code=status.HTTP_200_OK, description="Find Serie")
@@ -51,7 +51,7 @@ async def find(
     id: Annotated[str, Path(..., description="Id of the Serie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
     controller = container.get("SerieGetController")
-    return controller.run(id)
+    return await controller.run(id)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Serie")

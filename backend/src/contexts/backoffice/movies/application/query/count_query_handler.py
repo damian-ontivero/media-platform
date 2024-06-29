@@ -11,5 +11,5 @@ class MovieCountQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return MovieCountQuery
 
-    def handle(self, query: MovieCountQuery) -> int:
+    async def handle(self, query: MovieCountQuery) -> int:
         return self.repository.count()

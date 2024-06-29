@@ -1,6 +1,5 @@
 import faker
 import pytest
-
 from src.contexts.backoffice.series.application.query import SerieFindByIdQuery, SerieFindByIdQueryHandler
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
@@ -12,7 +11,7 @@ def test_serie_finder__ok(mocker) -> None:
     query = SerieFindByIdQuery(serie.id.value)
     handler = SerieFindByIdQueryHandler(mock_serie_repository)
 
-    found_serie = handler.handle(query)
+    found_serie = await handler.handle(query)
 
     assert found_serie == serie
 
@@ -24,4 +23,4 @@ def test_serie_finder__not_found(mocker) -> None:
     handler = SerieFindByIdQueryHandler(mock_serie_repository)
 
     with pytest.raises(Exception):
-        handler.handle(query)
+        await handler.handle(query)

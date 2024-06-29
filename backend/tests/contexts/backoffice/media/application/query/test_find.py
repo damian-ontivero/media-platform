@@ -1,6 +1,5 @@
 import faker
 import pytest
-
 from src.contexts.backoffice.media.application.query import MediaFindByIdQueryHandler
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
@@ -13,7 +12,7 @@ def test_media_finder__ok(mocker) -> None:
     query = MediaFindByIdQuery(media.id.value)
     handler = MediaFindByIdQueryHandler(mock_media_repository)
 
-    found_media = handler.handle(query)
+    found_media = await handler.handle(query)
 
     assert found_media == media
 
@@ -25,4 +24,4 @@ def test_media_finder__not_found(mocker) -> None:
     handler = MediaFindByIdQueryHandler(mock_media_repository)
 
     with pytest.raises(Exception):
-        handler.handle(query)
+        await handler.handle(query)

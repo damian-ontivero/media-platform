@@ -1,5 +1,4 @@
 import faker
-
 from src.contexts.backoffice.media.application.query import (
     MediaSearchByCriteriaQuery,
     MediaSearchByCriteriaQueryHandler,
@@ -14,7 +13,7 @@ def test_searcher__ok(mocker):
     query = MediaSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
     handler = MediaSearchByCriteriaQueryHandler(mock_content_repository)
 
-    found_media = handler.handle(query)
+    found_media = await handler.handle(query)
 
     assert len(found_media) == 10
 
@@ -34,6 +33,6 @@ def test_searcher__with_criteria__ok(mocker):
     )
     handler = MediaSearchByCriteriaQueryHandler(mock_media_repository)
 
-    found_media = handler.handle(query)
+    found_media = await handler.handle(query)
 
     assert found_media == [media]

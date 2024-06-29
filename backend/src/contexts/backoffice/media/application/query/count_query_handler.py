@@ -11,5 +11,5 @@ class MediaCountQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return MediaCountQuery
 
-    def handle(self, query: MediaCountQuery) -> int:
+    async def handle(self, query: MediaCountQuery) -> int:
         return self.repository.count()

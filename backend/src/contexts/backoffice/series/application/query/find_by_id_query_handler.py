@@ -11,7 +11,7 @@ class SerieFindByIdQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return SerieFindByIdQuery
 
-    def handle(self, query: SerieFindByIdQuery) -> Serie:
+    async def handle(self, query: SerieFindByIdQuery) -> Serie:
         serie = self.repository.search(query.id)
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {query.id!r} does not exist")

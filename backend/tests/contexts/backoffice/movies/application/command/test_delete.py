@@ -12,7 +12,7 @@ def test_movie_delete__ok(mocker) -> None:
     command = MovieDeleteCommand(movie.id.value)
     handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
 
-    handler.handle(command)
+    await handler.handle(command)
 
     mock_movie_repository.delete.assert_called_once_with(movie.id.value)
     mock_event_bus.publish.assert_called_once()
@@ -26,4 +26,4 @@ def test_movie_delete__not_found(mocker) -> None:
     handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
 
     with pytest.raises(Exception):
-        handler.handle(command)
+        await handler.handle(command)

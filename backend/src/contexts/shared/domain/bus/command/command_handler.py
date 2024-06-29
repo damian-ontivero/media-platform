@@ -21,5 +21,5 @@ class CommandHandler(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def handle(self, command: Command) -> None:
+    async def handle(self, command: Command) -> None:
         raise NotImplementedError

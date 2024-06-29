@@ -11,7 +11,7 @@ class QueryBus(ABC):
     """
 
     @abstractmethod
-    def ask(self, query: Query):
+    async def ask(self, query: Query):
         raise NotImplementedError
 
 

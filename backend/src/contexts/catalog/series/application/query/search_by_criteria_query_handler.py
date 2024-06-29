@@ -12,6 +12,6 @@ class SerieSearchByCriteriaQueryHandler(QueryHandler):
     def subscribed_to(self) -> Query:
         return SerieSearchByCriteriaQuery
 
-    def handle(self, query: SerieSearchByCriteriaQuery) -> list[Serie]:
+    async def handle(self, query: SerieSearchByCriteriaQuery) -> list[Serie]:
         criteria = Criteria.from_primitives(query.filter, query.sort, query.page_size, query.page_number)
         return self.repository.matching(criteria)

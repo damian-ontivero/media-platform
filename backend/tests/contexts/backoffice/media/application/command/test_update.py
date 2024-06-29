@@ -17,7 +17,7 @@ def test_media_update__ok(mocker) -> None:
         )
         handler = MediaUpdateCommandHandler(mock_media_repository, mock_event_bus)
 
-        handler.handle(command)
+        await handler.handle(command)
 
         mock_media_repository.save.assert_called_once_with(media)
         mock_event_bus.publish.assert_called_once()
@@ -35,4 +35,4 @@ def test_media_update__not_found(mocker) -> None:
         handler = MediaUpdateCommandHandler(mock_media_repository, mock_event_bus)
 
         with pytest.raises(MediaDoesNotExist):
-            handler.handle(command)
+            await handler.handle(command)

@@ -12,7 +12,7 @@ def test_searcher__ok(mocker):
     query = MovieSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
     handler = MovieSearchByCriteriaQueryHandler(mock_content_repository)
 
-    found_movies = handler.handle(query)
+    found_movies = await handler.handle(query)
 
     assert len(found_movies) == 10
 
@@ -32,6 +32,6 @@ def test_searcher__with_criteria__ok(mocker):
     )
     handler = MovieSearchByCriteriaQueryHandler(mock_movie_repository)
 
-    found_movies = handler.handle(query)
+    found_movies = await handler.handle(query)
 
     assert found_movies == [movie]

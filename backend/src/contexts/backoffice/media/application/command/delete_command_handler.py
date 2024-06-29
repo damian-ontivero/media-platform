@@ -13,9 +13,9 @@ class MediaDeleteCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return MediaDeleteCommand
 
-    def handle(self, command: MediaDeleteCommand) -> None:
+    async def handle(self, command: MediaDeleteCommand) -> None:
         media = self._repository.search(command.id)
         if media is None:
             raise MediaDoesNotExist(f"Media with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish([MediaDeleted.create({"id": command.id})])
+        await self._event_bus.publish([MediaDeleted.create({"id": command.id})])

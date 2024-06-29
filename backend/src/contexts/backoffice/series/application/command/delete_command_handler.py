@@ -13,9 +13,9 @@ class SerieDeleteCommandHandler(CommandHandler):
     def subscribed_to(self) -> Command:
         return SerieDeleteCommand
 
-    def handle(self, command: SerieDeleteCommand) -> None:
+    async def handle(self, command: SerieDeleteCommand) -> None:
         serie = self._repository.search(command.id)
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        self._event_bus.publish([SerieDeleted.create({"id": command.id})])
+        await self._event_bus.publish([SerieDeleted.create({"id": command.id})])
