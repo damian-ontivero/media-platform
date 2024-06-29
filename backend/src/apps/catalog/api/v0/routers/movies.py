@@ -2,7 +2,7 @@ from fastapi import APIRouter, Path, Query, status
 from typing_extensions import Annotated
 
 from ..dependecy_injection import container
-from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
+from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
@@ -51,27 +51,4 @@ async def find(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
     controller = container.get("MovieGetController")
-    return await controller.run(id)
-
-
-@router.post("", status_code=status.HTTP_201_CREATED, description="Create Movie")
-async def create(movie: MovieWriteSchema):
-    controller = container.get("MoviePostController")
-    return await controller.run(movie)
-
-
-@router.put("/{id}", status_code=status.HTTP_200_OK, description="Update Movie")
-async def update(
-    id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")],
-    movie: MovieWriteSchema,
-):
-    controller = container.get("MoviePutController")
-    return await controller.run(id, movie)
-
-
-@router.delete("/{id}", status_code=status.HTTP_200_OK, description="Delete Movie")
-async def delete(
-    id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
-):
-    controller = container.get("MovieDeleteController")
     return await controller.run(id)

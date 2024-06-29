@@ -1,4 +1,4 @@
-from src.contexts.backoffice.media.domain import MediaRepository
+from src.contexts.catalog.media.domain import MediaRepository
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 
 from .count_query import MediaCountQuery

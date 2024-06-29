@@ -6,10 +6,10 @@ from .count_query import SerieCountQuery
 
 class SerieCountQueryHandler(QueryHandler):
     def __init__(self, repository: SerieRepository) -> None:
-        self.repository = repository
+        self._repository = repository
 
     def subscribed_to(self) -> Query:
         return SerieCountQuery
 
     async def handle(self, query: SerieCountQuery) -> int:
-        return self.repository.count()
+        return self._repository.count()

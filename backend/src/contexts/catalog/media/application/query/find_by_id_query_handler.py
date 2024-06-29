@@ -1,6 +1,7 @@
-from src.contexts.backoffice.media.domain import Media, MediaDoesNotExist, MediaRepository
-from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
+from src.contexts.catalog.media.domain import Media, MediaDoesNotExist, MediaRepository
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
+
+from .find_by_id_query import MediaFindByIdQuery
 
 
 class MediaFindByIdQueryHandler(QueryHandler):

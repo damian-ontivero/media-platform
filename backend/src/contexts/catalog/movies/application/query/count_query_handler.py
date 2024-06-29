@@ -6,10 +6,10 @@ from .count_query import MovieCountQuery
 
 class MovieCountQueryHandler(QueryHandler):
     def __init__(self, repository: MovieRepository) -> None:
-        self.repository = repository
+        self._repository = repository
 
     def subscribed_to(self) -> Query:
         return MovieCountQuery
 
     async def handle(self, query: MovieCountQuery) -> int:
-        return self.repository.count()
+        return self._repository.count()

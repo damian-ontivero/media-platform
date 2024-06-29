@@ -1,0 +1,2 @@
+class MediaDoesNotExist(Exception):
+    pass

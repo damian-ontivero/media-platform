@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from fastapi import Request, Response
+from fastapi import Response
 
 
 class Controller(ABC):
@@ -12,5 +12,5 @@ class Controller(ABC):
     """
 
     @abstractmethod
-    def run(self, request: Request | None) -> Response:
+    async def run(self, *args, **kwargs) -> Response:
         raise NotImplementedError

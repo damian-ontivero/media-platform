@@ -6,13 +6,13 @@ from .find_by_id_query import MovieFindByIdQuery
 
 class MovieFindByIdQueryHandler(QueryHandler):
     def __init__(self, repository: MovieRepository) -> None:
-        self.repository = repository
+        self._repository = repository
 
     def subscribed_to(self) -> Query:
         return MovieFindByIdQuery
 
     async def handle(self, query: MovieFindByIdQuery) -> Movie:
-        movie = self.repository.search(query.id)
+        movie = self._repository.search(query.id)
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {query.id!r} does not exist")
         return movie
