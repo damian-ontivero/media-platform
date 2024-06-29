@@ -4,4 +4,5 @@ imports:
     - { resource: ./command.yaml }
     - { resource: ./query.yaml }
     - { resource: ./event.yaml }
+    - { resource: ./rabbitmq.yaml }
     - { resource: ./controller.yaml }

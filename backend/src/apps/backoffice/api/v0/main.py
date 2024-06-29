@@ -1,5 +1,4 @@
 import contextlib
-import os
 
 import dotenv
 from fastapi import FastAPI, Request
@@ -8,20 +7,19 @@ from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from src.apps.backoffice.api.v0.exception import EXCEPTION_TO_HTTP_STATUS_CODE
 
+from .dependecy_injection import container
 from .routers import health_check_router, media_router, movies_router, series_router
-from .setup_rabbitmq import declare_exchange, declare_vhost
 
 dotenv.load_dotenv(".env", override=True)
 
-RABBITMQ_API = os.getenv("RABBITMQ_API")
-RABBITMQ_URI = os.getenv("RABBITMQ_URI")
-RABIITMQ_EXCHANGE = "backoffice.domain_events"
+RABBITMQ_EXCHANGE = "backoffice.domain_events"
 
 
 @contextlib.asynccontextmanager
 async def setup_rabbitmq(app: FastAPI):
-    await declare_vhost(RABBITMQ_API, RABBITMQ_URI)
-    await declare_exchange(RABBITMQ_URI, RABIITMQ_EXCHANGE)
+    rabbitmq_manager = container.get("RabbitMQManager")
+    await rabbitmq_manager.declare_vhost()
+    await rabbitmq_manager.declare_exchange(RABBITMQ_EXCHANGE)
     yield
 
 

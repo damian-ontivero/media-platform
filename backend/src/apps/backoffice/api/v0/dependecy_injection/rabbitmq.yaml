@@ -1,0 +1,5 @@
+services:
+    - id: RabbitMQManager
+      module: src.contexts.shared.infrastructure.rabbitmq.rabbitmq_manager
+      class: RabbitMQManager
+      factory: create
