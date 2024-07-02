@@ -7,7 +7,8 @@ from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 from tests.contexts.backoffice.series.factory.serie_season_factory import SerieSeasonFactory
 
 
-def test_serie_update__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_update__ok(mocker) -> None:
     serie = SerieFactory()
     seasons = SerieSeasonFactory.create_batch(3)
     media = MediaFactory()
@@ -15,7 +16,7 @@ def test_serie_update__ok(mocker) -> None:
     mock_serie_repository.search.return_value = serie
     mock_serie_repository.matching.return_value = None
     mock_query_bus = mocker.Mock()
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     handler = SerieUpdateCommandHandler(mock_serie_repository, mock_query_bus, mock_event_bus)
     command = SerieUpdateCommand(
         id=serie.id.value,
@@ -38,11 +39,12 @@ def test_serie_update__ok(mocker) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-def test_serie_update__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_update__not_found(mocker) -> None:
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = None
     mock_query_bus = mocker.Mock()
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     handler = SerieUpdateCommandHandler(mock_serie_repository, mock_query_bus, mock_event_bus)
     command = SerieUpdateCommand(id=faker.Faker().uuid4(), title=faker.Faker().name(), seasons=[])
 

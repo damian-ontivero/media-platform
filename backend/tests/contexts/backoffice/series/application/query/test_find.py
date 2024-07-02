@@ -4,7 +4,8 @@ from src.contexts.backoffice.series.application.query import SerieFindByIdQuery,
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
-def test_serie_finder__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_finder__ok(mocker) -> None:
     serie = SerieFactory()
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = serie
@@ -16,7 +17,8 @@ def test_serie_finder__ok(mocker) -> None:
     assert found_serie == serie
 
 
-def test_serie_finder__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_finder__not_found(mocker) -> None:
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = None
     query = SerieFindByIdQuery(faker.Faker().uuid4())

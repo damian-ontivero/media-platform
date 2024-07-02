@@ -1,4 +1,4 @@
-import faker
+import pytest
 from src.contexts.backoffice.media.application.query import (
     MediaSearchByCriteriaQuery,
     MediaSearchByCriteriaQueryHandler,
@@ -6,7 +6,8 @@ from src.contexts.backoffice.media.application.query import (
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-def test_searcher__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__ok(mocker):
     media = MediaFactory.create_batch(10)
     mock_content_repository = mocker.Mock()
     mock_content_repository.matching.return_value = media
@@ -18,7 +19,8 @@ def test_searcher__ok(mocker):
     assert len(found_media) == 10
 
 
-def test_searcher__with_criteria__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__with_criteria__ok(mocker):
     media = MediaFactory(title="The Godfather")
     mock_media_repository = mocker.Mock()
     mock_media_repository.matching.return_value = [media]

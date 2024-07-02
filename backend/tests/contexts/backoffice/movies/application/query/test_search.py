@@ -1,3 +1,4 @@
+import pytest
 from src.contexts.backoffice.movies.application.query import (
     MovieSearchByCriteriaQuery,
     MovieSearchByCriteriaQueryHandler,
@@ -5,7 +6,8 @@ from src.contexts.backoffice.movies.application.query import (
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-def test_searcher__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__ok(mocker):
     movies = MovieFactory.create_batch(10)
     mock_content_repository = mocker.Mock()
     mock_content_repository.matching.return_value = movies
@@ -17,7 +19,8 @@ def test_searcher__ok(mocker):
     assert len(found_movies) == 10
 
 
-def test_searcher__with_criteria__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__with_criteria__ok(mocker):
     movie = MovieFactory(title="The Godfather")
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.matching.return_value = [movie]

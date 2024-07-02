@@ -4,11 +4,12 @@ from src.contexts.backoffice.movies.application.command import MovieDeleteComman
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-def test_movie_delete__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_delete__ok(mocker) -> None:
     movie = MovieFactory()
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = movie
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MovieDeleteCommand(movie.id.value)
     handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
 
@@ -18,10 +19,11 @@ def test_movie_delete__ok(mocker) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-def test_movie_delete__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_delete__not_found(mocker) -> None:
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = None
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MovieDeleteCommand(faker.Faker().uuid4())
     handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
 

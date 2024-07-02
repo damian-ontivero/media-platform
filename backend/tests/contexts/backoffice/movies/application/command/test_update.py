@@ -6,7 +6,8 @@ from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-def test_movie_update__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_update__ok(mocker) -> None:
     movie = MovieFactory()
     media = MediaFactory()
     mock_movie_repository = mocker.Mock()
@@ -14,7 +15,7 @@ def test_movie_update__ok(mocker) -> None:
     mock_movie_repository.matching.return_value = None
     mock_query_bus = mocker.Mock()
     mock_query_bus.ask.return_value = media
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MovieUpdateCommand(id=movie.id.value, title=faker.Faker().name(), media_id=media.id.value)
     handler = MovieUpdateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
 
@@ -24,13 +25,14 @@ def test_movie_update__ok(mocker) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-def test_movie_update__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_update__not_found(mocker) -> None:
     media = MediaFactory()
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = None
     mock_query_bus = mocker.Mock()
     mock_query_bus.ask.return_value = media
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MovieUpdateCommand(id=faker.Faker().uuid4(), title=faker.Faker().name(), media_id=media.id.value)
     handler = MovieUpdateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
 

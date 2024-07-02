@@ -4,7 +4,8 @@ from src.contexts.backoffice.movies.application.query import MovieFindByIdQuery,
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-def test_movie_finder__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_finder__ok(mocker) -> None:
     movie = MovieFactory()
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = movie
@@ -16,7 +17,8 @@ def test_movie_finder__ok(mocker) -> None:
     assert found_movie == movie
 
 
-def test_movie_finder__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_movie_finder__not_found(mocker) -> None:
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = None
     query = MovieFindByIdQuery(faker.Faker().uuid4())

@@ -4,11 +4,12 @@ from src.contexts.backoffice.series.application.command import SerieDeleteComman
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
-def test_serie_delete__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_delete__ok(mocker) -> None:
     serie = SerieFactory()
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = serie
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = SerieDeleteCommand(serie.id.value)
     handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
 
@@ -18,10 +19,11 @@ def test_serie_delete__ok(mocker) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-def test_serie_delete__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_serie_delete__not_found(mocker) -> None:
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = None
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = SerieDeleteCommand(faker.Faker().uuid4())
     handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
 

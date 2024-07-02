@@ -5,12 +5,13 @@ from src.contexts.backoffice.media.domain import MediaDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-def test_media_update__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_media_update__ok(mocker) -> None:
     media = MediaFactory()
     mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = media
     mock_media_repository.matching.return_value = None
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     with open("backend/tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()
@@ -23,11 +24,12 @@ def test_media_update__ok(mocker) -> None:
         mock_event_bus.publish.assert_called_once()
 
 
-def test_media_update__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_media_update__not_found(mocker) -> None:
     media = MediaFactory()
     mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = None
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     with open("backend/tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()

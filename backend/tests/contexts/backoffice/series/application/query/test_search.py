@@ -1,3 +1,4 @@
+import pytest
 from src.contexts.backoffice.series.application.query import (
     SerieSearchByCriteriaQuery,
     SerieSearchByCriteriaQueryHandler,
@@ -5,7 +6,8 @@ from src.contexts.backoffice.series.application.query import (
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
-def test_searcher__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__ok(mocker):
     series = SerieFactory.create_batch(10)
     mock_content_repository = mocker.Mock()
     mock_content_repository.matching.return_value = series
@@ -17,7 +19,8 @@ def test_searcher__ok(mocker):
     assert len(found_series) == 10
 
 
-def test_searcher__with_criteria__ok(mocker):
+@pytest.mark.asyncio
+async def test_searcher__with_criteria__ok(mocker):
     serie = SerieFactory(title="The Godfather")
     mock_serie_repository = mocker.Mock()
     mock_serie_repository.matching.return_value = [serie]

@@ -4,11 +4,12 @@ from src.contexts.backoffice.media.application.command import MediaDeleteCommand
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-def test_media_delete__ok(mocker) -> None:
+@pytest.mark.asyncio
+async def test_media_delete__ok(mocker) -> None:
     media = MediaFactory()
     mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = media
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MediaDeleteCommand(media.id.value)
     handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
 
@@ -18,10 +19,11 @@ def test_media_delete__ok(mocker) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-def test_media_delete__not_found(mocker) -> None:
+@pytest.mark.asyncio
+async def test_media_delete__not_found(mocker) -> None:
     mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = None
-    mock_event_bus = mocker.Mock()
+    mock_event_bus = mocker.AsyncMock()
     command = MediaDeleteCommand(faker.Faker().uuid4())
     handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
 
