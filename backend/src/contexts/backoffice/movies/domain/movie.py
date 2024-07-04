@@ -1,6 +1,6 @@
 from src.contexts.shared.domain import AggregateRoot, EntityId
 
-from .movie_events import MovieCreated, MovieUpdated
+from .movie_events import MovieCreatedDomainEvent, MovieUpdatedDomainEvent
 
 
 class Movie(AggregateRoot):
@@ -25,7 +25,7 @@ class Movie(AggregateRoot):
     @classmethod
     def create(cls, title: str, media_id: str) -> "Movie":
         movie = cls(EntityId.generate(), title, EntityId.from_string(media_id))
-        movie.record(MovieCreated.create(movie.to_primitives()))
+        movie.record(MovieCreatedDomainEvent.create(movie.to_primitives()))
         return movie
 
     @classmethod
@@ -35,7 +35,7 @@ class Movie(AggregateRoot):
     def update(self, title: str, media_id: str) -> None:
         self._title = title
         self._media_id = EntityId.from_string(media_id)
-        self.record(MovieUpdated.create(self.to_primitives()))
+        self.record(MovieUpdatedDomainEvent.create(self.to_primitives()))
 
     def to_primitives(self) -> dict:
         return {"id": self._id.value, "title": self._title, "media_id": self._media_id.value}

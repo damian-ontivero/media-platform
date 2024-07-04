@@ -1,13 +1,13 @@
 from src.contexts.shared.domain import DomainEvent
 
 
-class MediaCreated(DomainEvent):
-    EVENT_TYPE = "media_created"
+class MediaCreatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "media.created"
 
 
-class MediaUpdated(DomainEvent):
-    EVENT_TYPE = "media_updated"
+class MediaUpdatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "media.updated"
 
 
-class MediaDeleted(DomainEvent):
-    EVENT_TYPE = "media_deleted"
+class MediaDeletedDomainEvent(DomainEvent):
+    EVENT_TYPE = "media.deleted"

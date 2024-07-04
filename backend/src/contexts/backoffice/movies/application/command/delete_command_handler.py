@@ -1,4 +1,4 @@
-from src.contexts.backoffice.movies.domain import MovieDeleted, MovieDoesNotExist, MovieRepository
+from src.contexts.backoffice.movies.domain import MovieDeletedDomainEvent, MovieDoesNotExist, MovieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event.event_bus import EventBus
 
@@ -18,4 +18,4 @@ class MovieDeleteCommandHandler(CommandHandler):
         if movie is None:
             raise MovieDoesNotExist(f"Movie with id {command.id!r} does not exist")
         self._repository.delete(command.id)
-        await self._event_bus.publish([MovieDeleted.create({"id": command.id})])
+        await self._event_bus.publish([MovieDeletedDomainEvent.create({"id": command.id})])
