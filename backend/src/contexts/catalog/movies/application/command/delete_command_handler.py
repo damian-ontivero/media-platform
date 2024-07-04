@@ -1,4 +1,4 @@
-from src.contexts.catalog.movies.domain import MovieDeleted, MovieRepository
+from src.contexts.catalog.movies.domain import MovieDeletedDomainEvent, MovieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event.event_bus import EventBus
 
@@ -17,4 +17,4 @@ class MovieDeleteCommandHandler(CommandHandler):
         movie = self._repository.search(command.id)
         if movie is not None:
             self._repository.delete(command.id)
-            await self._event_bus.publish([MovieDeleted.create({"id": command.id})])
+            await self._event_bus.publish([MovieDeletedDomainEvent.create({"id": command.id})])

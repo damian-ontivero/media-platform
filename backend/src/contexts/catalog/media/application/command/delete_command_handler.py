@@ -1,4 +1,4 @@
-from src.contexts.catalog.media.domain import MediaDeleted, MediaRepository
+from src.contexts.catalog.media.domain import MediaDeletedDomainEvent, MediaRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event.event_bus import EventBus
 
@@ -17,4 +17,4 @@ class MediaDeleteCommandHandler(CommandHandler):
         media = self._repository.search(command.id)
         if media is not None:
             self._repository.delete(command.id)
-            await self._event_bus.publish([MediaDeleted.create({"id": command.id})])
+            await self._event_bus.publish([MediaDeletedDomainEvent.create({"id": command.id})])

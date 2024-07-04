@@ -1,13 +1,13 @@
 from src.contexts.shared.domain import DomainEvent
 
 
-class SerieCreated(DomainEvent):
-    EVENT_TYPE = "serie_created"
+class SerieCreatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "serie.created"
 
 
-class SerieUpdated(DomainEvent):
-    EVENT_TYPE = "serie_updated"
+class SerieUpdatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "serie.updated"
 
 
-class SerieDeleted(DomainEvent):
-    EVENT_TYPE = "serie_deleted"
+class SerieDeletedDomainEvent(DomainEvent):
+    EVENT_TYPE = "serie.deleted"

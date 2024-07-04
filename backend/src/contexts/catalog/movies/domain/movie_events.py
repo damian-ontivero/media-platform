@@ -1,13 +1,13 @@
 from src.contexts.shared.domain import DomainEvent
 
 
-class MovieCreated(DomainEvent):
-    EVENT_TYPE = "movie_created"
+class MovieCreatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "movie.created"
 
 
-class MovieUpdated(DomainEvent):
-    EVENT_TYPE = "movie_updated"
+class MovieUpdatedDomainEvent(DomainEvent):
+    EVENT_TYPE = "movie.updated"
 
 
-class MovieDeleted(DomainEvent):
-    EVENT_TYPE = "movie_deleted"
+class MovieDeletedDomainEvent(DomainEvent):
+    EVENT_TYPE = "movie.deleted"

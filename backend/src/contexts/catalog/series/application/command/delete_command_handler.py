@@ -1,4 +1,4 @@
-from src.contexts.catalog.series.domain import SerieDeleted, SerieRepository
+from src.contexts.catalog.series.domain import SerieDeletedDomainEvent, SerieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
 from src.contexts.shared.domain.bus.event.event_bus import EventBus
 
@@ -17,4 +17,4 @@ class SerieDeleteCommandHandler(CommandHandler):
         serie = self._repository.search(command.id)
         if serie is not None:
             self._repository.delete(command.id)
-            await self._event_bus.publish([SerieDeleted.create({"id": command.id})])
+            await self._event_bus.publish([SerieDeletedDomainEvent.create({"id": command.id})])
