@@ -1,7 +1,7 @@
 from fastapi import Response, status
 from src.apps.catalog.api.v0.schemas import SerieReadSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.catalog.series.application.query.find_by_id_query import SerieFindByIdQuery
+from src.contexts.catalog.series.application.query import SerieFindByIdQuery
 from src.contexts.shared.domain.bus.query import QueryBus
 
 

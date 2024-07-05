@@ -1,0 +1,5 @@
+from .serie_delete_controller import SerieDeleteController
+from .serie_get_controller import SerieGetController
+from .serie_post_controller import SeriePostController
+from .serie_put_controller import SeriePutController
+from .series_get_controller import SeriesGetController

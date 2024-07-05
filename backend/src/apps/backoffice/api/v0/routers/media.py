@@ -1,6 +1,14 @@
 from fastapi import APIRouter, Body, File, Header, Path, Query, UploadFile, status
 from typing_extensions import Annotated
 
+from ..controllers.media import (
+    MediaDeleteController,
+    MediaFileGetController,
+    MediaGetController,
+    MediaPostController,
+    MediaPutController,
+    MediasGetController,
+)
 from ..dependecy_injection import container
 from ..schemas import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
 
@@ -42,7 +50,7 @@ async def search(
         ),
     ] = None
 ):
-    controller = container.get("MediasGetController")
+    controller: MediasGetController = container.get("MediasGetController")
     return await controller.run(criteria)
 
 
@@ -50,13 +58,13 @@ async def search(
 async def find(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller = container.get("MediaGetController")
+    controller: MediaGetController = container.get("MediaGetController")
     return await controller.run(id)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Media")
 async def create(media: MediaWriteSchema = Body(...), file: UploadFile = File(...)):
-    controller = container.get("MediaPostController")
+    controller: MediaPostController = container.get("MediaPostController")
     return await controller.run(media, file)
 
 
@@ -66,7 +74,7 @@ async def update(
     media: MediaWriteSchema = Body(...),
     file: UploadFile = File(...),
 ):
-    controller = container.get("MediaPutController")
+    controller: MediaPutController = container.get("MediaPutController")
     return await controller.run(id, media, file)
 
 
@@ -74,7 +82,7 @@ async def update(
 async def delete(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller = container.get("MediaDeleteController")
+    controller: MediaDeleteController = container.get("MediaDeleteController")
     return await controller.run(id)
 
 
@@ -83,5 +91,5 @@ async def get_stream(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")],
     range: Annotated[str, Header(..., description="Range", example="bytes=0-100")],
 ):
-    controller = container.get("MediaFileGetController")
+    controller: MediaFileGetController = container.get("MediaFileGetController")
     return await controller.run(id, range)

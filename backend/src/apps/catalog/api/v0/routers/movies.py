@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Path, Query, status
 from typing_extensions import Annotated
 
+from ..controllers.movies import MovieGetController, MoviesGetController
 from ..dependecy_injection import container
 from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema
 
@@ -42,7 +43,7 @@ async def search(
         ),
     ] = None
 ):
-    controller = container.get("MoviesGetController")
+    controller: MoviesGetController = container.get("MoviesGetController")
     return await controller.run(criteria)
 
 
@@ -50,5 +51,5 @@ async def search(
 async def find(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller = container.get("MovieGetController")
+    controller: MovieGetController = container.get("MovieGetController")
     return await controller.run(id)

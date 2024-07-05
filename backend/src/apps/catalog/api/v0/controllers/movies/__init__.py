@@ -1,0 +1,2 @@
+from .movie_get_controller import MovieGetController
+from .movies_get_controller import MoviesGetController
