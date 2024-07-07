@@ -6,7 +6,7 @@ services:
           - !tagged command_handler
 
     - id: MediaCreateCommandHandler
-      module: src.contexts.backoffice.media.application.media_command.create_command_handler
+      module: src.contexts.backoffice.media.application.command.media_create_command_handler
       class: MediaCreateCommandHandler
       arguments:
           - !ref MediaRepository
@@ -15,7 +15,7 @@ services:
           - command_handler
 
     - id: MediaUpdateCommandHandler
-      module: src.contexts.backoffice.media.application.media_command.update_command_handler
+      module: src.contexts.backoffice.media.application.command.media_update_command_handler
       class: MediaUpdateCommandHandler
       arguments:
           - !ref MediaRepository
