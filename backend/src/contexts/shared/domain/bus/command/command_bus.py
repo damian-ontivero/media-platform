@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+import abc
 
 from .command import Command
 
 
-class CommandBus(ABC):
+class CommandBus(abc.ABC):
     """
     Interface for command buses.
 
@@ -11,7 +11,7 @@ class CommandBus(ABC):
     command handler.
     """
 
-    @abstractmethod
+    @abc.abstractmethod
     async def dispatch(self, command: Command) -> None:
         raise NotImplementedError
 

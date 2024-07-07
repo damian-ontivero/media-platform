@@ -1,7 +1,7 @@
 from src.contexts.catalog.movies.domain import MovieRepository
 from src.contexts.catalog.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 
 from .movie_update_command import MovieUpdateCommand

@@ -13,7 +13,7 @@ async def test_movie_update__ok(mocker) -> None:
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = movie
     mock_movie_repository.matching.return_value = None
-    mock_query_bus = mocker.Mock()
+    mock_query_bus = mocker.AsyncMock()
     mock_query_bus.ask.return_value = media
     mock_event_bus = mocker.AsyncMock()
     command = MovieUpdateCommand(id=movie.id.value, title=faker.Faker().name(), media_id=media.id.value)
@@ -30,7 +30,7 @@ async def test_movie_update__not_found(mocker) -> None:
     media = MediaFactory()
     mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = None
-    mock_query_bus = mocker.Mock()
+    mock_query_bus = mocker.AsyncMock()
     mock_query_bus.ask.return_value = media
     mock_event_bus = mocker.AsyncMock()
     command = MovieUpdateCommand(id=faker.Faker().uuid4(), title=faker.Faker().name(), media_id=media.id.value)

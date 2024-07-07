@@ -1,6 +1,6 @@
 from src.contexts.catalog.movies.domain import MovieDeletedDomainEvent, MovieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 
 from .movie_delete_command import MovieDeleteCommand
 

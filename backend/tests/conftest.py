@@ -1,3 +1,3 @@
 import dotenv
 
-dotenv.load_dotenv("backend/.env")
+dotenv.load_dotenv("src/apps/backoffice/.env", override=True)

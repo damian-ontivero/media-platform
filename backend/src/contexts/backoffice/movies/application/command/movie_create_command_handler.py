@@ -1,7 +1,7 @@
 from src.contexts.backoffice.movies.domain import Movie, MovieAlreadyExists, MovieRepository
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 from src.contexts.shared.domain.criteria import Criteria
 
@@ -19,7 +19,7 @@ class MovieCreateCommandHandler(CommandHandler):
 
     async def handle(self, command: MovieCreateCommand) -> None:
         self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command)
+        await self._ensure_media_is_available(command)
         movie = Movie.create(command.title, command.media_id)
         self._repository.save(movie)
         await self._event_bus.publish(movie.pull_domain_events())

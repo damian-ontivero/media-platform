@@ -13,7 +13,7 @@ class DomainEvent:
     if they have the same value.
     """
 
-    EVENT_TYPE: str
+    EVENT_NAME: str
 
     __slots__ = ("_id", "_type", "_occurred_on", "_data")
 
@@ -64,7 +64,7 @@ class DomainEvent:
 
     @classmethod
     def create(cls, data: dict) -> "DomainEvent":
-        return cls(str(uuid.uuid4()), cls.EVENT_TYPE, datetime.datetime.now(datetime.UTC).isoformat(), data)
+        return cls(str(uuid.uuid4()), cls.EVENT_NAME, datetime.datetime.now(datetime.UTC).isoformat(), data)
 
     def to_primitives(self) -> dict:
         return {"id": self._id, "type": self._type, "occurred_on": self._occurred_on, "data": self._data}

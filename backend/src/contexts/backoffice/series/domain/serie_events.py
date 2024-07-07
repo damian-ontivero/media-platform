@@ -2,12 +2,12 @@ from src.contexts.shared.domain import DomainEvent
 
 
 class SerieCreatedDomainEvent(DomainEvent):
-    EVENT_TYPE = "serie.created"
+    EVENT_NAME = "backoffice.event.serie.created"
 
 
 class SerieUpdatedDomainEvent(DomainEvent):
-    EVENT_TYPE = "serie.updated"
+    EVENT_NAME = "backoffice.event.serie.updated"
 
 
 class SerieDeletedDomainEvent(DomainEvent):
-    EVENT_TYPE = "serie.deleted"
+    EVENT_NAME = "backoffice.event.serie.deleted"

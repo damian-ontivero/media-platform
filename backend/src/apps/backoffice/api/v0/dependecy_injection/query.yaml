@@ -6,7 +6,7 @@ services:
           - !tagged query_handler
 
     - id: MediaSearchByCriteriaQueryHandler
-      module: src.contexts.backoffice.media.application.query.search_by_criteria_query_handler
+      module: src.contexts.backoffice.media.application.query.media_search_by_criteria_query_handler
       class: MediaSearchByCriteriaQueryHandler
       arguments:
           - !ref MediaRepository
@@ -14,7 +14,7 @@ services:
           - query_handler
 
     - id: MediaFindByIdQueryHandler
-      module: src.contexts.backoffice.media.application.query.find_by_id_query_handler
+      module: src.contexts.backoffice.media.application.query.media_find_by_id_query_handler
       class: MediaFindByIdQueryHandler
       arguments:
           - !ref MediaRepository
@@ -22,7 +22,7 @@ services:
           - query_handler
 
     - id: MediaCountQueryHandler
-      module: src.contexts.backoffice.media.application.query.count_query_handler
+      module: src.contexts.backoffice.media.application.query.media_count_query_handler
       class: MediaCountQueryHandler
       arguments:
           - !ref MediaRepository
@@ -30,7 +30,7 @@ services:
           - query_handler
 
     - id: MovieSearchByCriteriaQueryHandler
-      module: src.contexts.backoffice.movies.application.query.search_by_criteria_query_handler
+      module: src.contexts.backoffice.movies.application.query.movie_search_by_criteria_query_handler
       class: MovieSearchByCriteriaQueryHandler
       arguments:
           - !ref MovieRepository
@@ -38,7 +38,7 @@ services:
           - query_handler
 
     - id: MovieFindByIdQueryHandler
-      module: src.contexts.backoffice.movies.application.query.find_by_id_query_handler
+      module: src.contexts.backoffice.movies.application.query.movie_find_by_id_query_handler
       class: MovieFindByIdQueryHandler
       arguments:
           - !ref MovieRepository
@@ -46,7 +46,7 @@ services:
           - query_handler
 
     - id: MovieCountQueryHandler
-      module: src.contexts.backoffice.movies.application.query.count_query_handler
+      module: src.contexts.backoffice.movies.application.query.movie_count_query_handler
       class: MovieCountQueryHandler
       arguments:
           - !ref MovieRepository
@@ -54,7 +54,7 @@ services:
           - query_handler
 
     - id: SerieSearchByCriteriaQueryHandler
-      module: src.contexts.backoffice.series.application.query.search_by_criteria_query_handler
+      module: src.contexts.backoffice.series.application.query.serie_search_by_criteria_query_handler
       class: SerieSearchByCriteriaQueryHandler
       arguments:
           - !ref SerieRepository
@@ -62,7 +62,7 @@ services:
           - query_handler
 
     - id: SerieFindByIdQueryHandler
-      module: src.contexts.backoffice.series.application.query.find_by_id_query_handler
+      module: src.contexts.backoffice.series.application.query.serie_find_by_id_query_handler
       class: SerieFindByIdQueryHandler
       arguments:
           - !ref SerieRepository
@@ -70,7 +70,7 @@ services:
           - query_handler
 
     - id: SerieCountQueryHandler
-      module: src.contexts.backoffice.series.application.query.count_query_handler
+      module: src.contexts.backoffice.series.application.query.serie_count_query_handler
       class: SerieCountQueryHandler
       arguments:
           - !ref SerieRepository

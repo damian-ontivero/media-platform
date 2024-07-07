@@ -12,7 +12,7 @@ async def test_media_update__ok(mocker) -> None:
     mock_media_repository.search.return_value = media
     mock_media_repository.matching.return_value = None
     mock_event_bus = mocker.AsyncMock()
-    with open("backend/tests/data/video.mp4", "rb") as file:
+    with open("tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()
         )
@@ -30,7 +30,7 @@ async def test_media_update__not_found(mocker) -> None:
     mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = None
     mock_event_bus = mocker.AsyncMock()
-    with open("backend/tests/data/video.mp4", "rb") as file:
+    with open("tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()
         )

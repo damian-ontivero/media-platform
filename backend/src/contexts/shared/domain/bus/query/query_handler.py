@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+import abc
 
 from .query import Query
 
 
-class QueryHandler(ABC):
+class QueryHandler(abc.ABC):
     """
     Interface for query handlers.
 
@@ -16,10 +16,10 @@ class QueryHandler(ABC):
     and call its ask method.
     """
 
-    @abstractmethod
+    @abc.abstractmethod
     def subscribed_to(self) -> Query:
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     async def handle(self, query: Query):
         raise NotImplementedError

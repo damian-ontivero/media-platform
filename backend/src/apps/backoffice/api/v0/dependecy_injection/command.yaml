@@ -6,7 +6,7 @@ services:
           - !tagged command_handler
 
     - id: MediaCreateCommandHandler
-      module: src.contexts.backoffice.media.application.command.create_command_handler
+      module: src.contexts.backoffice.media.application.media_command.create_command_handler
       class: MediaCreateCommandHandler
       arguments:
           - !ref MediaRepository
@@ -15,7 +15,7 @@ services:
           - command_handler
 
     - id: MediaUpdateCommandHandler
-      module: src.contexts.backoffice.media.application.command.update_command_handler
+      module: src.contexts.backoffice.media.application.media_command.update_command_handler
       class: MediaUpdateCommandHandler
       arguments:
           - !ref MediaRepository
@@ -24,7 +24,7 @@ services:
           - command_handler
 
     - id: MediaDeleteCommandHandler
-      module: src.contexts.backoffice.media.application.command.delete_command_handler
+      module: src.contexts.backoffice.media.application.command.media_delete_command_handler
       class: MediaDeleteCommandHandler
       arguments:
           - !ref MediaRepository
@@ -33,7 +33,7 @@ services:
           - command_handler
 
     - id: MovieCreateCommandHandler
-      module: src.contexts.backoffice.movies.application.command.create_command_handler
+      module: src.contexts.backoffice.movies.application.command.movie_create_command_handler
       class: MovieCreateCommandHandler
       arguments:
           - !ref MovieRepository
@@ -43,7 +43,7 @@ services:
           - command_handler
 
     - id: MovieUpdateCommandHandler
-      module: src.contexts.backoffice.movies.application.command.update_command_handler
+      module: src.contexts.backoffice.movies.application.command.movie_update_command_handler
       class: MovieUpdateCommandHandler
       arguments:
           - !ref MovieRepository
@@ -53,7 +53,7 @@ services:
           - command_handler
 
     - id: MovieDeleteCommandHandler
-      module: src.contexts.backoffice.movies.application.command.delete_command_handler
+      module: src.contexts.backoffice.movies.application.command.movie_delete_command_handler
       class: MovieDeleteCommandHandler
       arguments:
           - !ref MovieRepository
@@ -62,7 +62,7 @@ services:
           - command_handler
 
     - id: SerieCreateCommandHandler
-      module: src.contexts.backoffice.series.application.command.create_command_handler
+      module: src.contexts.backoffice.series.application.command.serie_create_command_handler
       class: SerieCreateCommandHandler
       arguments:
           - !ref SerieRepository
@@ -72,7 +72,7 @@ services:
           - command_handler
 
     - id: SerieUpdateCommandHandler
-      module: src.contexts.backoffice.series.application.command.update_command_handler
+      module: src.contexts.backoffice.series.application.command.serie_update_command_handler
       class: SerieUpdateCommandHandler
       arguments:
           - !ref SerieRepository
@@ -82,7 +82,7 @@ services:
           - command_handler
 
     - id: SerieDeleteCommandHandler
-      module: src.contexts.backoffice.series.application.command.delete_command_handler
+      module: src.contexts.backoffice.series.application.command.serie_delete_command_handler
       class: SerieDeleteCommandHandler
       arguments:
           - !ref SerieRepository

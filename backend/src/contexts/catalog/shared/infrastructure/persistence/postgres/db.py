@@ -11,11 +11,11 @@ class PostgresSession:
 
     @staticmethod
     def create_session(
-        username: str = os.getenv("CATALOG_POSTGRES_USER"),
-        password: str = os.getenv("CATALOG_POSTGRES_PASS"),
-        host: str = os.getenv("CATALOG_POSTGRES_HOST"),
-        port: str = os.getenv("CATALOG_POSTGRES_PORT"),
-        database: str = os.getenv("CATALOG_POSTGRES_DATABASE"),
+        username: str = os.getenv("POSTGRES_USER"),
+        password: str = os.getenv("POSTGRES_PASS"),
+        host: str = os.getenv("POSTGRES_HOST"),
+        port: str = os.getenv("POSTGRES_PORT"),
+        database: str = os.getenv("POSTGRES_DATABASE"),
         autocommit: bool = False,
         verbose: bool = False,
     ):

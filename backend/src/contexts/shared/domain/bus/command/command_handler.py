@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+import abc
 
 from .command import Command
 
 
-class CommandHandler(ABC):
+class CommandHandler(abc.ABC):
     """
     Interface for command handlers.
 
@@ -16,10 +16,10 @@ class CommandHandler(ABC):
     and call its handle method.
     """
 
-    @abstractmethod
+    @abc.abstractmethod
     def subscribed_to(self) -> Command:
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     async def handle(self, command: Command) -> None:
         raise NotImplementedError

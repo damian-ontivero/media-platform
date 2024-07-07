@@ -1,6 +1,6 @@
 from src.contexts.catalog.media.domain import MediaRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 
 from .media_update_command import MediaUpdateCommand
 

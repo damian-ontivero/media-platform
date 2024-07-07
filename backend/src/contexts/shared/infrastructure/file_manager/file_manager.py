@@ -18,8 +18,8 @@ class FileManager:
 
     def retrieve_file(self, path: str) -> bytes:
         file_path = os.path.join(path)
-        if os.path.exists(file_path):
+        try:
             with open(file_path, "rb") as f:
                 return f.read()
-        else:
-            raise FileNotFoundError(f"File: {path!r} not found")
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File not found: {file_path}")

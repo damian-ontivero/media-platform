@@ -1,7 +1,7 @@
 from src.contexts.backoffice.series.domain import SerieAlreadyExists, SerieDoesNotExist, SerieRepository
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 from src.contexts.shared.domain.criteria import Criteria
 
@@ -22,7 +22,7 @@ class SerieUpdateCommandHandler(CommandHandler):
         if serie is None:
             raise SerieDoesNotExist(f"Serie with id {command.id!r} does not exist")
         self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command)
+        await self._ensure_media_is_available(command)
         serie.update(command.title, command.seasons)
         self._repository.save(serie)
         await self._event_bus.publish(serie.pull_domain_events())

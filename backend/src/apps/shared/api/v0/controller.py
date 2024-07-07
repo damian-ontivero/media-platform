@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+import abc
 
 from fastapi import Response
 
 
-class Controller(ABC):
+class Controller(abc.ABC):
     """
     Controller interface.
 
@@ -11,6 +11,6 @@ class Controller(ABC):
     controllers.
     """
 
-    @abstractmethod
+    @abc.abstractmethod
     async def run(self, *args, **kwargs) -> Response:
         raise NotImplementedError

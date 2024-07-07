@@ -1,0 +1,17 @@
+services:
+    - id: EventBus
+      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_bus
+      class: RabbitMQEventBus
+      arguments:
+          - !ref RabbitMQConnection
+          - !ref RabbitMQEventExchangeFormatter
+
+    - id: CreateMovieOnMovieCreated
+      module: src.contexts.catalog.movies.application.event.create_movie_on_movie_created
+      class: CreateMovieOnMovieCreated
+      arguments:
+          - !ref MovieRepository
+          - !ref QueryBus
+          - !ref EventBus
+      tags:
+          - domain_event_subscriber

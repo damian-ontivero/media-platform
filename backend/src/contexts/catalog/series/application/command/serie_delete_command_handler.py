@@ -1,6 +1,6 @@
 from src.contexts.catalog.series.domain import SerieDeletedDomainEvent, SerieRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 
 from .serie_delete_command import SerieDeleteCommand
 

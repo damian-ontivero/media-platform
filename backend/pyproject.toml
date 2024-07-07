@@ -47,3 +47,7 @@ skip-magic-trailing-comma = true
 [tool.isort]
 profile = "black"
 line_length = 120
+
+[tool.poetry.scripts]
+"backoffice:rabbitmq" = "src.apps.backoffice.scripts:run_rabbitmq_setup"
+"catalog:rabbitmq" = "src.apps.catalog.scripts:run_rabbitmq_setup"

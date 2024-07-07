@@ -1,7 +1,7 @@
 from src.contexts.backoffice.series.domain import Serie, SerieAlreadyExists, SerieRepository
 from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 from src.contexts.shared.domain.criteria import Criteria
 
@@ -19,7 +19,7 @@ class SerieCreateCommandHandler(CommandHandler):
 
     async def handle(self, command: SerieCreateCommand) -> None:
         self._ensure_title_is_available(command)
-        self._ensure_media_is_available(command)
+        await self._ensure_media_is_available(command)
         serie = Serie.create(command.title, command.seasons)
         self._repository.save(serie)
         await self._event_bus.publish(serie.pull_domain_events())

@@ -1,5 +1,3 @@
-import contextlib
-
 import dotenv
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,20 +5,11 @@ from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from src.apps.backoffice.api.v0.exception import EXCEPTION_TO_HTTP_STATUS_CODE
 
-from .dependecy_injection import container
 from .routers import health_check_router, media_router, movies_router, series_router
 
-dotenv.load_dotenv(".env", override=True)
+dotenv.load_dotenv("src/apps/backoffice/.env", override=True)
 
 RABBITMQ_EXCHANGE = "backoffice.domain_events"
-
-
-@contextlib.asynccontextmanager
-async def setup_rabbitmq(app: FastAPI):
-    rabbitmq_manager = container.get("RabbitMQManager")
-    await rabbitmq_manager.declare_vhost()
-    await rabbitmq_manager.declare_exchange(RABBITMQ_EXCHANGE)
-    yield
 
 
 app = FastAPI(
@@ -31,7 +20,6 @@ app = FastAPI(
     openapi_url="/openapi.json",
     docs_url=None,
     redoc_url=None,
-    lifespan=setup_rabbitmq,
 )
 
 # CORS

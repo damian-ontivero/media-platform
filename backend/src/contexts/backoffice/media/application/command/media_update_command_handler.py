@@ -3,7 +3,7 @@ import os
 from moviepy.editor import VideoFileClip
 from src.contexts.backoffice.media.domain import MediaAlreadyExists, MediaDoesNotExist, MediaRepository
 from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.domain.bus.event.event_bus import EventBus
+from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.criteria.criteria import Criteria
 from src.contexts.shared.infrastructure.file_manager import FileManager
 

@@ -1,0 +1,38 @@
+services:
+    - id: RabbitMQConfig
+      module: src.contexts.shared.infrastructure.rabbitmq.rabbitmq_config
+      class: RabbitMQConfig
+      factory: from_env
+
+    - id: RabbitMQConnection
+      module: src.contexts.shared.infrastructure.rabbitmq.rabbitmq_connection
+      class: RabbitMQConnection
+      arguments:
+          - !ref RabbitMQConfig
+
+    - id: RabbitMQEventExchangeFormatter
+      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_exchange_formatter
+      class: RabbitMQEventExchangeFormatter
+      arguments:
+          - catalog
+
+    - id: RabbitMQEventQueueFormatter
+      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_queue_formatter
+      class: RabbitMQEventQueueFormatter
+      arguments:
+          - catalog
+
+    - id: RabbitMQEventConfigurer
+      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_configurer
+      class: RabbitMQEventConfigurer
+      arguments:
+          - !ref RabbitMQConnection
+          - !ref RabbitMQEventExchangeFormatter
+          - !ref RabbitMQEventQueueFormatter
+
+    - id: RabbitMQEventSetup
+      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_setup
+      class: RabbitMQEventSetup
+      arguments:
+          - !ref RabbitMQEventConfigurer
+          - !tagged domain_event_subscriber
