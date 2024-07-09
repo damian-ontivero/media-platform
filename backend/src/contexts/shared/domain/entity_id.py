@@ -14,10 +14,8 @@ class EntityId:
 
     __slots__ = ("_value",)
 
-    def __new__(cls, value: str) -> "EntityId":
-        instance = super().__new__(cls)
-        instance._value = value
-        return instance
+    def __init__(self, value: str) -> "EntityId":
+        self._value = value
 
     @property
     def value(self) -> str:

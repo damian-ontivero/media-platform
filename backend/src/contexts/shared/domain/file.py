@@ -5,14 +5,12 @@ class File:
 
     __slots__ = ("_value",)
 
-    def __new__(cls, value: str) -> "File":
+    def __init__(self, value: str) -> "File":
         if not isinstance(value, str):
             raise TypeError("File value must be a string")
         if not len(value) > 0:
             raise ValueError("File value cannot be empty")
-        instance = super().__new__(cls)
-        instance._value = value
-        return instance
+        self._value = value
 
     @property
     def value(self) -> str:

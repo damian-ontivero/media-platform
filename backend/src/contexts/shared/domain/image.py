@@ -5,14 +5,12 @@ class Image:
 
     __slots__ = ("_value",)
 
-    def __new__(cls, value: str) -> "Image":
+    def __init__(self, value: str) -> "Image":
         if not isinstance(value, str):
             raise TypeError("Image must be a string")
         if not len(value) > 0:
             raise ValueError("Image cannot be empty")
-        instance = super().__new__(cls)
-        instance._value = value
-        return instance
+        self._value = value
 
     @property
     def value(self) -> str:

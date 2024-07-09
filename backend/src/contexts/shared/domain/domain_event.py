@@ -17,13 +17,11 @@ class DomainEvent:
 
     __slots__ = ("_id", "_type", "_occurred_on", "_data")
 
-    def __new__(cls, id: str, type_: str, occurred_on: str, data: dict) -> "DomainEvent":
-        instance = super().__new__(cls)
-        instance._id = id
-        instance._type = type_
-        instance._occurred_on = occurred_on
-        instance._data = data
-        return instance
+    def __init__(self, id: str, type_: str, occurred_on: str, data: dict) -> "DomainEvent":
+        self._id = id
+        self._type = type_
+        self._occurred_on = occurred_on
+        self._data = data
 
     @property
     def id(self) -> str:
