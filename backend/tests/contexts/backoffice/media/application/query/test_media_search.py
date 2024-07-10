@@ -3,16 +3,17 @@ from src.contexts.backoffice.media.application.query import (
     MediaSearchByCriteriaQuery,
     MediaSearchByCriteriaQueryHandler,
 )
+from src.contexts.backoffice.media.application.services import MediaSearcher
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
 @pytest.mark.asyncio
-async def test_searcher__ok(mocker):
+async def test_searcher__ok(mock_media_repository):
     media = MediaFactory.create_batch(10)
-    mock_content_repository = mocker.Mock()
-    mock_content_repository.matching.return_value = media
+    mock_media_repository.matching.return_value = media
+    searcher = MediaSearcher(mock_media_repository)
     query = MediaSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
-    handler = MediaSearchByCriteriaQueryHandler(mock_content_repository)
+    handler = MediaSearchByCriteriaQueryHandler(searcher)
 
     found_media = await handler.handle(query)
 
@@ -20,10 +21,10 @@ async def test_searcher__ok(mocker):
 
 
 @pytest.mark.asyncio
-async def test_searcher__with_criteria__ok(mocker):
+async def test_searcher__with_criteria__ok(mock_media_repository):
     media = MediaFactory(title="The Godfather")
-    mock_media_repository = mocker.Mock()
     mock_media_repository.matching.return_value = [media]
+    searcher = MediaSearcher(mock_media_repository)
     query = MediaSearchByCriteriaQuery(
         filter={
             "conjunction": "AND",
@@ -33,7 +34,7 @@ async def test_searcher__with_criteria__ok(mocker):
         page_size=None,
         page_number=None,
     )
-    handler = MediaSearchByCriteriaQueryHandler(mock_media_repository)
+    handler = MediaSearchByCriteriaQueryHandler(searcher)
 
     found_media = await handler.handle(query)
 

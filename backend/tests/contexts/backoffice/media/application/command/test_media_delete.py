@@ -1,17 +1,17 @@
 import faker
 import pytest
 from src.contexts.backoffice.media.application.command import MediaDeleteCommand, MediaDeleteCommandHandler
+from src.contexts.backoffice.media.application.services import MediaDeleter
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
 @pytest.mark.asyncio
-async def test_media_delete__ok(mocker) -> None:
+async def test_media_delete__ok(mock_media_repository, mock_event_bus) -> None:
     media = MediaFactory()
-    mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = media
-    mock_event_bus = mocker.AsyncMock()
+    deleter = MediaDeleter(mock_media_repository, mock_event_bus)
     command = MediaDeleteCommand(media.id.value)
-    handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
+    handler = MediaDeleteCommandHandler(deleter)
 
     await handler.handle(command)
 
@@ -20,12 +20,11 @@ async def test_media_delete__ok(mocker) -> None:
 
 
 @pytest.mark.asyncio
-async def test_media_delete__not_found(mocker) -> None:
-    mock_media_repository = mocker.Mock()
+async def test_media_delete__not_found(mock_media_repository, mock_event_bus) -> None:
     mock_media_repository.search.return_value = None
-    mock_event_bus = mocker.AsyncMock()
+    deleter = MediaDeleter(mock_media_repository, mock_event_bus)
     command = MediaDeleteCommand(faker.Faker().uuid4())
-    handler = MediaDeleteCommandHandler(mock_media_repository, mock_event_bus)
+    handler = MediaDeleteCommandHandler(deleter)
 
     with pytest.raises(Exception):
         await handler.handle(command)

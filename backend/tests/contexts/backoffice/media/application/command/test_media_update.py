@@ -1,22 +1,22 @@
 import faker
 import pytest
 from src.contexts.backoffice.media.application.command import MediaUpdateCommand, MediaUpdateCommandHandler
+from src.contexts.backoffice.media.application.services import MediaUpdater
 from src.contexts.backoffice.media.domain import MediaDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
 @pytest.mark.asyncio
-async def test_media_update__ok(mocker) -> None:
+async def test_media_update__ok(mock_media_repository, mock_event_bus) -> None:
     media = MediaFactory()
-    mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = media
     mock_media_repository.matching.return_value = None
-    mock_event_bus = mocker.AsyncMock()
+    updater = MediaUpdater(mock_media_repository, mock_event_bus)
     with open("tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()
         )
-        handler = MediaUpdateCommandHandler(mock_media_repository, mock_event_bus)
+        handler = MediaUpdateCommandHandler(updater)
 
         await handler.handle(command)
 
@@ -25,16 +25,15 @@ async def test_media_update__ok(mocker) -> None:
 
 
 @pytest.mark.asyncio
-async def test_media_update__not_found(mocker) -> None:
+async def test_media_update__not_found(mock_media_repository, mock_event_bus) -> None:
     media = MediaFactory()
-    mock_media_repository = mocker.Mock()
     mock_media_repository.search.return_value = None
-    mock_event_bus = mocker.AsyncMock()
+    updater = MediaUpdater(mock_media_repository, mock_event_bus)
     with open("tests/data/video.mp4", "rb") as file:
         command = MediaUpdateCommand(
             id=media.id.value, title=faker.Faker().name(), file_name="video.mp4", file=file.read()
         )
-        handler = MediaUpdateCommandHandler(mock_media_repository, mock_event_bus)
+        handler = MediaUpdateCommandHandler(updater)
 
         with pytest.raises(MediaDoesNotExist):
             await handler.handle(command)
