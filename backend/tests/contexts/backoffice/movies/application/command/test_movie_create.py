@@ -1,18 +1,17 @@
 import faker
 import pytest
 from src.contexts.backoffice.movies.application.command import MovieCreateCommand, MovieCreateCommandHandler
+from src.contexts.backoffice.movies.application.services import MovieCreator
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
 @pytest.mark.asyncio
-async def test_movie_create__ok(mocker) -> None:
+async def test_movie_create__ok(mock_movie_repository, mock_query_bus, mock_event_bus) -> None:
     media = MediaFactory()
-    mock_movie_repository = mocker.Mock()
     mock_movie_repository.matching.return_value = None
-    mock_query_bus = mocker.AsyncMock()
     mock_query_bus.ask.return_value = media
-    mock_event_bus = mocker.AsyncMock()
-    handler = MovieCreateCommandHandler(mock_movie_repository, mock_query_bus, mock_event_bus)
+    creator = MovieCreator(mock_movie_repository, mock_query_bus, mock_event_bus)
+    handler = MovieCreateCommandHandler(creator)
     command = MovieCreateCommand(title=faker.Faker().name(), media_id=media.id.value)
 
     await handler.handle(command)

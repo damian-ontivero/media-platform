@@ -1,15 +1,15 @@
-from src.contexts.backoffice.movies.domain import MovieRepository
+from src.contexts.backoffice.movies.application.services import MovieCounter
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
 
 from .movie_count_query import MovieCountQuery
 
 
 class MovieCountQueryHandler(QueryHandler):
-    def __init__(self, repository: MovieRepository) -> None:
-        self._repository = repository
+    def __init__(self, counter: MovieCounter) -> None:
+        self._counter = counter
 
     def subscribed_to(self) -> Query:
         return MovieCountQuery
 
     async def handle(self, query: MovieCountQuery) -> int:
-        return self._repository.count()
+        return self._counter.run()

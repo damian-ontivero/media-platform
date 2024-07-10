@@ -1,20 +1,19 @@
 import faker
 import pytest
 from src.contexts.backoffice.series.application.command import SerieCreateCommand, SerieCreateCommandHandler
+from src.contexts.backoffice.series.application.services import SerieCreator
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.series.factory.serie_season_factory import SerieSeasonFactory
 
 
 @pytest.mark.asyncio
-async def test_serie_create__ok(mocker) -> None:
+async def test_serie_create__ok(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     media = MediaFactory()
     seasons = SerieSeasonFactory.create_batch(3)
-    mock_serie_repository = mocker.Mock()
     mock_serie_repository.matching.return_value = None
-    mock_query_bus = mocker.AsyncMock()
     mock_query_bus.ask.return_value = media
-    mock_event_bus = mocker.AsyncMock()
-    handler = SerieCreateCommandHandler(mock_serie_repository, mock_query_bus, mock_event_bus)
+    creator = SerieCreator(mock_serie_repository, mock_query_bus, mock_event_bus)
+    handler = SerieCreateCommandHandler(creator)
     command = SerieCreateCommand(
         title=faker.Faker().name(),
         seasons=[

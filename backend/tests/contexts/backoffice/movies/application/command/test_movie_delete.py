@@ -1,17 +1,17 @@
 import faker
 import pytest
 from src.contexts.backoffice.movies.application.command import MovieDeleteCommand, MovieDeleteCommandHandler
+from src.contexts.backoffice.movies.application.services import MovieDeleter
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
 @pytest.mark.asyncio
-async def test_movie_delete__ok(mocker) -> None:
+async def test_movie_delete__ok(mock_movie_repository, mock_event_bus) -> None:
     movie = MovieFactory()
-    mock_movie_repository = mocker.Mock()
     mock_movie_repository.search.return_value = movie
-    mock_event_bus = mocker.AsyncMock()
+    deleter = MovieDeleter(mock_movie_repository, mock_event_bus)
     command = MovieDeleteCommand(movie.id.value)
-    handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
+    handler = MovieDeleteCommandHandler(deleter)
 
     await handler.handle(command)
 
@@ -20,12 +20,11 @@ async def test_movie_delete__ok(mocker) -> None:
 
 
 @pytest.mark.asyncio
-async def test_movie_delete__not_found(mocker) -> None:
-    mock_movie_repository = mocker.Mock()
+async def test_movie_delete__not_found(mock_movie_repository, mock_event_bus) -> None:
     mock_movie_repository.search.return_value = None
-    mock_event_bus = mocker.AsyncMock()
+    deleter = MovieDeleter(mock_movie_repository, mock_event_bus)
     command = MovieDeleteCommand(faker.Faker().uuid4())
-    handler = MovieDeleteCommandHandler(mock_movie_repository, mock_event_bus)
+    handler = MovieDeleteCommandHandler(deleter)
 
     with pytest.raises(Exception):
         await handler.handle(command)

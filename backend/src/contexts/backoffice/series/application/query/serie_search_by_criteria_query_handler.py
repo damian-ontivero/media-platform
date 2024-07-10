@@ -1,17 +1,16 @@
-from src.contexts.backoffice.series.domain import Serie, SerieRepository
+from src.contexts.backoffice.series.application.services import SerieSearcher
+from src.contexts.backoffice.series.domain import Serie
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
-from src.contexts.shared.domain.criteria import Criteria
 
 from .serie_search_by_criteria_query import SerieSearchByCriteriaQuery
 
 
 class SerieSearchByCriteriaQueryHandler(QueryHandler):
-    def __init__(self, repository: SerieRepository) -> None:
-        self._repository = repository
+    def __init__(self, searcher: SerieSearcher) -> None:
+        self._searcher = searcher
 
     def subscribed_to(self) -> Query:
         return SerieSearchByCriteriaQuery
 
     async def handle(self, query: SerieSearchByCriteriaQuery) -> list[Serie]:
-        criteria = Criteria.from_primitives(query.filter, query.sort, query.page_size, query.page_number)
-        return self._repository.matching(criteria)
+        return self._searcher.run(query.filter, query.sort, query.page_size, query.page_number)

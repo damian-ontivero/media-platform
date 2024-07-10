@@ -1,6 +1,7 @@
 import faker
 import pytest
 from src.contexts.backoffice.series.application.command import SerieUpdateCommand, SerieUpdateCommandHandler
+from src.contexts.backoffice.series.application.services import SerieUpdater
 from src.contexts.backoffice.series.domain import SerieDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
@@ -8,16 +9,14 @@ from tests.contexts.backoffice.series.factory.serie_season_factory import SerieS
 
 
 @pytest.mark.asyncio
-async def test_serie_update__ok(mocker) -> None:
+async def test_serie_update__ok(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     serie = SerieFactory()
     seasons = SerieSeasonFactory.create_batch(3)
     media = MediaFactory()
-    mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = serie
     mock_serie_repository.matching.return_value = None
-    mock_query_bus = mocker.AsyncMock()
-    mock_event_bus = mocker.AsyncMock()
-    handler = SerieUpdateCommandHandler(mock_serie_repository, mock_query_bus, mock_event_bus)
+    updater = SerieUpdater(mock_serie_repository, mock_query_bus, mock_event_bus)
+    handler = SerieUpdateCommandHandler(updater)
     command = SerieUpdateCommand(
         id=serie.id.value,
         title=faker.Faker().name(),
@@ -40,12 +39,10 @@ async def test_serie_update__ok(mocker) -> None:
 
 
 @pytest.mark.asyncio
-async def test_serie_update__not_found(mocker) -> None:
-    mock_serie_repository = mocker.Mock()
+async def test_serie_update__not_found(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     mock_serie_repository.search.return_value = None
-    mock_query_bus = mocker.AsyncMock()
-    mock_event_bus = mocker.AsyncMock()
-    handler = SerieUpdateCommandHandler(mock_serie_repository, mock_query_bus, mock_event_bus)
+    updater = SerieUpdater(mock_serie_repository, mock_query_bus, mock_event_bus)
+    handler = SerieUpdateCommandHandler(updater)
     command = SerieUpdateCommand(id=faker.Faker().uuid4(), title=faker.Faker().name(), seasons=[])
 
     with pytest.raises(SerieDoesNotExist):

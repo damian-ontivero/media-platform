@@ -3,16 +3,17 @@ from src.contexts.backoffice.series.application.query import (
     SerieSearchByCriteriaQuery,
     SerieSearchByCriteriaQueryHandler,
 )
+from src.contexts.backoffice.series.application.services import SerieSearcher
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
 @pytest.mark.asyncio
-async def test_searcher__ok(mocker):
+async def test_searcher__ok(mock_serie_repository):
     series = SerieFactory.create_batch(10)
-    mock_content_repository = mocker.Mock()
-    mock_content_repository.matching.return_value = series
+    mock_serie_repository.matching.return_value = series
+    searcher = SerieSearcher(mock_serie_repository)
     query = SerieSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
-    handler = SerieSearchByCriteriaQueryHandler(mock_content_repository)
+    handler = SerieSearchByCriteriaQueryHandler(searcher)
 
     found_series = await handler.handle(query)
 
@@ -20,10 +21,10 @@ async def test_searcher__ok(mocker):
 
 
 @pytest.mark.asyncio
-async def test_searcher__with_criteria__ok(mocker):
+async def test_searcher__with_criteria__ok(mock_serie_repository):
     serie = SerieFactory(title="The Godfather")
-    mock_serie_repository = mocker.Mock()
     mock_serie_repository.matching.return_value = [serie]
+    searcher = SerieSearcher(mock_serie_repository)
     query = SerieSearchByCriteriaQuery(
         filter={
             "conjunction": "AND",
@@ -33,7 +34,7 @@ async def test_searcher__with_criteria__ok(mocker):
         page_size=None,
         page_number=None,
     )
-    handler = SerieSearchByCriteriaQueryHandler(mock_serie_repository)
+    handler = SerieSearchByCriteriaQueryHandler(searcher)
 
     found_series = await handler.handle(query)
 

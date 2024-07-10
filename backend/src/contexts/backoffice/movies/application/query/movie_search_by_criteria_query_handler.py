@@ -1,17 +1,16 @@
-from src.contexts.backoffice.movies.domain import Movie, MovieRepository
+from src.contexts.backoffice.movies.application.services import MovieSearcher
+from src.contexts.backoffice.movies.domain import Movie
 from src.contexts.shared.domain.bus.query import Query, QueryHandler
-from src.contexts.shared.domain.criteria import Criteria
 
 from .movie_search_by_criteria_query import MovieSearchByCriteriaQuery
 
 
 class MovieSearchByCriteriaQueryHandler(QueryHandler):
-    def __init__(self, repository: MovieRepository) -> None:
-        self._repository = repository
+    def __init__(self, searcher: MovieSearcher) -> None:
+        self._searcher = searcher
 
     def subscribed_to(self) -> Query:
         return MovieSearchByCriteriaQuery
 
     async def handle(self, query: MovieSearchByCriteriaQuery) -> list[Movie]:
-        criteria = Criteria.from_primitives(query.filter, query.sort, query.page_size, query.page_number)
-        return self._repository.matching(criteria)
+        return self._searcher.run(query.filter, query.sort, query.page_size, query.page_number)

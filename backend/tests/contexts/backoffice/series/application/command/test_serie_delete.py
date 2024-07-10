@@ -1,17 +1,17 @@
 import faker
 import pytest
 from src.contexts.backoffice.series.application.command import SerieDeleteCommand, SerieDeleteCommandHandler
+from src.contexts.backoffice.series.application.services import SerieDeleter
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
 @pytest.mark.asyncio
-async def test_serie_delete__ok(mocker) -> None:
+async def test_serie_delete__ok(mock_serie_repository, mock_event_bus) -> None:
     serie = SerieFactory()
-    mock_serie_repository = mocker.Mock()
     mock_serie_repository.search.return_value = serie
-    mock_event_bus = mocker.AsyncMock()
+    deleter = SerieDeleter(mock_serie_repository, mock_event_bus)
     command = SerieDeleteCommand(serie.id.value)
-    handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
+    handler = SerieDeleteCommandHandler(deleter)
 
     await handler.handle(command)
 
@@ -20,12 +20,11 @@ async def test_serie_delete__ok(mocker) -> None:
 
 
 @pytest.mark.asyncio
-async def test_serie_delete__not_found(mocker) -> None:
-    mock_serie_repository = mocker.Mock()
+async def test_serie_delete__not_found(mock_serie_repository, mock_event_bus) -> None:
     mock_serie_repository.search.return_value = None
-    mock_event_bus = mocker.AsyncMock()
+    deleter = SerieDeleter(mock_serie_repository, mock_event_bus)
     command = SerieDeleteCommand(faker.Faker().uuid4())
-    handler = SerieDeleteCommandHandler(mock_serie_repository, mock_event_bus)
+    handler = SerieDeleteCommandHandler(deleter)
 
     with pytest.raises(Exception):
         await handler.handle(command)

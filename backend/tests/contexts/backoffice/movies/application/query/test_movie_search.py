@@ -3,16 +3,17 @@ from src.contexts.backoffice.movies.application.query import (
     MovieSearchByCriteriaQuery,
     MovieSearchByCriteriaQueryHandler,
 )
+from src.contexts.backoffice.movies.application.services import MovieSearcher
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
 @pytest.mark.asyncio
-async def test_searcher__ok(mocker):
+async def test_searcher__ok(mock_movie_repository):
     movies = MovieFactory.create_batch(10)
-    mock_content_repository = mocker.Mock()
-    mock_content_repository.matching.return_value = movies
+    mock_movie_repository.matching.return_value = movies
+    searcher = MovieSearcher(mock_movie_repository)
     query = MovieSearchByCriteriaQuery(filter=None, sort=None, page_size=None, page_number=None)
-    handler = MovieSearchByCriteriaQueryHandler(mock_content_repository)
+    handler = MovieSearchByCriteriaQueryHandler(searcher)
 
     found_movies = await handler.handle(query)
 
@@ -20,10 +21,10 @@ async def test_searcher__ok(mocker):
 
 
 @pytest.mark.asyncio
-async def test_searcher__with_criteria__ok(mocker):
+async def test_searcher__with_criteria__ok(mock_movie_repository):
     movie = MovieFactory(title="The Godfather")
-    mock_movie_repository = mocker.Mock()
     mock_movie_repository.matching.return_value = [movie]
+    searcher = MovieSearcher(mock_movie_repository)
     query = MovieSearchByCriteriaQuery(
         filter={
             "conjunction": "AND",
@@ -33,7 +34,7 @@ async def test_searcher__with_criteria__ok(mocker):
         page_size=None,
         page_number=None,
     )
-    handler = MovieSearchByCriteriaQueryHandler(mock_movie_repository)
+    handler = MovieSearchByCriteriaQueryHandler(searcher)
 
     found_movies = await handler.handle(query)
 
