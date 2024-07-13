@@ -6,12 +6,32 @@ services:
           - !ref RabbitMQConnection
           - !ref RabbitMQEventExchangeFormatter
 
+    - id: CreateMediaOnMediaCreated
+      module: src.contexts.catalog.media.application.events.subscribers.create_media_on_media_created
+      class: CreateMediaOnMediaCreated
+      arguments:
+          - !ref MediaRepository
+          - !ref MediaFinder
+          - !ref EventBus
+      tags:
+          - domain_event_subscriber
+
     - id: CreateMovieOnMovieCreated
-      module: src.contexts.catalog.movies.application.event.create_movie_on_movie_created
+      module: src.contexts.catalog.movies.application.events.subscribers.create_movie_on_movie_created
       class: CreateMovieOnMovieCreated
       arguments:
           - !ref MovieRepository
-          - !ref QueryBus
+          - !ref MovieFinder
+          - !ref EventBus
+      tags:
+          - domain_event_subscriber
+
+    - id: CreateSerieOnSerieCreated
+      module: src.contexts.catalog.series.application.events.subscribers.create_serie_on_serie_created
+      class: CreateSerieOnSerieCreated
+      arguments:
+          - !ref SerieRepository
+          - !ref SerieFinder
           - !ref EventBus
       tags:
           - domain_event_subscriber

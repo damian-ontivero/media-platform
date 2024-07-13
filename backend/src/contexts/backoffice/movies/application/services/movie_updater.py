@@ -1,5 +1,5 @@
 from src.contexts.backoffice.movies.domain import MovieAlreadyExists, MovieDoesNotExist, MovieRepository
-from src.contexts.backoffice.shared.media.application.query import MediaFindByIdQuery
+from src.contexts.backoffice.shared.media.application.queries import MediaFindByIdQuery
 from src.contexts.shared.domain.bus.event import EventBus
 from src.contexts.shared.domain.bus.query import QueryBus
 from src.contexts.shared.domain.criteria import Criteria

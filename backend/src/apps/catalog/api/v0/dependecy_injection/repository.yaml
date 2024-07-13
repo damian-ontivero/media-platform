@@ -1,4 +1,10 @@
 services:
+    - id: MediaRepository
+      module: src.contexts.catalog.media.infrastructure.persistence.postgres.media_repository
+      class: PostgresMediaRepository
+      arguments:
+          - !ref Database.Session
+
     - id: MovieRepository
       module: src.contexts.catalog.movies.infrastructure.persistence.postgres.movie_repository
       class: PostgresMovieRepository

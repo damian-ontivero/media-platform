@@ -1,0 +1,30 @@
+import faker
+import pytest
+from src.contexts.backoffice.series.application.commands import SerieDeleteCommand, SerieDeleteCommandHandler
+from src.contexts.backoffice.series.application.services import SerieDeleter
+from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
+
+
+@pytest.mark.asyncio
+async def test_serie_delete__ok(mock_serie_repository, mock_event_bus) -> None:
+    serie = SerieFactory()
+    mock_serie_repository.search.return_value = serie
+    deleter = SerieDeleter(mock_serie_repository, mock_event_bus)
+    command = SerieDeleteCommand(serie.id.value)
+    handler = SerieDeleteCommandHandler(deleter)
+
+    await handler.handle(command)
+
+    mock_serie_repository.delete.assert_called_once_with(serie.id.value)
+    mock_event_bus.publish.assert_called_once()
+
+
+@pytest.mark.asyncio
+async def test_serie_delete__not_found(mock_serie_repository, mock_event_bus) -> None:
+    mock_serie_repository.search.return_value = None
+    deleter = SerieDeleter(mock_serie_repository, mock_event_bus)
+    command = SerieDeleteCommand(faker.Faker().uuid4())
+    handler = SerieDeleteCommandHandler(deleter)
+
+    with pytest.raises(Exception):
+        await handler.handle(command)

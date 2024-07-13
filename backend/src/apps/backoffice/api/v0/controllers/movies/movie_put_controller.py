@@ -1,7 +1,7 @@
 from fastapi import Response, status
 from src.apps.backoffice.api.v0.schemas import MovieWriteSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.movies.application.command import MovieUpdateCommand
+from src.contexts.backoffice.movies.application.commands import MovieUpdateCommand
 from src.contexts.shared.domain.bus.command import CommandBus
 
 

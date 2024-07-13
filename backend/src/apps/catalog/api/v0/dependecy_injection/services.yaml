@@ -1,0 +1,48 @@
+services:
+    - id: MediaSearcher
+      module: src.contexts.catalog.media.application.services.media_searcher
+      class: MediaSearcher
+      arguments:
+          - !ref MediaRepository
+
+    - id: MediaFinder
+      module: src.contexts.catalog.media.application.services.media_finder
+      class: MediaFinder
+      arguments:
+          - !ref MediaRepository
+
+    - id: MovieSearcher
+      module: src.contexts.catalog.movies.application.services.movie_searcher
+      class: MovieSearcher
+      arguments:
+          - !ref MovieRepository
+
+    - id: MovieFinder
+      module: src.contexts.catalog.movies.application.services.movie_finder
+      class: MovieFinder
+      arguments:
+          - !ref MovieRepository
+
+    - id: MovieCounter
+      module: src.contexts.catalog.movies.application.services.movie_counter
+      class: MovieCounter
+      arguments:
+          - !ref MovieRepository
+
+    - id: SerieSearcher
+      module: src.contexts.catalog.series.application.services.serie_searcher
+      class: SerieSearcher
+      arguments:
+          - !ref SerieRepository
+
+    - id: SerieFinder
+      module: src.contexts.catalog.series.application.services.serie_finder
+      class: SerieFinder
+      arguments:
+          - !ref SerieRepository
+
+    - id: SerieCounter
+      module: src.contexts.catalog.series.application.services.serie_counter
+      class: SerieCounter
+      arguments:
+          - !ref SerieRepository

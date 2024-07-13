@@ -1,0 +1,9 @@
+from src.contexts.catalog.movies.domain import MovieRepository
+
+
+class MovieCounter:
+    def __init__(self, repository: MovieRepository) -> None:
+        self._repository = repository
+
+    def run(self) -> int:
+        return self._repository.count()
