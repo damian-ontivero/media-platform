@@ -1,11 +1,11 @@
-import abc
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain.criteria import Criteria
 
 from .serie import Serie
 
 
-class SerieRepository(abc.ABC):
+class SerieRepository(ABC):
     """
     Serie repository interface.
 
@@ -13,22 +13,22 @@ class SerieRepository(abc.ABC):
     repository of series.
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def matching(self, criteria: Criteria) -> list[Serie]:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def search(self, id: str) -> Serie | None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def count(self) -> int:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def save(self, beer: Serie) -> None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def delete(self, id: str) -> None:
         raise NotImplementedError

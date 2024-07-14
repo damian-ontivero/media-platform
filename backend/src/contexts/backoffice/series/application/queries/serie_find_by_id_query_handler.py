@@ -9,7 +9,8 @@ class SerieFindByIdQueryHandler(QueryHandler):
     def __init__(self, finder: SerieFinder) -> None:
         self._finder = finder
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return SerieFindByIdQuery
 
     async def handle(self, query: SerieFindByIdQuery) -> Serie:

@@ -9,7 +9,8 @@ class MovieSearchByCriteriaQueryHandler(QueryHandler):
     def __init__(self, searcher: MovieSearcher) -> None:
         self._searcher = searcher
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MovieSearchByCriteriaQuery
 
     async def handle(self, query: MovieSearchByCriteriaQuery) -> list[Movie]:

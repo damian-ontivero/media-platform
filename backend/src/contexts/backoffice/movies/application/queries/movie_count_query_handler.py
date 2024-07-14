@@ -8,7 +8,8 @@ class MovieCountQueryHandler(QueryHandler):
     def __init__(self, counter: MovieCounter) -> None:
         self._counter = counter
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MovieCountQuery
 
     async def handle(self, query: MovieCountQuery) -> int:

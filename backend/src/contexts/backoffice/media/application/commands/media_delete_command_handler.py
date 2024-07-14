@@ -8,7 +8,8 @@ class MediaDeleteCommandHandler(CommandHandler):
     def __init__(self, deleter: MediaDeleter) -> None:
         self._deleter = deleter
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return MediaDeleteCommand
 
     async def handle(self, command: MediaDeleteCommand) -> None:

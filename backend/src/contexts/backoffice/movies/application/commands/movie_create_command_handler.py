@@ -8,7 +8,8 @@ class MovieCreateCommandHandler(CommandHandler):
     def __init__(self, creator: MovieCreator) -> None:
         self._creator = creator
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return MovieCreateCommand
 
     async def handle(self, command: MovieCreateCommand) -> None:

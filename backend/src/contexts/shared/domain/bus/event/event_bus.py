@@ -1,9 +1,9 @@
-import abc
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain import DomainEvent
 
 
-class EventBus(abc.ABC):
+class EventBus(ABC):
     """
     Interface for event buses.
 
@@ -12,6 +12,6 @@ class EventBus(abc.ABC):
     subscribe to these domain events and take action when they are published.
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def publish(self, domain_events: list[DomainEvent]) -> None:
         raise NotImplementedError

@@ -11,7 +11,8 @@ class CreateSerieOnSerieCreated(DomainEventSubscriber):
         self._finder = finder
         self._event_bus = event_bus
 
-    def subscribed_to(self) -> list[DomainEvent]:
+    @staticmethod
+    def subscribed_to() -> list[DomainEvent]:
         return [SerieCreatedDomainEvent]
 
     async def on(self, event: SerieCreatedDomainEvent) -> None:

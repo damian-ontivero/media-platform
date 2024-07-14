@@ -8,7 +8,8 @@ class MediaFindByIdQueryHandler(QueryHandler):
     def __init__(self, finder: MediaFinder) -> None:
         self._finder = finder
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MediaFindByIdQuery
 
     async def handle(self, query: MediaFindByIdQuery) -> Media:

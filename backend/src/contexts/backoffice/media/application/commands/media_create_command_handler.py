@@ -15,7 +15,8 @@ class MediaCreateCommandHandler(CommandHandler):
         self._creator = creator
         self._file_manager = FileManager(MEDIA_STORAGE_PATH)
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return MediaCreateCommand
 
     async def handle(self, command: MediaCreateCommand) -> None:

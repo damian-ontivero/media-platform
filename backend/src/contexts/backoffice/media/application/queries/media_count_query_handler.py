@@ -8,7 +8,8 @@ class MediaCountQueryHandler(QueryHandler):
     def __init__(self, counter: MediaCounter) -> None:
         self._counter = counter
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MediaCountQuery
 
     async def handle(self, query: MediaCountQuery) -> int:

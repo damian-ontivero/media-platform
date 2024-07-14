@@ -15,7 +15,8 @@ class MediaUpdateCommandHandler(CommandHandler):
         self._updater = updater
         self._file_manager = FileManager(MEDIA_STORAGE_PATH)
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return MediaUpdateCommand
 
     async def handle(self, command: MediaUpdateCommand) -> None:

@@ -1,11 +1,11 @@
-import abc
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain.criteria import Criteria
 
 from .media import Media
 
 
-class MediaRepository(abc.ABC):
+class MediaRepository(ABC):
     """
     Media repository interface.
 
@@ -13,22 +13,22 @@ class MediaRepository(abc.ABC):
     repository of media.
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def matching(self, criteria: Criteria) -> list[Media]:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def search(self, id: str) -> Media | None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def count(self) -> int:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def save(self, beer: Media) -> None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def delete(self, id: str) -> None:
         raise NotImplementedError

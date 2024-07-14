@@ -9,7 +9,8 @@ class MovieFindByIdQueryHandler(QueryHandler):
     def __init__(self, finder: MovieFinder) -> None:
         self._finder = finder
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MovieFindByIdQuery
 
     async def handle(self, query: MovieFindByIdQuery) -> Movie:

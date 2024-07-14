@@ -8,7 +8,8 @@ class SerieDeleteCommandHandler(CommandHandler):
     def __init__(self, deleter: SerieDeleter) -> None:
         self._deleter = deleter
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return SerieDeleteCommand
 
     async def handle(self, command: SerieDeleteCommand) -> None:

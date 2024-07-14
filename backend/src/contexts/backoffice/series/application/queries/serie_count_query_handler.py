@@ -8,7 +8,8 @@ class SerieCountQueryHandler(QueryHandler):
     def __init__(self, counter: SerieCounter) -> None:
         self._counter = counter
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return SerieCountQuery
 
     async def handle(self, query: SerieCountQuery) -> int:

@@ -9,7 +9,8 @@ class SerieSearchByCriteriaQueryHandler(QueryHandler):
     def __init__(self, searcher: SerieSearcher) -> None:
         self._searcher = searcher
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return SerieSearchByCriteriaQuery
 
     async def handle(self, query: SerieSearchByCriteriaQuery) -> list[Serie]:

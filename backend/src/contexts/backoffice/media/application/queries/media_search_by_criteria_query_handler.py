@@ -9,7 +9,8 @@ class MediaSearchByCriteriaQueryHandler(QueryHandler):
     def __init__(self, searcher: MediaSearcher) -> None:
         self._searcher = searcher
 
-    def subscribed_to(self) -> Query:
+    @staticmethod
+    def subscribed_to() -> Query:
         return MediaSearchByCriteriaQuery
 
     async def handle(self, query: MediaSearchByCriteriaQuery) -> list[Media]:

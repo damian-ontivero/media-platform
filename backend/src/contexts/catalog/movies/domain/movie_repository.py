@@ -1,11 +1,11 @@
-import abc
+from abc import ABC, abstractmethod
 
 from src.contexts.shared.domain.criteria import Criteria
 
 from .movie import Movie
 
 
-class MovieRepository(abc.ABC):
+class MovieRepository(ABC):
     """
     Movie repository interface.
 
@@ -13,22 +13,22 @@ class MovieRepository(abc.ABC):
     repository of movies.
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def matching(self, criteria: Criteria) -> list[Movie]:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def search(self, id: str) -> Movie | None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def count(self) -> int:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def save(self, beer: Movie) -> None:
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def delete(self, id: str) -> None:
         raise NotImplementedError

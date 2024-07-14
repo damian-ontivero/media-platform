@@ -1,9 +1,9 @@
-import abc
+from abc import ABC, abstractmethod
 
 from .entity_id import EntityId
 
 
-class Entity(abc.ABC):
+class Entity(ABC):
     """
     Base class for entities.
 
@@ -13,7 +13,7 @@ class Entity(abc.ABC):
     Once an entity is created, its identity cannot be changed.
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def __init__(self, id: EntityId) -> None:
         self._id = id
 

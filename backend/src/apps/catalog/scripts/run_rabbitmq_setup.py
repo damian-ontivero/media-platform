@@ -7,7 +7,7 @@ from src.contexts.shared.infrastructure.bus.event.rabbitmq_event_setup import Ra
 dotenv.load_dotenv("src/apps/catalog/.env", override=True)
 
 
-def run_rabbitmq_setup():
+def run_rabbitmq_setup() -> None:
     setup: RabbitMQEventSetup = container.get("RabbitMQEventSetup")
 
     asyncio.run(setup.run())

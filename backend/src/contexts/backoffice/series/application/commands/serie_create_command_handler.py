@@ -8,7 +8,8 @@ class SerieCreateCommandHandler(CommandHandler):
     def __init__(self, creator: SerieCreator) -> None:
         self._creator = creator
 
-    def subscribed_to(self) -> Command:
+    @staticmethod
+    def subscribed_to() -> Command:
         return SerieCreateCommand
 
     async def handle(self, command: SerieCreateCommand) -> None:
