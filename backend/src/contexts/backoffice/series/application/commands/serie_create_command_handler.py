@@ -1,7 +1,7 @@
-from src.contexts.backoffice.series.application.services import SerieCreator
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .serie_create_command import SerieCreateCommand
+from src.contexts.backoffice.series.application.commands.serie_create_command import SerieCreateCommand
+from src.contexts.backoffice.series.application.services.serie_creator import SerieCreator
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class SerieCreateCommandHandler(CommandHandler):

@@ -1,15 +1,12 @@
 from fastapi import APIRouter, Path, Query, status
+from src.apps.backoffice.api.v0.controllers.movies.movie_delete_controller import MovieDeleteController
+from src.apps.backoffice.api.v0.controllers.movies.movie_get_controller import MovieGetController
+from src.apps.backoffice.api.v0.controllers.movies.movie_post_controller import MoviePostController
+from src.apps.backoffice.api.v0.controllers.movies.movie_put_controller import MoviePutController
+from src.apps.backoffice.api.v0.controllers.movies.movies_get_controller import MoviesGetController
+from src.apps.backoffice.api.v0.dependecy_injection import container
+from src.apps.backoffice.api.v0.schemas.movies import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
 from typing_extensions import Annotated
-
-from ..controllers.movies import (
-    MovieDeleteController,
-    MovieGetController,
-    MoviePostController,
-    MoviePutController,
-    MoviesGetController,
-)
-from ..dependecy_injection import container
-from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 

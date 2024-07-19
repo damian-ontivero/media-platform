@@ -1,7 +1,7 @@
-from src.contexts.shared.domain import AggregateRoot, EntityId
-
-from .serie_events import SerieCreatedDomainEvent, SerieUpdatedDomainEvent
-from .serie_season import SerieSeason, SerieSeasonDict
+from src.contexts.backoffice.series.domain.serie_events import SerieCreatedDomainEvent, SerieUpdatedDomainEvent
+from src.contexts.backoffice.series.domain.serie_season import SerieSeason, SerieSeasonDict
+from src.contexts.shared.domain.aggregate_root import AggregateRoot
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class Serie(AggregateRoot):

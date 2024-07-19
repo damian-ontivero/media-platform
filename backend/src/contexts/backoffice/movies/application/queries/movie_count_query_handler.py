@@ -1,7 +1,7 @@
-from src.contexts.backoffice.movies.application.services import MovieCounter
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .movie_count_query import MovieCountQuery
+from src.contexts.backoffice.movies.application.queries.movie_count_query import MovieCountQuery
+from src.contexts.backoffice.movies.application.services.movie_counter import MovieCounter
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class MovieCountQueryHandler(QueryHandler):

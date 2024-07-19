@@ -1,5 +1,6 @@
-from src.contexts.backoffice.media.domain import Media, MediaRepository
-from src.contexts.shared.domain.criteria import Criteria
+from src.contexts.backoffice.media.domain.media import Media
+from src.contexts.backoffice.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class MediaSearcher:

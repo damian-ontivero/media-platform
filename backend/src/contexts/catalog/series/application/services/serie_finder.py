@@ -1,4 +1,6 @@
-from src.contexts.catalog.series.domain import Serie, SerieDoesNotExist, SerieRepository
+from src.contexts.catalog.series.domain.serie import Serie
+from src.contexts.catalog.series.domain.serie_exceptions import SerieDoesNotExist
+from src.contexts.catalog.series.domain.serie_repository import SerieRepository
 
 
 class SerieFinder:

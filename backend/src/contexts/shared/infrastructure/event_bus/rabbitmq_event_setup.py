@@ -1,5 +1,5 @@
-from src.contexts.shared.domain import DomainEventSubscriber
-from src.contexts.shared.infrastructure.bus.event import RabbitMQEventConfigurer
+from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_configurer import RabbitMQEventConfigurer
 
 
 class RabbitMQEventSetup:

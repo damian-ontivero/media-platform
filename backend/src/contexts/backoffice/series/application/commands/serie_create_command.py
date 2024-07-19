@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from src.contexts.backoffice.series.domain import SerieSeasonDict
-from src.contexts.shared.domain.bus.command import Command
+from src.contexts.backoffice.series.domain.serie_season import SerieSeasonDict
+from src.contexts.shared.domain.command_bus.command import Command
 
 
 @dataclass(frozen=True)

@@ -1,4 +1,6 @@
-from src.contexts.shared.domain.bus.query import Query, QueryBus, QueryHandler, QueryHandlerNotFound
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus, QueryHandlerNotFound
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class InMemoryQueryBus(QueryBus):

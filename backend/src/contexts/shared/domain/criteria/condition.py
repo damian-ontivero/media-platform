@@ -1,6 +1,6 @@
-from .condition_field import ConditionField
-from .condition_operator import ConditionOperator
-from .condition_value import ConditionValue
+from src.contexts.shared.domain.criteria.condition_field import ConditionField
+from src.contexts.shared.domain.criteria.condition_operator import ConditionOperator
+from src.contexts.shared.domain.criteria.condition_value import ConditionValue
 
 
 class Condition:

@@ -1,8 +1,8 @@
-from src.contexts.backoffice.series.application.services import SerieSearcher
-from src.contexts.backoffice.series.domain import Serie
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .serie_search_by_criteria_query import SerieSearchByCriteriaQuery
+from src.contexts.backoffice.series.application.queries.serie_search_by_criteria_query import SerieSearchByCriteriaQuery
+from src.contexts.backoffice.series.application.services.serie_searcher import SerieSearcher
+from src.contexts.backoffice.series.domain.serie import Serie
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class SerieSearchByCriteriaQueryHandler(QueryHandler):

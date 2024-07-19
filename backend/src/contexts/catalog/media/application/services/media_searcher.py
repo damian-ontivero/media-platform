@@ -1,5 +1,6 @@
-from src.contexts.catalog.media.domain import Media, MediaRepository
-from src.contexts.shared.domain.criteria import Criteria
+from src.contexts.catalog.media.domain.media import Media
+from src.contexts.catalog.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class MediaSearcher:

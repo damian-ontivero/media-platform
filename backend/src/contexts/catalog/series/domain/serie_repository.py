@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
-from src.contexts.shared.domain.criteria import Criteria
-
-from .serie import Serie
+from src.contexts.catalog.series.domain.serie import Serie
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class SerieRepository(ABC):

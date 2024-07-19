@@ -1,5 +1,6 @@
-from src.contexts.backoffice.movies.domain import Movie, MovieRepository
-from src.contexts.shared.domain.criteria import Criteria
+from src.contexts.backoffice.movies.domain.movie import Movie
+from src.contexts.backoffice.movies.domain.movie_repository import MovieRepository
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class MovieSearcher:

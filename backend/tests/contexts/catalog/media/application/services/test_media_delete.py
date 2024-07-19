@@ -1,6 +1,5 @@
-import faker
 import pytest
-from src.contexts.catalog.media.application.services import MediaDeleter
+from src.contexts.catalog.media.application.services.media_deleter import MediaDeleter
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 
 

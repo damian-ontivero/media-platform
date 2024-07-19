@@ -2,9 +2,10 @@ import base64
 import json
 
 from fastapi import Response, status
-from src.apps.catalog.api.v0.schemas import SeriePaginatedResponseSchema
+from src.apps.catalog.api.v0.schemas.series import SeriePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.catalog.series.application.services import SerieCounter, SerieSearcher
+from src.contexts.catalog.series.application.services.serie_counter import SerieCounter
+from src.contexts.catalog.series.application.services.serie_searcher import SerieSearcher
 
 
 class SeriesGetController(Controller):

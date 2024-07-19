@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
-from src.contexts.shared.domain.criteria import Criteria
-
-from .movie import Movie
+from src.contexts.catalog.movies.domain.movie import Movie
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class MovieRepository(ABC):

@@ -1,11 +1,11 @@
 import os
 
 from moviepy.editor import VideoFileClip
-from src.contexts.backoffice.media.application.services import MediaCreator
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-from src.contexts.shared.infrastructure.file_manager import FileManager
-
-from .media_create_command import MediaCreateCommand
+from src.contexts.backoffice.media.application.commands.media_create_command import MediaCreateCommand
+from src.contexts.backoffice.media.application.services.media_creator import MediaCreator
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
+from src.contexts.shared.infrastructure.file_manager.file_manager import FileManager
 
 MEDIA_STORAGE_PATH = os.getenv("MEDIA_STORAGE_PATH")
 

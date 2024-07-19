@@ -1,8 +1,8 @@
 from fastapi import Response, UploadFile, status
-from src.apps.backoffice.api.v0.schemas import MediaWriteSchema
+from src.apps.backoffice.api.v0.schemas.media import MediaWriteSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.media.application.commands import MediaCreateCommand
-from src.contexts.shared.domain.bus.command import CommandBus
+from src.contexts.backoffice.media.application.commands.media_create_command import MediaCreateCommand
+from src.contexts.shared.domain.command_bus.command_bus import CommandBus
 
 
 class MediaPostController(Controller):

@@ -1,5 +1,5 @@
 import pytest
-from src.contexts.catalog.series.application.services import SerieSearcher
+from src.contexts.catalog.series.application.services.serie_searcher import SerieSearcher
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 
 

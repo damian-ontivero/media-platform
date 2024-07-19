@@ -1,6 +1,6 @@
 services:
     - id: CommandBus
-      module: src.contexts.shared.infrastructure.bus.command.in_memory_command_bus
+      module: src.contexts.shared.infrastructure.command_bus.in_memory_command_bus
       class: InMemoryCommandBus
       arguments:
           - !tagged command_handler
@@ -9,8 +9,8 @@ services:
       module: src.contexts.backoffice.media.application.commands.media_create_command_handler
       class: MediaCreateCommandHandler
       arguments:
-          - !ref MediaRepository
-          - !ref EventBus
+          - !ref MediaCreator
+
       tags:
           - command_handler
 
@@ -18,8 +18,8 @@ services:
       module: src.contexts.backoffice.media.application.commands.media_update_command_handler
       class: MediaUpdateCommandHandler
       arguments:
-          - !ref MediaRepository
-          - !ref EventBus
+          - !ref MediaUpdater
+
       tags:
           - command_handler
 
@@ -27,8 +27,8 @@ services:
       module: src.contexts.backoffice.media.application.commands.media_delete_command_handler
       class: MediaDeleteCommandHandler
       arguments:
-          - !ref MediaRepository
-          - !ref EventBus
+          - !ref MediaDeleter
+
       tags:
           - command_handler
 
@@ -36,9 +36,8 @@ services:
       module: src.contexts.backoffice.movies.application.commands.movie_create_command_handler
       class: MovieCreateCommandHandler
       arguments:
-          - !ref MovieRepository
-          - !ref QueryBus
-          - !ref EventBus
+          - !ref MovieCreator
+
       tags:
           - command_handler
 
@@ -46,9 +45,8 @@ services:
       module: src.contexts.backoffice.movies.application.commands.movie_update_command_handler
       class: MovieUpdateCommandHandler
       arguments:
-          - !ref MovieRepository
-          - !ref QueryBus
-          - !ref EventBus
+          - !ref MovieUpdater
+
       tags:
           - command_handler
 
@@ -56,8 +54,8 @@ services:
       module: src.contexts.backoffice.movies.application.commands.movie_delete_command_handler
       class: MovieDeleteCommandHandler
       arguments:
-          - !ref MovieRepository
-          - !ref EventBus
+          - !ref MovieDeleter
+
       tags:
           - command_handler
 
@@ -65,9 +63,8 @@ services:
       module: src.contexts.backoffice.series.application.commands.serie_create_command_handler
       class: SerieCreateCommandHandler
       arguments:
-          - !ref SerieRepository
-          - !ref QueryBus
-          - !ref EventBus
+          - !ref SerieCreator
+
       tags:
           - command_handler
 
@@ -75,9 +72,8 @@ services:
       module: src.contexts.backoffice.series.application.commands.serie_update_command_handler
       class: SerieUpdateCommandHandler
       arguments:
-          - !ref SerieRepository
-          - !ref QueryBus
-          - !ref EventBus
+          - !ref SerieUpdater
+
       tags:
           - command_handler
 
@@ -85,7 +81,7 @@ services:
       module: src.contexts.backoffice.series.application.commands.serie_delete_command_handler
       class: SerieDeleteCommandHandler
       arguments:
-          - !ref SerieRepository
-          - !ref EventBus
+          - !ref SerieDeleter
+
       tags:
           - command_handler

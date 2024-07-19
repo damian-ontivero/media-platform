@@ -1,4 +1,4 @@
-from src.contexts.backoffice.movies.domain import MovieRepository
+from src.contexts.backoffice.movies.domain.movie_repository import MovieRepository
 
 
 class MovieCounter:

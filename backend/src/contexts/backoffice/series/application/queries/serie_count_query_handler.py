@@ -1,7 +1,7 @@
-from src.contexts.backoffice.series.application.services import SerieCounter
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .serie_count_query import SerieCountQuery
+from src.contexts.backoffice.series.application.queries.serie_count_query import SerieCountQuery
+from src.contexts.backoffice.series.application.services.serie_counter import SerieCounter
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class SerieCountQueryHandler(QueryHandler):

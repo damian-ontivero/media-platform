@@ -1,7 +1,9 @@
 from sqlalchemy import and_, or_
 from sqlalchemy.orm import DeclarativeBase, Query
-
-from src.contexts.shared.domain.criteria import Condition, Criteria, Filter, Sort
+from src.contexts.shared.domain.criteria.condition import Condition
+from src.contexts.shared.domain.criteria.criteria import Criteria
+from src.contexts.shared.domain.criteria.filter import Filter
+from src.contexts.shared.domain.criteria.sort import Sort
 
 
 def equals_filter(m, k, v):

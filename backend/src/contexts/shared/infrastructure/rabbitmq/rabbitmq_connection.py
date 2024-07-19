@@ -1,6 +1,5 @@
 from aio_pika import ExchangeType, Message, connect_robust
-
-from .rabbitmq_config import RabbitMQConfig
+from src.contexts.shared.infrastructure.rabbitmq.rabbitmq_config import RabbitMQConfig
 
 
 class RabbitMQConnection:

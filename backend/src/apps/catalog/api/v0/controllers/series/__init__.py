@@ -1,2 +1,0 @@
-from .serie_get_controller import SerieGetController
-from .series_get_controller import SeriesGetController

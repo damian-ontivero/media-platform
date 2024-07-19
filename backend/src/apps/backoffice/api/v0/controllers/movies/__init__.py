@@ -1,5 +1,0 @@
-from .movie_delete_controller import MovieDeleteController
-from .movie_get_controller import MovieGetController
-from .movie_post_controller import MoviePostController
-from .movie_put_controller import MoviePutController
-from .movies_get_controller import MoviesGetController

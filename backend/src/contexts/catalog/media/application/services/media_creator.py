@@ -1,5 +1,6 @@
-from src.contexts.catalog.media.domain import Media, MediaRepository
-from src.contexts.shared.domain.bus.event import EventBus
+from src.contexts.catalog.media.domain.media import Media
+from src.contexts.catalog.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class MediaCreator:

@@ -1,6 +1,6 @@
-from src.contexts.shared.domain import AggregateRoot, EntityId
-
-from .movie_events import MovieCreatedDomainEvent, MovieUpdatedDomainEvent
+from src.contexts.backoffice.movies.domain.movie_events import MovieCreatedDomainEvent, MovieUpdatedDomainEvent
+from src.contexts.shared.domain.aggregate_root import AggregateRoot
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class Movie(AggregateRoot):

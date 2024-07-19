@@ -1,9 +1,8 @@
 from sqlalchemy.orm import Session
-
-from src.contexts.catalog.movies.domain import Movie, MovieRepository
-from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
-
-from .movie import PostgresMovie
+from src.contexts.catalog.movies.domain.movie import Movie
+from src.contexts.catalog.movies.domain.movie_repository import MovieRepository
+from src.contexts.catalog.movies.infrastructure.persistence.postgres.movie import PostgresMovie
+from src.contexts.shared.infrastructure.criteria.criteria_to_sqlalchemy_query import criteria_to_sqlalchemy_query
 
 
 class PostgresMovieRepository(MovieRepository):

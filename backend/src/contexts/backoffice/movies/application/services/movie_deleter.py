@@ -1,5 +1,7 @@
-from src.contexts.backoffice.movies.domain import MovieDeletedDomainEvent, MovieDoesNotExist, MovieRepository
-from src.contexts.shared.domain.bus.event import EventBus
+from src.contexts.backoffice.movies.domain.movie_events import MovieDeletedDomainEvent
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieDoesNotExist
+from src.contexts.backoffice.movies.domain.movie_repository import MovieRepository
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class MovieDeleter:

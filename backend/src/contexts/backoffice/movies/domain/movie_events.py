@@ -1,4 +1,4 @@
-from src.contexts.shared.domain import DomainEvent
+from src.contexts.shared.domain.domain_event import DomainEvent
 
 
 class MovieCreatedDomainEvent(DomainEvent):

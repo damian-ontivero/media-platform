@@ -1,5 +1,5 @@
 import factory
-from src.contexts.catalog.media.domain import Media
+from src.contexts.catalog.media.domain.media import Media
 from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
 
 

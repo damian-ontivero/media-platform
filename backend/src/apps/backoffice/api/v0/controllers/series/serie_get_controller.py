@@ -1,8 +1,8 @@
 from fastapi import Response, status
-from src.apps.backoffice.api.v0.schemas import SerieReadSchema
+from src.apps.backoffice.api.v0.schemas.series import SerieReadSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.series.application.queries import SerieFindByIdQuery
-from src.contexts.shared.domain.bus.query import QueryBus
+from src.contexts.backoffice.series.application.queries.serie_find_by_id_query import SerieFindByIdQuery
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus
 
 
 class SerieGetController(Controller):

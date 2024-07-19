@@ -1,7 +1,7 @@
-from src.contexts.backoffice.media.application.services import MediaDeleter
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .media_delete_command import MediaDeleteCommand
+from src.contexts.backoffice.media.application.commands.media_delete_command import MediaDeleteCommand
+from src.contexts.backoffice.media.application.services.media_deleter import MediaDeleter
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class MediaDeleteCommandHandler(CommandHandler):

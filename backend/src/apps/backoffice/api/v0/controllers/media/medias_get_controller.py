@@ -2,10 +2,11 @@ import base64
 import json
 
 from fastapi import Response, status
-from src.apps.backoffice.api.v0.schemas import MediaPaginatedResponseSchema
+from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.media.application.queries import MediaCountQuery, MediaSearchByCriteriaQuery
-from src.contexts.shared.domain.bus.query import QueryBus
+from src.contexts.backoffice.media.application.queries.media_count_query import MediaCountQuery
+from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query import MediaSearchByCriteriaQuery
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus
 
 
 class MediasGetController(Controller):

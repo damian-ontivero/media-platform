@@ -1,7 +1,7 @@
-from src.contexts.backoffice.movies.application.services import MovieDeleter
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .movie_delete_command import MovieDeleteCommand
+from src.contexts.backoffice.movies.application.commands.movie_delete_command import MovieDeleteCommand
+from src.contexts.backoffice.movies.application.services.movie_deleter import MovieDeleter
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class MovieDeleteCommandHandler(CommandHandler):

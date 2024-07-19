@@ -1,6 +1,6 @@
-from src.contexts.shared.domain import AggregateRoot, EntityId
-
-from .media_events import MediaCreatedDomainEvent, MediaUpdatedDomainEvent
+from src.contexts.backoffice.media.domain.media_events import MediaCreatedDomainEvent, MediaUpdatedDomainEvent
+from src.contexts.shared.domain.aggregate_root import AggregateRoot
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class Media(AggregateRoot):

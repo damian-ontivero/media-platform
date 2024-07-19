@@ -1,8 +1,10 @@
 from src.contexts.backoffice.series.domain.serie_events import SerieCreatedDomainEvent
 from src.contexts.catalog.series.application.services.serie_finder import SerieFinder
-from src.contexts.catalog.series.domain import Serie, SerieRepository
-from src.contexts.shared.domain import DomainEvent, DomainEventSubscriber
-from src.contexts.shared.domain.bus.event import EventBus
+from src.contexts.catalog.series.domain.serie import Serie
+from src.contexts.catalog.series.domain.serie_repository import SerieRepository
+from src.contexts.shared.domain.domain_event import DomainEvent
+from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class CreateSerieOnSerieCreated(DomainEventSubscriber):

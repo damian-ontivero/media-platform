@@ -1,16 +1,13 @@
 from fastapi import APIRouter, Body, File, Header, Path, Query, UploadFile, status
+from src.apps.backoffice.api.v0.controllers.media.media_delete_controller import MediaDeleteController
+from src.apps.backoffice.api.v0.controllers.media.media_file_get_controller import MediaFileGetController
+from src.apps.backoffice.api.v0.controllers.media.media_get_controller import MediaGetController
+from src.apps.backoffice.api.v0.controllers.media.media_post_controller import MediaPostController
+from src.apps.backoffice.api.v0.controllers.media.media_put_controller import MediaPutController
+from src.apps.backoffice.api.v0.controllers.media.medias_get_controller import MediasGetController
+from src.apps.backoffice.api.v0.dependecy_injection import container
+from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
 from typing_extensions import Annotated
-
-from ..controllers.media import (
-    MediaDeleteController,
-    MediaFileGetController,
-    MediaGetController,
-    MediaPostController,
-    MediaPutController,
-    MediasGetController,
-)
-from ..dependecy_injection import container
-from ..schemas import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
 
 router = APIRouter(prefix="/media", tags=["Media"])
 

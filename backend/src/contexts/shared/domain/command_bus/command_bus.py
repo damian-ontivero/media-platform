@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from .command import Command
+from src.contexts.shared.domain.command_bus.command import Command
 
 
 class CommandBus(ABC):

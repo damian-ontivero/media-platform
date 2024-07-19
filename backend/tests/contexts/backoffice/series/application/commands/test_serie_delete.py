@@ -1,7 +1,8 @@
 import faker
 import pytest
-from src.contexts.backoffice.series.application.commands import SerieDeleteCommand, SerieDeleteCommandHandler
-from src.contexts.backoffice.series.application.services import SerieDeleter
+from src.contexts.backoffice.series.application.commands.serie_delete_command import SerieDeleteCommand
+from src.contexts.backoffice.series.application.commands.serie_delete_command_handler import SerieDeleteCommandHandler
+from src.contexts.backoffice.series.application.services.serie_deleter import SerieDeleter
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 

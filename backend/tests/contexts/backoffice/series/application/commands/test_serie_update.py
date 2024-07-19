@@ -1,8 +1,9 @@
 import faker
 import pytest
-from src.contexts.backoffice.series.application.commands import SerieUpdateCommand, SerieUpdateCommandHandler
-from src.contexts.backoffice.series.application.services import SerieUpdater
-from src.contexts.backoffice.series.domain import SerieDoesNotExist
+from src.contexts.backoffice.series.application.commands.serie_update_command import SerieUpdateCommand
+from src.contexts.backoffice.series.application.commands.serie_update_command_handler import SerieUpdateCommandHandler
+from src.contexts.backoffice.series.application.services.serie_updater import SerieUpdater
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 from tests.contexts.backoffice.series.factory.serie_season_factory import SerieSeasonFactory

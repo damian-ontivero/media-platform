@@ -1,4 +1,4 @@
-from src.contexts.backoffice.media.domain import MediaRepository
+from src.contexts.backoffice.media.domain.media_repository import MediaRepository
 
 
 class MediaCounter:

@@ -1,6 +1,5 @@
 import factory
-
-from src.contexts.shared.domain import Image
+from src.contexts.shared.domain.image import Image
 
 
 class ImageFactory(factory.Factory):

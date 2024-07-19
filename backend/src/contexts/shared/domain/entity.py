@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from .entity_id import EntityId
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class Entity(ABC):

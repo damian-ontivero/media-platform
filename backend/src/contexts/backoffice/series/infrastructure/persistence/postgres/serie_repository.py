@@ -1,10 +1,9 @@
 from sqlalchemy.orm import Session
-
-from src.contexts.backoffice.series.domain import Serie, SerieRepository
-from src.contexts.shared.domain.criteria import Criteria
-from src.contexts.shared.infrastructure.criteria import criteria_to_sqlalchemy_query
-
-from .serie import PostgresSerie
+from src.contexts.backoffice.series.domain.serie import Serie
+from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
+from src.contexts.backoffice.series.infrastructure.persistence.postgres.serie import PostgresSerie
+from src.contexts.shared.domain.criteria.criteria import Criteria
+from src.contexts.shared.infrastructure.criteria.criteria_to_sqlalchemy_query import criteria_to_sqlalchemy_query
 
 
 class PostgresSerieRepository(SerieRepository):

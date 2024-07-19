@@ -1,8 +1,8 @@
-from src.contexts.backoffice.movies.application.services import MovieSearcher
-from src.contexts.backoffice.movies.domain import Movie
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .movie_search_by_criteria_query import MovieSearchByCriteriaQuery
+from src.contexts.backoffice.movies.application.queries.movie_search_by_criteria_query import MovieSearchByCriteriaQuery
+from src.contexts.backoffice.movies.application.services.movie_searcher import MovieSearcher
+from src.contexts.backoffice.movies.domain.movie import Movie
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class MovieSearchByCriteriaQueryHandler(QueryHandler):

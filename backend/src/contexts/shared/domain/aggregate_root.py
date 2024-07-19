@@ -1,6 +1,6 @@
-from .domain_event import DomainEvent
-from .entity import Entity
-from .entity_id import EntityId
+from src.contexts.shared.domain.domain_event import DomainEvent
+from src.contexts.shared.domain.entity import Entity
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class AggregateRoot(Entity):

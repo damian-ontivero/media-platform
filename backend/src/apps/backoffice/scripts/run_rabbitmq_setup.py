@@ -2,7 +2,7 @@ import asyncio
 
 import dotenv
 from src.apps.backoffice.api.v0.dependecy_injection import container
-from src.contexts.shared.infrastructure.bus.event.rabbitmq_event_setup import RabbitMQEventSetup
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_setup import RabbitMQEventSetup
 
 dotenv.load_dotenv("src/apps/backoffice/.env", override=True)
 

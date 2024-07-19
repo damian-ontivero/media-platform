@@ -1,9 +1,9 @@
 import pytest
-from src.contexts.backoffice.media.application.queries import (
-    MediaSearchByCriteriaQuery,
+from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query import MediaSearchByCriteriaQuery
+from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query_handler import (
     MediaSearchByCriteriaQueryHandler,
 )
-from src.contexts.backoffice.media.application.services import MediaSearcher
+from src.contexts.backoffice.media.application.services.media_searcher import MediaSearcher
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

@@ -2,10 +2,11 @@ import base64
 import json
 
 from fastapi import Response, status
-from src.apps.backoffice.api.v0.schemas import SeriePaginatedResponseSchema
+from src.apps.backoffice.api.v0.schemas.series import SeriePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.series.application.queries import SerieCountQuery, SerieSearchByCriteriaQuery
-from src.contexts.shared.domain.bus.query import QueryBus
+from src.contexts.backoffice.series.application.queries.serie_count_query import SerieCountQuery
+from src.contexts.backoffice.series.application.queries.serie_search_by_criteria_query import SerieSearchByCriteriaQuery
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus
 
 
 class SeriesGetController(Controller):

@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-from .sort_direction import SortDirection
-from .sort_field import SortField
+from src.contexts.shared.domain.criteria.sort_direction import SortDirection
+from src.contexts.shared.domain.criteria.sort_field import SortField
 
 
 class SortDict(TypedDict):

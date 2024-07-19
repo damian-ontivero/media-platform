@@ -1,8 +1,10 @@
-from src.contexts.backoffice.series.domain import Serie, SerieAlreadyExists, SerieRepository
-from src.contexts.backoffice.shared.media.application.queries import MediaFindByIdQuery
-from src.contexts.shared.domain.bus.event import EventBus
-from src.contexts.shared.domain.bus.query import QueryBus
-from src.contexts.shared.domain.criteria import Criteria
+from src.contexts.backoffice.series.domain.serie import Serie
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieAlreadyExists
+from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
+from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery
+from src.contexts.shared.domain.criteria.criteria import Criteria
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus
 
 
 class SerieCreator:

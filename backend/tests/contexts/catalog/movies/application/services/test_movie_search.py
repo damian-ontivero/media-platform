@@ -1,5 +1,5 @@
 import pytest
-from src.contexts.catalog.movies.application.services import MovieSearcher
+from src.contexts.catalog.movies.application.services.movie_searcher import MovieSearcher
 from tests.contexts.catalog.movies.factory.movie_factory import MovieFactory
 
 

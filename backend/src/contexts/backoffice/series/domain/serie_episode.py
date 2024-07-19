@@ -1,6 +1,7 @@
 from typing import TypedDict
 
-from src.contexts.shared.domain import Entity, EntityId
+from src.contexts.shared.domain.entity import Entity
+from src.contexts.shared.domain.entity_id import EntityId
 
 
 class SerieEpisodeDict(TypedDict):

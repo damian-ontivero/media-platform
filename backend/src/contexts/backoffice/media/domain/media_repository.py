@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
-from src.contexts.shared.domain.criteria import Criteria
-
-from .media import Media
+from src.contexts.backoffice.media.domain.media import Media
+from src.contexts.shared.domain.criteria.criteria import Criteria
 
 
 class MediaRepository(ABC):

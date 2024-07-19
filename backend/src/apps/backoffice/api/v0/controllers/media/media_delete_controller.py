@@ -1,7 +1,7 @@
 from fastapi import Response, status
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.backoffice.media.application.commands import MediaDeleteCommand
-from src.contexts.shared.domain.bus.command import CommandBus
+from src.contexts.backoffice.media.application.commands.media_delete_command import MediaDeleteCommand
+from src.contexts.shared.domain.command_bus.command_bus import CommandBus
 
 
 class MediaDeleteController(Controller):

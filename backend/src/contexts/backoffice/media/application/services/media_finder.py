@@ -1,4 +1,6 @@
-from src.contexts.backoffice.media.domain import Media, MediaDoesNotExist, MediaRepository
+from src.contexts.backoffice.media.domain.media import Media
+from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
+from src.contexts.backoffice.media.domain.media_repository import MediaRepository
 
 
 class MediaFinder:

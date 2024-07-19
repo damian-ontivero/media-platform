@@ -2,9 +2,10 @@ import base64
 import json
 
 from fastapi import Response, status
-from src.apps.catalog.api.v0.schemas import MoviePaginatedResponseSchema
+from src.apps.catalog.api.v0.schemas.movies import MoviePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
-from src.contexts.catalog.movies.application.services import MovieCounter, MovieSearcher
+from src.contexts.catalog.movies.application.services.movie_counter import MovieCounter
+from src.contexts.catalog.movies.application.services.movie_searcher import MovieSearcher
 
 
 class MoviesGetController(Controller):

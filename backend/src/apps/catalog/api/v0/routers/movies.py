@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Path, Query, status
+from src.apps.catalog.api.v0.controllers.movies.movie_get_controller import MovieGetController
+from src.apps.catalog.api.v0.controllers.movies.movies_get_controller import MoviesGetController
+from src.apps.catalog.api.v0.dependecy_injection import container
+from src.apps.catalog.api.v0.schemas.movies import MoviePaginatedResponseSchema, MovieReadSchema
 from typing_extensions import Annotated
-
-from ..controllers.movies import MovieGetController, MoviesGetController
-from ..dependecy_injection import container
-from ..schemas import MoviePaginatedResponseSchema, MovieReadSchema
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 

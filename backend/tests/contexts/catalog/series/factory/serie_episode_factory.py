@@ -1,5 +1,5 @@
 import factory
-from src.contexts.catalog.series.domain import SerieEpisode
+from src.contexts.catalog.series.domain.serie_episode import SerieEpisode
 from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
 
 

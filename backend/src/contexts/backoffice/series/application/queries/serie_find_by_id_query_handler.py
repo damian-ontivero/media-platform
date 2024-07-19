@@ -1,8 +1,8 @@
-from src.contexts.backoffice.series.application.services import SerieFinder
-from src.contexts.backoffice.series.domain import Serie
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .serie_find_by_id_query import SerieFindByIdQuery
+from src.contexts.backoffice.series.application.queries.serie_find_by_id_query import SerieFindByIdQuery
+from src.contexts.backoffice.series.application.services.serie_finder import SerieFinder
+from src.contexts.backoffice.series.domain.serie import Serie
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class SerieFindByIdQueryHandler(QueryHandler):

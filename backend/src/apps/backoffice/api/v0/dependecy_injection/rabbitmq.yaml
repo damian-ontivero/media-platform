@@ -11,19 +11,19 @@ services:
           - !ref RabbitMQConfig
 
     - id: RabbitMQEventExchangeFormatter
-      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_exchange_formatter
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_exchange_formatter
       class: RabbitMQEventExchangeFormatter
       arguments:
           - backoffice
 
     - id: RabbitMQEventQueueFormatter
-      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_queue_formatter
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_queue_formatter
       class: RabbitMQEventQueueFormatter
       arguments:
           - backoffice
 
     - id: RabbitMQEventConfigurer
-      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_configurer
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_configurer
       class: RabbitMQEventConfigurer
       arguments:
           - !ref RabbitMQConnection
@@ -31,7 +31,7 @@ services:
           - !ref RabbitMQEventQueueFormatter
 
     - id: RabbitMQEventSetup
-      module: src.contexts.shared.infrastructure.bus.event.rabbitmq_event_setup
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_setup
       class: RabbitMQEventSetup
       arguments:
           - !ref RabbitMQEventConfigurer

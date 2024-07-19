@@ -1,8 +1,9 @@
 import faker
 import pytest
-from src.contexts.backoffice.movies.application.commands import MovieUpdateCommand, MovieUpdateCommandHandler
-from src.contexts.backoffice.movies.application.services import MovieUpdater
-from src.contexts.backoffice.movies.domain import MovieDoesNotExist
+from src.contexts.backoffice.movies.application.commands.movie_update_command import MovieUpdateCommand
+from src.contexts.backoffice.movies.application.commands.movie_update_command_handler import MovieUpdateCommandHandler
+from src.contexts.backoffice.movies.application.services.movie_updater import MovieUpdater
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 

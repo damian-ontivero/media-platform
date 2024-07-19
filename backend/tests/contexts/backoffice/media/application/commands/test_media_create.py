@@ -1,7 +1,8 @@
 import faker
 import pytest
-from src.contexts.backoffice.media.application.commands import MediaCreateCommand, MediaCreateCommandHandler
-from src.contexts.backoffice.media.application.services import MediaCreator
+from src.contexts.backoffice.media.application.commands.media_create_command import MediaCreateCommand
+from src.contexts.backoffice.media.application.commands.media_create_command_handler import MediaCreateCommandHandler
+from src.contexts.backoffice.media.application.services.media_creator import MediaCreator
 
 
 @pytest.mark.asyncio

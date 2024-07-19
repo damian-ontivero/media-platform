@@ -1,8 +1,8 @@
-from src.contexts.backoffice.media.application.services import MediaSearcher
-from src.contexts.backoffice.media.domain import Media
-from src.contexts.shared.domain.bus.query import Query, QueryHandler
-
-from .media_search_by_criteria_query import MediaSearchByCriteriaQuery
+from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query import MediaSearchByCriteriaQuery
+from src.contexts.backoffice.media.application.services.media_searcher import MediaSearcher
+from src.contexts.backoffice.media.domain.media import Media
+from src.contexts.shared.domain.query_bus.query import Query
+from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 
 class MediaSearchByCriteriaQueryHandler(QueryHandler):

@@ -1,8 +1,9 @@
-from src.contexts.shared.domain import DomainEventSubscriber
-from src.contexts.shared.infrastructure.rabbitmq import RabbitMQConnection
-
-from .rabbitmq_event_exchange_formatter import RabbitMQEventExchangeFormatter
-from .rabbitmq_event_queue_formatter import RabbitMQEventQueueFormatter
+from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_exchange_formatter import (
+    RabbitMQEventExchangeFormatter,
+)
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_queue_formatter import RabbitMQEventQueueFormatter
+from src.contexts.shared.infrastructure.rabbitmq.rabbitmq_connection import RabbitMQConnection
 
 
 class RabbitMQEventConfigurer:

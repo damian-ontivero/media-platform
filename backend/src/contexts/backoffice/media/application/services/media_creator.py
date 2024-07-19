@@ -1,6 +1,8 @@
-from src.contexts.backoffice.media.domain import Media, MediaAlreadyExists, MediaRepository
-from src.contexts.shared.domain.bus.event import EventBus
-from src.contexts.shared.domain.criteria import Criteria
+from src.contexts.backoffice.media.domain.media import Media
+from src.contexts.backoffice.media.domain.media_exceptions import MediaAlreadyExists
+from src.contexts.backoffice.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.criteria.criteria import Criteria
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class MediaCreator:

@@ -1,9 +1,7 @@
 import factory
-
-from src.contexts.backoffice.series.domain import SerieSeason
+from src.contexts.backoffice.series.domain.serie_season import SerieSeason
+from tests.contexts.backoffice.series.factory.serie_episode_factory import SerieEpisodeFactory
 from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
-
-from .serie_episode_factory import SerieEpisodeFactory
 
 
 class SerieSeasonFactory(factory.Factory):

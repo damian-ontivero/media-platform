@@ -1,6 +1,0 @@
-from .serie_create_command import SerieCreateCommand
-from .serie_create_command_handler import SerieCreateCommandHandler
-from .serie_delete_command import SerieDeleteCommand
-from .serie_delete_command_handler import SerieDeleteCommandHandler
-from .serie_update_command import SerieUpdateCommand
-from .serie_update_command_handler import SerieUpdateCommandHandler

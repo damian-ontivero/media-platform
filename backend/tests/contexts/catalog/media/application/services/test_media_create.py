@@ -1,6 +1,6 @@
 import faker
 import pytest
-from src.contexts.catalog.media.application.services import MediaCreator
+from src.contexts.catalog.media.application.services.media_creator import MediaCreator
 
 
 @pytest.mark.asyncio

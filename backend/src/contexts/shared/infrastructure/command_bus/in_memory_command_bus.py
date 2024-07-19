@@ -1,4 +1,6 @@
-from src.contexts.shared.domain.bus.command import Command, CommandBus, CommandHandler, CommandHandlerNotFound
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_bus import CommandBus, CommandHandlerNotFound
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class InMemoryCommandBus(CommandBus):

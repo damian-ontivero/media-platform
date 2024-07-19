@@ -1,7 +1,7 @@
-from src.contexts.backoffice.movies.application.services import MovieUpdater
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .movie_update_command import MovieUpdateCommand
+from src.contexts.backoffice.movies.application.commands.movie_update_command import MovieUpdateCommand
+from src.contexts.backoffice.movies.application.services.movie_updater import MovieUpdater
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class MovieUpdateCommandHandler(CommandHandler):

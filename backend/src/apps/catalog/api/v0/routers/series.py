@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Path, Query, status
+from src.apps.catalog.api.v0.controllers.series.serie_get_controller import SerieGetController
+from src.apps.catalog.api.v0.controllers.series.series_get_controller import SeriesGetController
+from src.apps.catalog.api.v0.dependecy_injection import container
+from src.apps.catalog.api.v0.schemas.series import SeriePaginatedResponseSchema, SerieReadSchema
 from typing_extensions import Annotated
-
-from ..controllers.series import SerieGetController, SeriesGetController
-from ..dependecy_injection import container
-from ..schemas import SeriePaginatedResponseSchema, SerieReadSchema
 
 router = APIRouter(prefix="/series", tags=["Series"])
 

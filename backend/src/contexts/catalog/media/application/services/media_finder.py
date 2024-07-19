@@ -1,4 +1,6 @@
-from src.contexts.catalog.media.domain import Media, MediaDoesNotExist, MediaRepository
+from src.contexts.catalog.media.domain.media import Media
+from src.contexts.catalog.media.domain.media_exceptions import MediaDoesNotExist
+from src.contexts.catalog.media.domain.media_repository import MediaRepository
 
 
 class MediaFinder:

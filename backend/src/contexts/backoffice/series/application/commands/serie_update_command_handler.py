@@ -1,7 +1,7 @@
-from src.contexts.backoffice.series.application.services import SerieUpdater
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .serie_update_command import SerieUpdateCommand
+from src.contexts.backoffice.series.application.commands.serie_update_command import SerieUpdateCommand
+from src.contexts.backoffice.series.application.services.serie_updater import SerieUpdater
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class SerieUpdateCommandHandler(CommandHandler):

@@ -1,8 +1,9 @@
 import faker
 import pytest
-from src.contexts.backoffice.media.application.commands import MediaUpdateCommand, MediaUpdateCommandHandler
-from src.contexts.backoffice.media.application.services import MediaUpdater
-from src.contexts.backoffice.media.domain import MediaDoesNotExist
+from src.contexts.backoffice.media.application.commands.media_update_command import MediaUpdateCommand
+from src.contexts.backoffice.media.application.commands.media_update_command_handler import MediaUpdateCommandHandler
+from src.contexts.backoffice.media.application.services.media_updater import MediaUpdater
+from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

@@ -1,4 +1,4 @@
-from src.contexts.catalog.series.domain import SerieRepository
+from src.contexts.catalog.series.domain.serie_repository import SerieRepository
 
 
 class SerieCounter:

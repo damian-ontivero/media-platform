@@ -4,8 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from src.apps.catalog.api.v0.exception import EXCEPTION_TO_HTTP_STATUS_CODE
-
-from .routers import health_check_router, movies_router, series_router
+from src.apps.catalog.api.v0.routers.health_check import router as health_check_router
+from src.apps.catalog.api.v0.routers.movies import router as movies_router
+from src.apps.catalog.api.v0.routers.series import router as series_router
 
 dotenv.load_dotenv("src/apps/catalog/.env", override=True)
 

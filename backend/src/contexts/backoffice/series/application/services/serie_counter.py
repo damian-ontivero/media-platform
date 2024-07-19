@@ -1,4 +1,4 @@
-from src.contexts.backoffice.series.domain import SerieRepository
+from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
 
 
 class SerieCounter:

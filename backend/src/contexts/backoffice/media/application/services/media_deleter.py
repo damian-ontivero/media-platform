@@ -1,5 +1,7 @@
-from src.contexts.backoffice.media.domain import MediaDeletedDomainEvent, MediaDoesNotExist, MediaRepository
-from src.contexts.shared.domain.bus.event import EventBus
+from src.contexts.backoffice.media.domain.media_events import MediaDeletedDomainEvent
+from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
+from src.contexts.backoffice.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class MediaDeleter:

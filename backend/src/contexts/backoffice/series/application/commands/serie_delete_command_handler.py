@@ -1,7 +1,7 @@
-from src.contexts.backoffice.series.application.services import SerieDeleter
-from src.contexts.shared.domain.bus.command import Command, CommandHandler
-
-from .serie_delete_command import SerieDeleteCommand
+from src.contexts.backoffice.series.application.commands.serie_delete_command import SerieDeleteCommand
+from src.contexts.backoffice.series.application.services.serie_deleter import SerieDeleter
+from src.contexts.shared.domain.command_bus.command import Command
+from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 
 
 class SerieDeleteCommandHandler(CommandHandler):

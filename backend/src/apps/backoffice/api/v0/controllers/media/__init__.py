@@ -1,6 +1,0 @@
-from .media_delete_controller import MediaDeleteController
-from .media_file_get_controller import MediaFileGetController
-from .media_get_controller import MediaGetController
-from .media_post_controller import MediaPostController
-from .media_put_controller import MediaPutController
-from .medias_get_controller import MediasGetController

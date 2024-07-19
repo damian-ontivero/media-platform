@@ -1,6 +1,6 @@
 from typing import List, Type, TypedDict, Union
 
-from .condition import Condition
+from src.contexts.shared.domain.criteria.condition import Condition
 
 Conditions = List[Union[Condition, Type["Filter"]]]
 

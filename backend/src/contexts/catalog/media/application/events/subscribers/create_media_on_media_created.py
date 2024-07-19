@@ -1,7 +1,9 @@
 from src.contexts.backoffice.media.domain.media_events import MediaCreatedDomainEvent
-from src.contexts.catalog.media.domain import Media, MediaRepository
-from src.contexts.shared.domain import DomainEvent, DomainEventSubscriber
-from src.contexts.shared.domain.bus.event import EventBus
+from src.contexts.catalog.media.domain.media import Media
+from src.contexts.catalog.media.domain.media_repository import MediaRepository
+from src.contexts.shared.domain.domain_event import DomainEvent
+from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
+from src.contexts.shared.domain.event_bus.event_bus import EventBus
 
 
 class CreateMediaOnMediaCreated(DomainEventSubscriber):

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from .query import Query
+from src.contexts.shared.domain.query_bus.query import Query
 
 
 class QueryHandler(ABC):

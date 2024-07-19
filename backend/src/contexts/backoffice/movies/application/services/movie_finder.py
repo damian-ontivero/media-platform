@@ -1,4 +1,6 @@
-from src.contexts.backoffice.movies.domain import Movie, MovieDoesNotExist, MovieRepository
+from src.contexts.backoffice.movies.domain.movie import Movie
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieDoesNotExist
+from src.contexts.backoffice.movies.domain.movie_repository import MovieRepository
 
 
 class MovieFinder:
