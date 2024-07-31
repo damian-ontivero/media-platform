@@ -408,13 +408,13 @@ files = [
 
 [[package]]
 name = "ditainer"
-version = "0.4.11"
+version = "0.4.12"
 description = ""
 optional = false
 python-versions = ">=3.12,<4.0"
 files = [
-    {file = "ditainer-0.4.11-py3-none-any.whl", hash = "sha256:6d3e3608f321ba0356e546f1d7f21492f73f8e32fa9f8a112823f71e083c1510"},
-    {file = "ditainer-0.4.11.tar.gz", hash = "sha256:d3957a1111702dcdeabdcf7917e6200efd22234802e5c3ae6b91c4764892e5f4"},
+    {file = "ditainer-0.4.12-py3-none-any.whl", hash = "sha256:82e9f315a40ed4c73d521d81d54d15fc35fe0300cad4a856ceb15ce1d31a35a5"},
+    {file = "ditainer-0.4.12.tar.gz", hash = "sha256:8675e705d160915a44880ab4cfe30e014aa591a89f25ad24f0ffccb9e649fe51"},
 ]
 
 [package.dependencies]
