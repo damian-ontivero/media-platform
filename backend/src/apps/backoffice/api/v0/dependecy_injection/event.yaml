@@ -4,4 +4,6 @@ services:
       class: RabbitMQEventBus
       arguments:
           - !ref RabbitMQConnection
-          - !ref RabbitMQEventExchangeFormatter
+          - !ref RabbitMQExchangeFormatter
+          - !ref RabbitMQQueueFormatter
+          - !ref Logger

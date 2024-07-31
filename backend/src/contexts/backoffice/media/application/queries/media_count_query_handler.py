@@ -1,8 +1,7 @@
+from src.contexts.backoffice.media.application.queries.media_count_query import MediaCountQuery
 from src.contexts.backoffice.media.application.services.media_counter import MediaCounter
 from src.contexts.shared.domain.query_bus.query import Query
 from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
-
-from .media_count_query import MediaCountQuery
 
 
 class MediaCountQueryHandler(QueryHandler):

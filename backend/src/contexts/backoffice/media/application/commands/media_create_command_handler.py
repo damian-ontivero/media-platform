@@ -1,6 +1,7 @@
 import os
 
 from moviepy.editor import VideoFileClip
+
 from src.contexts.backoffice.media.application.commands.media_create_command import MediaCreateCommand
 from src.contexts.backoffice.media.application.services.media_creator import MediaCreator
 from src.contexts.shared.domain.command_bus.command import Command

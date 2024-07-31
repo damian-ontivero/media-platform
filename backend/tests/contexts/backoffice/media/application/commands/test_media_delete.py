@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.media.application.commands.media_delete_command import MediaDeleteCommand
 from src.contexts.backoffice.media.application.commands.media_delete_command_handler import MediaDeleteCommandHandler
 from src.contexts.backoffice.media.application.services.media_deleter import MediaDeleter

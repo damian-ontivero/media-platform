@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.catalog.api.v0.schemas.series import SerieReadSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.catalog.series.application.services.serie_finder import SerieFinder

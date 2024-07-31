@@ -1,4 +1,5 @@
 import pytest
+
 from src.contexts.backoffice.series.application.queries.serie_search_by_criteria_query import SerieSearchByCriteriaQuery
 from src.contexts.backoffice.series.application.queries.serie_search_by_criteria_query_handler import (
     SerieSearchByCriteriaQueryHandler,

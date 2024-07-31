@@ -5,3 +5,4 @@ imports:
     - { resource: ./event.yaml }
     - { resource: ./rabbitmq.yaml }
     - { resource: ./controller.yaml }
+    - { resource: ./logger.yaml }

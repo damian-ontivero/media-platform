@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.series.application.commands.serie_update_command import SerieUpdateCommand
 from src.contexts.backoffice.series.application.commands.serie_update_command_handler import SerieUpdateCommandHandler
 from src.contexts.backoffice.series.application.services.serie_updater import SerieUpdater

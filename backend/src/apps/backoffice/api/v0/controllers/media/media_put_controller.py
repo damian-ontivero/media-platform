@@ -1,4 +1,5 @@
 from fastapi import Response, UploadFile, status
+
 from src.apps.backoffice.api.v0.schemas.media import MediaWriteSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.media.application.commands.media_update_command import MediaUpdateCommand

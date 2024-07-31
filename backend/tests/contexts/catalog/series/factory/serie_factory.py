@@ -1,4 +1,5 @@
 import factory
+
 from src.contexts.catalog.series.domain.serie import Serie
 from tests.contexts.catalog.series.factory.serie_season_factory import SerieSeasonFactory
 from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory

@@ -35,6 +35,7 @@ ipdb = "^0.13.13"
 isort = "^5.13.2"
 pytest = "^8.2.2"
 pytest-asyncio = "^0.23.7"
+pytest-mock = "^3.14.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -49,5 +50,5 @@ profile = "black"
 line_length = 120
 
 [tool.poetry.scripts]
-"backoffice:rabbitmq" = "src.apps.backoffice.scripts:run_rabbitmq_setup"
-"catalog:rabbitmq" = "src.apps.catalog.scripts:run_rabbitmq_setup"
+"backoffice:rabbitmq" = "src.apps.backoffice.scripts.rabbitmq_setup:run"
+"catalog:rabbitmq" = "src.apps.catalog.scripts.rabbitmq_setup:run"

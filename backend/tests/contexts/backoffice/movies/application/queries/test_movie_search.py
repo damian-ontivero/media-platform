@@ -1,4 +1,5 @@
 import pytest
+
 from src.contexts.backoffice.movies.application.queries.movie_search_by_criteria_query import MovieSearchByCriteriaQuery
 from src.contexts.backoffice.movies.application.queries.movie_search_by_criteria_query_handler import (
     MovieSearchByCriteriaQueryHandler,

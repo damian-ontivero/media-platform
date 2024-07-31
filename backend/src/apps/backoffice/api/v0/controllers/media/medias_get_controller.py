@@ -2,6 +2,7 @@ import base64
 import json
 
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.media.application.queries.media_count_query import MediaCountQuery

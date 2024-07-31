@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.backoffice.series.domain.serie import Serie
 from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
 from src.contexts.backoffice.series.infrastructure.persistence.postgres.serie import PostgresSerie

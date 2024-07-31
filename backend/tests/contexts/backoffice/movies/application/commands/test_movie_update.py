@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.movies.application.commands.movie_update_command import MovieUpdateCommand
 from src.contexts.backoffice.movies.application.commands.movie_update_command_handler import MovieUpdateCommandHandler
 from src.contexts.backoffice.movies.application.services.movie_updater import MovieUpdater

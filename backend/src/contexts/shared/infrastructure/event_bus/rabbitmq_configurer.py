@@ -1,25 +1,25 @@
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
-from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_exchange_formatter import (
-    RabbitMQEventExchangeFormatter,
-)
-from src.contexts.shared.infrastructure.event_bus.rabbitmq_event_queue_formatter import RabbitMQEventQueueFormatter
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_exchange_formatter import RabbitMQExchangeFormatter
+from src.contexts.shared.infrastructure.event_bus.rabbitmq_queue_formatter import RabbitMQQueueFormatter
 from src.contexts.shared.infrastructure.rabbitmq.rabbitmq_connection import RabbitMQConnection
 
 
-class RabbitMQEventConfigurer:
+class RabbitMQConfigurer:
     def __init__(
         self,
         connection: RabbitMQConnection,
-        exchange_formatter: RabbitMQEventExchangeFormatter,
-        queue_formatter: RabbitMQEventQueueFormatter,
+        exchange_formatter: RabbitMQExchangeFormatter,
+        queue_formatter: RabbitMQQueueFormatter,
+        subscribers: list[DomainEventSubscriber],
     ) -> None:
         self._connection = connection
         self._exchange_formatter = exchange_formatter
         self._queue_formatter = queue_formatter
+        self._subscribers = subscribers
 
-    async def configure(self, subscribers: list[DomainEventSubscriber]) -> None:
+    async def configure(self) -> None:
         await self._declare_exchange(self._exchange_formatter.format())
-        for subscriber in subscribers:
+        for subscriber in self._subscribers:
             await self._declare_queue(subscriber)
 
     async def _declare_exchange(self, exchange_name: str) -> None:

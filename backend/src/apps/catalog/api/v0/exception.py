@@ -1,4 +1,5 @@
 from fastapi import status
+
 from src.contexts.catalog.movies.domain.movie_exceptions import MovieDoesNotExist
 from src.contexts.catalog.series.domain.serie_exceptions import SerieDoesNotExist
 

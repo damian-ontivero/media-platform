@@ -1,6 +1,7 @@
 import os
 
 from moviepy.editor import VideoFileClip
+
 from src.contexts.backoffice.media.application.commands.media_update_command import MediaUpdateCommand
 from src.contexts.backoffice.media.application.services.media_updater import MediaUpdater
 from src.contexts.shared.domain.command_bus.command import Command

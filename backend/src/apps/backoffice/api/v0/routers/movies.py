@@ -1,4 +1,6 @@
 from fastapi import APIRouter, Path, Query, status
+from typing_extensions import Annotated
+
 from src.apps.backoffice.api.v0.controllers.movies.movie_delete_controller import MovieDeleteController
 from src.apps.backoffice.api.v0.controllers.movies.movie_get_controller import MovieGetController
 from src.apps.backoffice.api.v0.controllers.movies.movie_post_controller import MoviePostController
@@ -6,7 +8,6 @@ from src.apps.backoffice.api.v0.controllers.movies.movie_put_controller import M
 from src.apps.backoffice.api.v0.controllers.movies.movies_get_controller import MoviesGetController
 from src.apps.backoffice.api.v0.dependecy_injection import container
 from src.apps.backoffice.api.v0.schemas.movies import MoviePaginatedResponseSchema, MovieReadSchema, MovieWriteSchema
-from typing_extensions import Annotated
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
@@ -46,7 +47,7 @@ async def search(
         ),
     ] = None
 ):
-    controller: MoviesGetController = container.get("MoviesGetController")
+    controller: MoviesGetController = container.find("MoviesGetController")
     return await controller.run(criteria)
 
 
@@ -54,13 +55,13 @@ async def search(
 async def find(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller: MovieGetController = container.get("MovieGetController")
+    controller: MovieGetController = container.find("MovieGetController")
     return await controller.run(id)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Movie")
 async def create(movie: MovieWriteSchema):
-    controller: MoviePostController = container.get("MoviePostController")
+    controller: MoviePostController = container.find("MoviePostController")
     return await controller.run(movie)
 
 
@@ -69,7 +70,7 @@ async def update(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")],
     movie: MovieWriteSchema,
 ):
-    controller: MoviePutController = container.get("MoviePutController")
+    controller: MoviePutController = container.find("MoviePutController")
     return await controller.run(id, movie)
 
 
@@ -77,5 +78,5 @@ async def update(
 async def delete(
     id: Annotated[str, Path(..., description="Id of the Movie", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller: MovieDeleteController = container.get("MovieDeleteController")
+    controller: MovieDeleteController = container.find("MovieDeleteController")
     return await controller.run(id)

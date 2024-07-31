@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas.movies import MovieReadSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.movies.application.queries.movie_find_by_id_query import MovieFindByIdQuery

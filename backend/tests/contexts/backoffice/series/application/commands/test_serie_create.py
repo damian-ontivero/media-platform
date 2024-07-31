@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.backoffice.series.application.commands.serie_create_command import SerieCreateCommand
 from src.contexts.backoffice.series.application.commands.serie_create_command_handler import SerieCreateCommandHandler
 from src.contexts.backoffice.series.application.services.serie_creator import SerieCreator

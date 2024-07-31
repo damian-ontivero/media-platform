@@ -10,29 +10,23 @@ services:
       arguments:
           - !ref RabbitMQConfig
 
-    - id: RabbitMQEventExchangeFormatter
-      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_exchange_formatter
-      class: RabbitMQEventExchangeFormatter
+    - id: RabbitMQExchangeFormatter
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_exchange_formatter
+      class: RabbitMQExchangeFormatter
       arguments:
           - backoffice
 
-    - id: RabbitMQEventQueueFormatter
-      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_queue_formatter
-      class: RabbitMQEventQueueFormatter
+    - id: RabbitMQQueueFormatter
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_queue_formatter
+      class: RabbitMQQueueFormatter
       arguments:
           - backoffice
 
-    - id: RabbitMQEventConfigurer
-      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_configurer
-      class: RabbitMQEventConfigurer
+    - id: RabbitMQConfigurer
+      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_configurer
+      class: RabbitMQConfigurer
       arguments:
           - !ref RabbitMQConnection
-          - !ref RabbitMQEventExchangeFormatter
-          - !ref RabbitMQEventQueueFormatter
-
-    - id: RabbitMQEventSetup
-      module: src.contexts.shared.infrastructure.event_bus.rabbitmq_event_setup
-      class: RabbitMQEventSetup
-      arguments:
-          - !ref RabbitMQEventConfigurer
-          - !tagged domain_event_subscriber
+          - !ref RabbitMQExchangeFormatter
+          - !ref RabbitMQQueueFormatter
+          - !tagged event_subscriber

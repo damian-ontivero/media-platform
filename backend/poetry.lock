@@ -408,13 +408,13 @@ files = [
 
 [[package]]
 name = "ditainer"
-version = "0.4.10"
+version = "0.4.11"
 description = ""
 optional = false
 python-versions = ">=3.12,<4.0"
 files = [
-    {file = "ditainer-0.4.10-py3-none-any.whl", hash = "sha256:a7a8d18f27a7481b176ef3b43aa8810679c3510147d1a911ac43a35fc86814f6"},
-    {file = "ditainer-0.4.10.tar.gz", hash = "sha256:d3b3be0c639925cdec2f0d3858fe6a967741969121e0ceda9c2dbcfb1c4c0836"},
+    {file = "ditainer-0.4.11-py3-none-any.whl", hash = "sha256:6d3e3608f321ba0356e546f1d7f21492f73f8e32fa9f8a112823f71e083c1510"},
+    {file = "ditainer-0.4.11.tar.gz", hash = "sha256:d3957a1111702dcdeabdcf7917e6200efd22234802e5c3ae6b91c4764892e5f4"},
 ]
 
 [package.dependencies]
@@ -2565,4 +2565,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bacb426b81923e8692333bb616d9b576507fa8fe47b4e0141b875d540754d728"
+content-hash = "ab7db10a47673ecb71754525da060708247c027fd429c77c4e9b3743a4428515"

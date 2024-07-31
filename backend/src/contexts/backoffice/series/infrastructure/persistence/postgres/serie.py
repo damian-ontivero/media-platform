@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+
 from src.contexts.backoffice.series.domain.serie import Serie
 from src.contexts.backoffice.series.infrastructure.persistence.postgres.serie_episode import PostgresSerieEpisode
 from src.contexts.backoffice.series.infrastructure.persistence.postgres.serie_season import PostgresSerieSeason

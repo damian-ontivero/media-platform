@@ -1,6 +1,6 @@
-class RabbitMQEventExchangeFormatter:
+class RabbitMQExchangeFormatter:
     """
-    RabbitMQEventExchangeFormatter is responsible for formatting the exchange name.
+    RabbitMQExchangeFormatter is responsible for formatting the exchange name.
 
     The exchange name is formatted as follows:
     - The context name is converted to lowercase.

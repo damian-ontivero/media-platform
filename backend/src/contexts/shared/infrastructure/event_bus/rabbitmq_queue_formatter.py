@@ -1,9 +1,9 @@
 import re
 
 
-class RabbitMQEventQueueFormatter:
+class RabbitMQQueueFormatter:
     """
-    RabbitMQEventQueueFormatter is responsible for formatting the queue name.
+    RabbitMQQueueFormatter is responsible for formatting the queue name.
 
     The queue name is formatted as follows:
     - The subscriber class name is split by the uppercase letters.

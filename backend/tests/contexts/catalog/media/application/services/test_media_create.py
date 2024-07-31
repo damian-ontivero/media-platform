@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.catalog.media.application.services.media_creator import MediaCreator
 
 

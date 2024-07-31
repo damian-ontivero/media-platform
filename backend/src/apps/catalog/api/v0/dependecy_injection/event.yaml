@@ -4,14 +4,15 @@ services:
       class: RabbitMQEventBus
       arguments:
           - !ref RabbitMQConnection
-          - !ref RabbitMQEventExchangeFormatter
+          - !ref RabbitMQExchangeFormatter
+          - !ref RabbitMQQueueFormatter
+          - !ref Logger
 
     - id: CreateMediaOnMediaCreated
       module: src.contexts.catalog.media.application.events.subscribers.create_media_on_media_created
       class: CreateMediaOnMediaCreated
       arguments:
           - !ref MediaRepository
-          - !ref MediaFinder
           - !ref EventBus
       tags:
           - domain_event_subscriber

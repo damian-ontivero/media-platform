@@ -1,4 +1,6 @@
 from fastapi import APIRouter, Body, File, Header, Path, Query, UploadFile, status
+from typing_extensions import Annotated
+
 from src.apps.backoffice.api.v0.controllers.media.media_delete_controller import MediaDeleteController
 from src.apps.backoffice.api.v0.controllers.media.media_file_get_controller import MediaFileGetController
 from src.apps.backoffice.api.v0.controllers.media.media_get_controller import MediaGetController
@@ -7,7 +9,6 @@ from src.apps.backoffice.api.v0.controllers.media.media_put_controller import Me
 from src.apps.backoffice.api.v0.controllers.media.medias_get_controller import MediasGetController
 from src.apps.backoffice.api.v0.dependecy_injection import container
 from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
-from typing_extensions import Annotated
 
 router = APIRouter(prefix="/media", tags=["Media"])
 
@@ -47,7 +48,7 @@ async def search(
         ),
     ] = None
 ):
-    controller: MediasGetController = container.get("MediasGetController")
+    controller: MediasGetController = container.find("MediasGetController")
     return await controller.run(criteria)
 
 
@@ -55,13 +56,13 @@ async def search(
 async def find(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller: MediaGetController = container.get("MediaGetController")
+    controller: MediaGetController = container.find("MediaGetController")
     return await controller.run(id)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, description="Create Media")
 async def create(media: MediaWriteSchema = Body(...), file: UploadFile = File(...)):
-    controller: MediaPostController = container.get("MediaPostController")
+    controller: MediaPostController = container.find("MediaPostController")
     return await controller.run(media, file)
 
 
@@ -71,7 +72,7 @@ async def update(
     media: MediaWriteSchema = Body(...),
     file: UploadFile = File(...),
 ):
-    controller: MediaPutController = container.get("MediaPutController")
+    controller: MediaPutController = container.find("MediaPutController")
     return await controller.run(id, media, file)
 
 
@@ -79,7 +80,7 @@ async def update(
 async def delete(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
 ):
-    controller: MediaDeleteController = container.get("MediaDeleteController")
+    controller: MediaDeleteController = container.find("MediaDeleteController")
     return await controller.run(id)
 
 
@@ -88,5 +89,5 @@ async def get_stream(
     id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")],
     range: Annotated[str, Header(..., description="Range", example="bytes=0-100")],
 ):
-    controller: MediaFileGetController = container.get("MediaFileGetController")
+    controller: MediaFileGetController = container.find("MediaFileGetController")
     return await controller.run(id, range)

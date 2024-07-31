@@ -1,5 +1,6 @@
 import faker
 import pytest
+
 from src.contexts.catalog.movies.application.services.movie_deleter import MovieDeleter
 from tests.contexts.catalog.movies.factory.movie_factory import MovieFactory
 

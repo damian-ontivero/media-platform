@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas.media import MediaReadSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery

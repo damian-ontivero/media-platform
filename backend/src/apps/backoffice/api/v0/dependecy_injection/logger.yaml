@@ -1,0 +1,6 @@
+services:
+    - id: Logger
+      module: src.contexts.shared.infrastructure.logger.logger
+      class: Logger
+      arguments:
+          - backoffice

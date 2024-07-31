@@ -1,4 +1,7 @@
-from aio_pika import ExchangeType, Message, connect_robust
+from typing import Any, Awaitable, Callable
+
+from aio_pika import ExchangeType, IncomingMessage, Message, Queue, connect_robust
+
 from src.contexts.shared.infrastructure.rabbitmq.rabbitmq_config import RabbitMQConfig
 
 
@@ -28,9 +31,9 @@ class RabbitMQConnection:
             exchange = await channel.get_exchange(exchange_name)
             await exchange.publish(Message(body=message.encode(), content_type="application/json"), routing_key)
 
-    async def consume(self, queue_name: str, callback) -> None:
+    async def consume(self, queue_name: str, on_message: Callable[[IncomingMessage], Awaitable[Any]]) -> None:
         connection = await connect_robust(self._config._uri)
         async with connection:
             channel = await connection.channel()
             queue = await channel.get_queue(queue_name)
-            await queue.consume(callback)
+            await queue.consume(on_message, no_ack=True)

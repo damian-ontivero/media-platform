@@ -1,4 +1,5 @@
 import factory
+
 from src.contexts.catalog.movies.domain.movie import Movie
 from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
 

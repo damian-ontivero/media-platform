@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.catalog.movies.domain.movie import Movie
 from src.contexts.catalog.movies.domain.movie_repository import MovieRepository
 from src.contexts.catalog.movies.infrastructure.persistence.postgres.movie import PostgresMovie

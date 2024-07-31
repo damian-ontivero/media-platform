@@ -1,4 +1,5 @@
 import pytest
+
 from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query import MediaSearchByCriteriaQuery
 from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query_handler import (
     MediaSearchByCriteriaQueryHandler,

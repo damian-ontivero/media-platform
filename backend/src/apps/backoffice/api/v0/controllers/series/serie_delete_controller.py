@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.series.application.commands.serie_delete_command import SerieDeleteCommand
 from src.contexts.shared.domain.command_bus.command_bus import CommandBus

@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from src.contexts.backoffice.media.domain.media import Media
 from src.contexts.backoffice.media.domain.media_repository import MediaRepository
 from src.contexts.backoffice.media.infrastructure.persistence.postgres.media import PostgresMedia

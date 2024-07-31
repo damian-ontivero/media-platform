@@ -1,4 +1,5 @@
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas.series import SerieWriteSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.series.application.commands.serie_update_command import SerieUpdateCommand

@@ -2,6 +2,7 @@ import base64
 import json
 
 from fastapi import Response, status
+
 from src.apps.backoffice.api.v0.schemas.series import SeriePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.series.application.queries.serie_count_query import SerieCountQuery
