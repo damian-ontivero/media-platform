@@ -4,7 +4,6 @@ from src.contexts.shared.domain.criteria.condition_value import ConditionValue
 
 
 class Condition:
-
     __slots__ = ("_field", "_operator", "_value")
 
     def __init__(self, field: ConditionField, operator: ConditionOperator, value: ConditionValue) -> None:

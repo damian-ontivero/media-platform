@@ -52,6 +52,18 @@ test = [
     "pytest-mock>=3.14.0",
 ]
 
+[tool.pdm.scripts]
+# Backoffice
+"bo:rabbitmq" = { call = "src.apps.backoffice.scripts.rabbitmq_setup:run" }
+"bo:migrations" = { cmd = "alembic -n backoffice upgrade head" }
+"bo:test" = { cmd = "pytest tests/contexts/backoffice -vs" }
+"bo:api" = { cmd = "uvicorn src.apps.backoffice.api.v0.main:app --reload --port 8001" }
+# Catalog
+"ca:rabbitmq" = { call = "src.apps.catalog.scripts.rabbitmq_setup:run" }
+"ca:migrations" = { cmd = "alembic -n catalog upgrade head" }
+"ca:test" = { cmd = "pytest tests/contexts/catalog -vs" }
+"ca:api" = { cmd = "uvicorn src.apps.catalog.api.v0.main:app --reload --port 8002" }
+
 
 [tool.ruff]
 line-length = 120

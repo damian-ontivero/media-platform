@@ -42,18 +42,13 @@ class DomainEvent:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, DomainEvent):
             return NotImplemented
-        return (
-            self._id == other._id
-            and self._type == other._type
-            and self._occurred_on == other._occurred_on
-            and self._data == other._data
-        )
+        return self._id == other._id
 
     def __ne__(self, other: object) -> bool:
         return not self == other
 
     def __hash__(self) -> int:
-        return hash((self._id, self._type, self._occurred_on, self._data))
+        return hash(self._id)
 
     def __repr__(self) -> str:
         return "{c}(id={id!r}, type_={type_!r}, occurred_on={occurred_on!r}, data={data!r})".format(

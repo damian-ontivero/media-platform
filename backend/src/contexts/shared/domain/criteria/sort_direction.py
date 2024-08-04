@@ -1,5 +1,4 @@
 class SortDirection:
-
     __slots__ = ("_value",)
 
     ASC = "ASC"

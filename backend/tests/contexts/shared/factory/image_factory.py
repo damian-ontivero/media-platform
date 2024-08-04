@@ -4,7 +4,6 @@ from src.contexts.shared.domain.image import Image
 
 
 class ImageFactory(factory.Factory):
-
     class Meta:
         model = Image
 

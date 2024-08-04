@@ -19,8 +19,6 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 
-import src.contexts.catalog.movies.infrastructure.persistence.postgres
-import src.contexts.catalog.series.infrastructure.persistence.postgres
 
 target_metadata = Base.metadata
 

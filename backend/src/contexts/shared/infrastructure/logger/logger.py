@@ -7,7 +7,7 @@ from src.contexts.shared.infrastructure.logger.config import LOGGING_CONFIG
 class Logger:
     def __init__(self, name: str) -> None:
         self._default_level = logging.INFO
-        self._logger = logging.getLogger(name)
+        self._logger = logging.getLogger(name.capitalize())
         self._setup()
 
     def _setup(self) -> None:

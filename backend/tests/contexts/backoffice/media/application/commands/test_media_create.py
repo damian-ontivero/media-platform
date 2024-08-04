@@ -10,7 +10,7 @@ from src.contexts.backoffice.media.application.services.media_creator import Med
 async def test_media_create__ok(mock_media_repository, mock_event_bus) -> None:
     mock_media_repository.matching.return_value = None
     creator = MediaCreator(mock_media_repository, mock_event_bus)
-    with open("backend/tests/data/video.mp4", "rb") as file:
+    with open("tests/data/video.mp4", "rb") as file:
         command = MediaCreateCommand(title=faker.Faker().name(), file_name="video.mp4", file=file.read())
         handler = MediaCreateCommandHandler(creator)
 

@@ -26,7 +26,7 @@ class RabbitMQEventBus(EventBus):
     async def add_subscribers(self, subscribers: list[DomainEventSubscriber]) -> None:
         for subscriber in subscribers:
             queue_name = self._queue_formatter.format(subscriber.__class__.__name__)
-            consumer = RabbitMQConsumer(self._connection, subscriber)
+            consumer = RabbitMQConsumer(self._connection, subscriber, self._logger)
             self._logger.info(f"Subscribing {subscriber.__class__.__name__} to {queue_name}")
             await self._connection.consume(queue_name, consumer.on_message)
 

@@ -1,13 +1,12 @@
+from src.contexts.catalog.media.application.services.media_finder import MediaFinder
 from src.contexts.catalog.series.domain.serie_repository import SerieRepository
-from src.contexts.catalog.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery
 from src.contexts.shared.domain.event_bus.event_bus import EventBus
-from src.contexts.shared.domain.query_bus.query_bus import QueryBus
 
 
 class SerieUpdater:
-    def __init__(self, repository: SerieRepository, query_bus: QueryBus, event_bus: EventBus) -> None:
+    def __init__(self, repository: SerieRepository, media_finder: MediaFinder, event_bus: EventBus) -> None:
         self._repository = repository
-        self._query_bus = query_bus
+        self._media_finder = media_finder
         self._event_bus = event_bus
 
     async def run(self, id: str, title: str, seasons: list) -> None:
@@ -20,5 +19,5 @@ class SerieUpdater:
     async def _ensure_media_is_available(self, seasons: list) -> None:
         for season in seasons:
             for episode in season["episodes"]:
-                episode["duration"] = await self._query_bus.ask(MediaFindByIdQuery(episode["media_id"]))
+                episode["duration"] = await self._media_finder.run(episode["media_id"])
                 del episode["media_id"]

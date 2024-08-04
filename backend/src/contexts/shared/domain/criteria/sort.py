@@ -10,7 +10,6 @@ class SortDict(TypedDict):
 
 
 class Sort:
-
     __slots__ = ("_field", "_direction")
 
     def __init__(self, field: SortField, direction: SortDirection) -> None:

@@ -1,5 +1,4 @@
 class PageNumber:
-
     __slots__ = ("_value",)
 
     def __init__(self, value: int) -> None:

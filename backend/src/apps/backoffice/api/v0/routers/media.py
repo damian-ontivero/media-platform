@@ -46,7 +46,7 @@ async def search(
             """,
             example="eyJmaWx0ZXIiOnsiY29uanVuY3Rpb24iOiJBTkQiLCJjb25kaXRpb25zIjpbeyJmaWVsZCI6ImNoYW5uZWxfaWQiLCJvcGVyYXRvciI6IkNPTlRBSU5TIiwidmFsdWUiOiIxIn1dfSwic29ydCI6W3siZmllbGQiOiJyYXRpbmciLCJkaXJlY3Rpb24iOiJBU0MifV0sInBhZ2Vfc2l6ZSI6MTUsInBhZ2VfbnVtYmVyIjoxfQ==",
         ),
-    ] = None
+    ] = None,
 ):
     controller: MediasGetController = container.find("MediasGetController")
     return await controller.run(criteria)
@@ -54,7 +54,7 @@ async def search(
 
 @router.get("/{id}", response_model=MediaReadSchema, status_code=status.HTTP_200_OK, description="Find Media")
 async def find(
-    id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
+    id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")],
 ):
     controller: MediaGetController = container.find("MediaGetController")
     return await controller.run(id)
@@ -78,7 +78,7 @@ async def update(
 
 @router.delete("/{id}", status_code=status.HTTP_200_OK, description="Delete Media")
 async def delete(
-    id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")]
+    id: Annotated[str, Path(..., description="Id of the Media", example="123e4567-e89b-12d3-a456-426614174000")],
 ):
     controller: MediaDeleteController = container.find("MediaDeleteController")
     return await controller.run(id)

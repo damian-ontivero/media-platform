@@ -1,7 +1,7 @@
 """Initial alembic
 
 Revision ID: bb0cccea3ff9
-Revises: 
+Revises:
 Create Date: 2024-06-26 23:37:54.324917
 
 """

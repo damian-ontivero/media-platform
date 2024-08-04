@@ -11,6 +11,33 @@ services:
       arguments:
           - !ref MediaRepository
 
+    - id: MediaCounter
+      module: src.contexts.catalog.media.application.services.media_counter
+      class: MediaCounter
+      arguments:
+          - !ref MediaRepository
+
+    - id: MediaCreator
+      module: src.contexts.catalog.media.application.services.media_creator
+      class: MediaCreator
+      arguments:
+          - !ref MediaRepository
+          - !ref EventBus
+
+    - id: MediaUpdater
+      module: src.contexts.catalog.media.application.services.media_updater
+      class: MediaUpdater
+      arguments:
+          - !ref MediaRepository
+          - !ref EventBus
+
+    - id: MediaDeleter
+      module: src.contexts.catalog.media.application.services.media_deleter
+      class: MediaDeleter
+      arguments:
+          - !ref MediaRepository
+          - !ref EventBus
+
     - id: MovieSearcher
       module: src.contexts.catalog.movies.application.services.movie_searcher
       class: MovieSearcher
@@ -29,6 +56,29 @@ services:
       arguments:
           - !ref MovieRepository
 
+    - id: MovieCreator
+      module: src.contexts.catalog.movies.application.services.movie_creator
+      class: MovieCreator
+      arguments:
+          - !ref MovieRepository
+          - !ref MediaFinder
+          - !ref EventBus
+
+    - id: MovieUpdater
+      module: src.contexts.catalog.movies.application.services.movie_updater
+      class: MovieUpdater
+      arguments:
+          - !ref MovieRepository
+          - !ref MediaFinder
+          - !ref EventBus
+
+    - id: MovieDeleter
+      module: src.contexts.catalog.movies.application.services.movie_deleter
+      class: MovieDeleter
+      arguments:
+          - !ref MovieRepository
+          - !ref EventBus
+
     - id: SerieSearcher
       module: src.contexts.catalog.series.application.services.serie_searcher
       class: SerieSearcher
@@ -46,3 +96,26 @@ services:
       class: SerieCounter
       arguments:
           - !ref SerieRepository
+
+    - id: SerieCreator
+      module: src.contexts.catalog.series.application.services.serie_creator
+      class: SerieCreator
+      arguments:
+          - !ref SerieRepository
+          - !ref MediaFinder
+          - !ref EventBus
+
+    - id: SerieUpdater
+      module: src.contexts.catalog.series.application.services.serie_updater
+      class: SerieUpdater
+      arguments:
+          - !ref SerieRepository
+          - !ref MediaFinder
+          - !ref EventBus
+
+    - id: SerieDeleter
+      module: src.contexts.catalog.series.application.services.serie_deleter
+      class: SerieDeleter
+      arguments:
+          - !ref SerieRepository
+          - !ref EventBus

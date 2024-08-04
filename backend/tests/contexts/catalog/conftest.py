@@ -1,7 +1,7 @@
 import dotenv
 import pytest
 
-dotenv.load_dotenv("backend/src/apps/catalog/.env", override=True)
+dotenv.load_dotenv("src/apps/catalog/.env", override=True)
 
 
 @pytest.fixture

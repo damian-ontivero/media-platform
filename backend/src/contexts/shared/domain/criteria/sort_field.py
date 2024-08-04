@@ -1,5 +1,4 @@
 class SortField:
-
     __slots__ = ("_value",)
 
     def __init__(self, value: str) -> None:

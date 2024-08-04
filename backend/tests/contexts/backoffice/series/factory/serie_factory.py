@@ -6,7 +6,6 @@ from tests.contexts.shared.factory.entity_id_factory import EntityIdFactory
 
 
 class SerieFactory(factory.Factory):
-
     class Meta:
         model = Serie
 

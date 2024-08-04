@@ -5,7 +5,6 @@ from src.contexts.shared.domain.criteria.sort import Sort, SortDict
 
 
 class Criteria:
-
     __slots__ = ("_filter", "_sort", "_page_size", "_page_number")
 
     def __init__(

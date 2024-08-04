@@ -1,7 +1,7 @@
 import os
 
 from ditainer.container import Container
-from ditainer.loader import YAMLLoader
+from ditainer.loader.yaml_loader import YAMLLoader
 
 container = Container()
 loader = YAMLLoader(container)

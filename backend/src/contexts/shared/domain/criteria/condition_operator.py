@@ -1,5 +1,4 @@
 class ConditionOperator:
-
     __slots__ = ("_value",)
 
     EQUALS = "EQUALS"

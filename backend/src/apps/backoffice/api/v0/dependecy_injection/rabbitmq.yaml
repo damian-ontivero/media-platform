@@ -29,4 +29,4 @@ services:
           - !ref RabbitMQConnection
           - !ref RabbitMQExchangeFormatter
           - !ref RabbitMQQueueFormatter
-          - !tagged event_subscriber
+          - !tagged domain_event_subscriber

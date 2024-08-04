@@ -1,4 +1,3 @@
-import faker
 import pytest
 
 from src.contexts.catalog.movies.application.services.movie_deleter import MovieDeleter
