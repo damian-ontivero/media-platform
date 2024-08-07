@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber

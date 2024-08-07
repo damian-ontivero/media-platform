@@ -3,6 +3,7 @@ from fastapi import status
 from src.contexts.catalog.movies.domain.movie_exceptions import MovieDoesNotExist
 from src.contexts.catalog.series.domain.serie_exceptions import SerieDoesNotExist
 
+
 EXCEPTION_TO_HTTP_STATUS_CODE = {
     Exception: status.HTTP_500_INTERNAL_SERVER_ERROR,
     PermissionError: status.HTTP_403_FORBIDDEN,

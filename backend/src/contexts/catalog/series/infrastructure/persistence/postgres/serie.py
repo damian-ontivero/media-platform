@@ -1,10 +1,11 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column
+from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
-from src.contexts.catalog.shared.infrastructure.persistence.postgres.db import Base
 from src.contexts.catalog.series.domain.serie import Serie
 from src.contexts.catalog.series.infrastructure.persistence.postgres.serie_episode import PostgresSerieEpisode
 from src.contexts.catalog.series.infrastructure.persistence.postgres.serie_season import PostgresSerieSeason
+from src.contexts.catalog.shared.infrastructure.persistence.postgres.db import Base
 
 
 class PostgresSerie(Base):

@@ -1,6 +1,7 @@
 from typing import TypedDict
 
-from src.contexts.backoffice.series.domain.serie_episode import SerieEpisode, SerieEpisodeDict
+from src.contexts.backoffice.series.domain.serie_episode import SerieEpisode
+from src.contexts.backoffice.series.domain.serie_episode import SerieEpisodeDict
 from src.contexts.shared.domain.entity import Entity
 from src.contexts.shared.domain.entity_id import EntityId
 

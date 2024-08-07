@@ -1,10 +1,15 @@
-from fastapi import APIRouter, Path, Query, status
+from fastapi import APIRouter
+from fastapi import Path
+from fastapi import Query
+from fastapi import status
 from typing_extensions import Annotated
 
 from src.apps.catalog.api.v0.controllers.series.serie_get_controller import SerieGetController
 from src.apps.catalog.api.v0.controllers.series.series_get_controller import SeriesGetController
 from src.apps.catalog.api.v0.dependecy_injection import container
-from src.apps.catalog.api.v0.schemas.series import SeriePaginatedResponseSchema, SerieReadSchema
+from src.apps.catalog.api.v0.schemas.series import SeriePaginatedResponseSchema
+from src.apps.catalog.api.v0.schemas.series import SerieReadSchema
+
 
 router = APIRouter(prefix="/series", tags=["Series"])
 
@@ -17,7 +22,7 @@ async def search(
             ...,
             description="""
     The criteria must be a base64 encoded *INLINE* JSON string with the following structure:
-    
+
     {
         "filter": {
         "conjunction": "AND",

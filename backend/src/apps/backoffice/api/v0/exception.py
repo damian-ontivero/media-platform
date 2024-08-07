@@ -1,8 +1,12 @@
 from fastapi import status
 
-from src.contexts.backoffice.media.domain.media_exceptions import MediaAlreadyExists, MediaDoesNotExist
-from src.contexts.backoffice.movies.domain.movie_exceptions import MovieAlreadyExists, MovieDoesNotExist
-from src.contexts.backoffice.series.domain.serie_exceptions import SerieAlreadyExists, SerieDoesNotExist
+from src.contexts.backoffice.media.domain.media_exceptions import MediaAlreadyExists
+from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieAlreadyExists
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieDoesNotExist
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieAlreadyExists
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieDoesNotExist
+
 
 EXCEPTION_TO_HTTP_STATUS_CODE = {
     Exception: status.HTTP_500_INTERNAL_SERVER_ERROR,

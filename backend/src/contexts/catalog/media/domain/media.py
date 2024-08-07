@@ -1,4 +1,5 @@
-from src.contexts.catalog.media.domain.media_events import MediaCreatedDomainEvent, MediaUpdatedDomainEvent
+from src.contexts.catalog.media.domain.media_events import MediaCreatedDomainEvent
+from src.contexts.catalog.media.domain.media_events import MediaUpdatedDomainEvent
 from src.contexts.shared.domain.aggregate_root import AggregateRoot
 from src.contexts.shared.domain.entity_id import EntityId
 

@@ -1,9 +1,12 @@
 import contextlib
 
 import dotenv
-from fastapi import FastAPI, Request
+
+from fastapi import FastAPI
+from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
+from fastapi.openapi.docs import get_redoc_html
+from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import JSONResponse
 
 from src.apps.catalog.api.v0.dependecy_injection import container
@@ -12,6 +15,7 @@ from src.apps.catalog.api.v0.routers.health_check import router as health_check_
 from src.apps.catalog.api.v0.routers.movies import router as movies_router
 from src.apps.catalog.api.v0.routers.series import router as series_router
 from src.contexts.shared.domain.event_bus.event_bus import EventBus
+
 
 dotenv.load_dotenv("src/apps/catalog/.env", override=True)
 

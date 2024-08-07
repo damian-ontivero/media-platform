@@ -5,6 +5,7 @@ from src.contexts.backoffice.movies.application.queries.movie_search_by_criteria
     MovieSearchByCriteriaQueryHandler,
 )
 from src.contexts.backoffice.movies.application.services.movie_searcher import MovieSearcher
+
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 

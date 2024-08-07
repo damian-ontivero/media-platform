@@ -5,6 +5,7 @@ from src.contexts.backoffice.media.application.commands.media_update_command imp
 from src.contexts.backoffice.media.application.commands.media_update_command_handler import MediaUpdateCommandHandler
 from src.contexts.backoffice.media.application.services.media_updater import MediaUpdater
 from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
+
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

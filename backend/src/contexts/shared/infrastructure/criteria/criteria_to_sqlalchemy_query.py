@@ -1,5 +1,7 @@
-from sqlalchemy import and_, or_
-from sqlalchemy.orm import DeclarativeBase, Query
+from sqlalchemy import and_
+from sqlalchemy import or_
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Query
 
 from src.contexts.shared.domain.criteria.condition import Condition
 from src.contexts.shared.domain.criteria.criteria import Criteria

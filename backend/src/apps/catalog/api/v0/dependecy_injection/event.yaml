@@ -15,7 +15,7 @@ services:
           - !ref MediaCreator
       tags:
           - domain_event_subscriber
-    
+
     - id: UpdateMediaOnMediaUpdated
       module: src.contexts.catalog.media.application.events.subscribers.update_media_on_media_updated
       class: UpdateMediaOnMediaUpdated
@@ -23,7 +23,7 @@ services:
           - !ref MediaUpdater
       tags:
           - domain_event_subscriber
-    
+
     - id: DeleteMediaOnMediaDeleted
       module: src.contexts.catalog.media.application.events.subscribers.delete_media_on_media_deleted
       class: DeleteMediaOnMediaDeleted
@@ -39,7 +39,7 @@ services:
           - !ref MovieCreator
       tags:
           - domain_event_subscriber
-    
+
     - id: UpdateMovieOnMovieUpdated
       module: src.contexts.catalog.movies.application.events.subscribers.update_movie_on_movie_updated
       class: UpdateMovieOnMovieUpdated
@@ -47,7 +47,7 @@ services:
           - !ref MovieUpdater
       tags:
           - domain_event_subscriber
-    
+
     - id: DeleteMovieOnMovieDeleted
       module: src.contexts.catalog.movies.application.events.subscribers.delete_movie_on_movie_deleted
       class: DeleteMovieOnMovieDeleted
@@ -63,7 +63,7 @@ services:
           - !ref SerieCreator
       tags:
           - domain_event_subscriber
-    
+
     - id: UpdateSerieOnSerieUpdated
       module: src.contexts.catalog.series.application.events.subscribers.update_serie_on_serie_updated
       class: UpdateSerieOnSerieUpdated
@@ -71,7 +71,7 @@ services:
           - !ref SerieUpdater
       tags:
           - domain_event_subscriber
-    
+
     - id: DeleteSerieOnSerieDeleted
       module: src.contexts.catalog.series.application.events.subscribers.delete_serie_on_serie_deleted
       class: DeleteSerieOnSerieDeleted

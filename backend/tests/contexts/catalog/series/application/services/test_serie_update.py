@@ -2,6 +2,7 @@ import faker
 import pytest
 
 from src.contexts.catalog.series.application.services.serie_updater import SerieUpdater
+
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 from tests.contexts.catalog.series.factory.serie_season_factory import SerieSeasonFactory

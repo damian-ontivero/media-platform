@@ -1,10 +1,15 @@
-from fastapi import APIRouter, Path, Query, status
+from fastapi import APIRouter
+from fastapi import Path
+from fastapi import Query
+from fastapi import status
 from typing_extensions import Annotated
 
 from src.apps.catalog.api.v0.controllers.movies.movie_get_controller import MovieGetController
 from src.apps.catalog.api.v0.controllers.movies.movies_get_controller import MoviesGetController
 from src.apps.catalog.api.v0.dependecy_injection import container
-from src.apps.catalog.api.v0.schemas.movies import MoviePaginatedResponseSchema, MovieReadSchema
+from src.apps.catalog.api.v0.schemas.movies import MoviePaginatedResponseSchema
+from src.apps.catalog.api.v0.schemas.movies import MovieReadSchema
+
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
@@ -17,7 +22,7 @@ async def search(
             ...,
             description="""
     The criteria must be a base64 encoded *INLINE* JSON string with the following structure:
-    
+
     {
         "filter": {
         "conjunction": "AND",

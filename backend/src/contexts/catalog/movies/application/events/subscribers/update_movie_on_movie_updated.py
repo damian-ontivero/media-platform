@@ -1,5 +1,5 @@
-from src.contexts.catalog.movies.application.services.movie_updater import MovieUpdater
 from src.contexts.backoffice.movies.domain.movie_events import MovieUpdatedDomainEvent
+from src.contexts.catalog.movies.application.services.movie_updater import MovieUpdater
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
 

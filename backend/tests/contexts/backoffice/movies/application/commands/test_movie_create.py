@@ -4,6 +4,7 @@ import pytest
 from src.contexts.backoffice.movies.application.commands.movie_create_command import MovieCreateCommand
 from src.contexts.backoffice.movies.application.commands.movie_create_command_handler import MovieCreateCommandHandler
 from src.contexts.backoffice.movies.application.services.movie_creator import MovieCreator
+
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

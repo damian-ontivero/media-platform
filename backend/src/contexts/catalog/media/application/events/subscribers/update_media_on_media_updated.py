@@ -1,5 +1,5 @@
-from src.contexts.catalog.media.application.services.media_updater import MediaUpdater
 from src.contexts.backoffice.media.domain.media_events import MediaUpdatedDomainEvent
+from src.contexts.catalog.media.application.services.media_updater import MediaUpdater
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
 

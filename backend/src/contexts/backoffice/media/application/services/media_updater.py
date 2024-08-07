@@ -1,4 +1,5 @@
-from src.contexts.backoffice.media.domain.media_exceptions import MediaAlreadyExists, MediaDoesNotExist
+from src.contexts.backoffice.media.domain.media_exceptions import MediaAlreadyExists
+from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotExist
 from src.contexts.backoffice.media.domain.media_repository import MediaRepository
 from src.contexts.shared.domain.criteria.criteria import Criteria
 from src.contexts.shared.domain.event_bus.event_bus import EventBus

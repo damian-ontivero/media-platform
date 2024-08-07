@@ -1,4 +1,6 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import String
 
 from src.contexts.catalog.movies.domain.movie import Movie
 from src.contexts.catalog.shared.infrastructure.persistence.postgres.db import Base

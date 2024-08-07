@@ -1,5 +1,5 @@
-from src.contexts.catalog.movies.application.services.movie_creator import MovieCreator
 from src.contexts.backoffice.movies.domain.movie_events import MovieCreatedDomainEvent
+from src.contexts.catalog.movies.application.services.movie_creator import MovieCreator
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
 

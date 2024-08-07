@@ -5,6 +5,7 @@ from src.contexts.backoffice.media.application.queries.media_search_by_criteria_
     MediaSearchByCriteriaQueryHandler,
 )
 from src.contexts.backoffice.media.application.services.media_searcher import MediaSearcher
+
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

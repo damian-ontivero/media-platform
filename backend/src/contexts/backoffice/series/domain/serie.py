@@ -1,5 +1,7 @@
-from src.contexts.backoffice.series.domain.serie_events import SerieCreatedDomainEvent, SerieUpdatedDomainEvent
-from src.contexts.backoffice.series.domain.serie_season import SerieSeason, SerieSeasonDict
+from src.contexts.backoffice.series.domain.serie_events import SerieCreatedDomainEvent
+from src.contexts.backoffice.series.domain.serie_events import SerieUpdatedDomainEvent
+from src.contexts.backoffice.series.domain.serie_season import SerieSeason
+from src.contexts.backoffice.series.domain.serie_season import SerieSeasonDict
 from src.contexts.shared.domain.aggregate_root import AggregateRoot
 from src.contexts.shared.domain.entity_id import EntityId
 

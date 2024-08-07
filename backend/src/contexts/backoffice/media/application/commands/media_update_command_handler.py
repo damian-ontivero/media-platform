@@ -8,6 +8,7 @@ from src.contexts.shared.domain.command_bus.command import Command
 from src.contexts.shared.domain.command_bus.command_handler import CommandHandler
 from src.contexts.shared.infrastructure.file_manager.file_manager import FileManager
 
+
 MEDIA_STORAGE_PATH = os.getenv("MEDIA_STORAGE_PATH")
 
 

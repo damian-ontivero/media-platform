@@ -1,6 +1,11 @@
-from typing import Any, Awaitable, Callable
+from typing import Any
+from typing import Awaitable
+from typing import Callable
 
-from aio_pika import ExchangeType, IncomingMessage, Message, connect_robust
+from aio_pika import ExchangeType
+from aio_pika import IncomingMessage
+from aio_pika import Message
+from aio_pika import connect_robust
 
 from src.contexts.shared.infrastructure.rabbitmq.rabbitmq_config import RabbitMQConfig
 

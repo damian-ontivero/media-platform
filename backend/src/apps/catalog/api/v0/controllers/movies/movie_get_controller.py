@@ -1,4 +1,5 @@
-from fastapi import Response, status
+from fastapi import Response
+from fastapi import status
 
 from src.apps.catalog.api.v0.schemas.movies import MovieReadSchema
 from src.apps.shared.api.v0.controller import Controller

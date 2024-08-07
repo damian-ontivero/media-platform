@@ -1,7 +1,8 @@
 import base64
 import json
 
-from fastapi import Response, status
+from fastapi import Response
+from fastapi import status
 
 from src.apps.catalog.api.v0.schemas.movies import MoviePaginatedResponseSchema
 from src.apps.shared.api.v0.controller import Controller

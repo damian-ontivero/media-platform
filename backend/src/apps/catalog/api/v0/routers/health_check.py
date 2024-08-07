@@ -1,7 +1,9 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter
+from fastapi import status
 
 from src.apps.catalog.api.v0.controllers.health_check_controller import HealthCheckController
 from src.apps.catalog.api.v0.dependecy_injection import container
+
 
 router = APIRouter(tags=["Health check"])
 

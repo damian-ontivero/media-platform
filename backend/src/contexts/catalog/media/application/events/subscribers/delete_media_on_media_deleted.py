@@ -1,5 +1,5 @@
-from src.contexts.catalog.media.application.services.media_deleter import MediaDeleter
 from src.contexts.backoffice.media.domain.media_events import MediaDeletedDomainEvent
+from src.contexts.catalog.media.application.services.media_deleter import MediaDeleter
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
 

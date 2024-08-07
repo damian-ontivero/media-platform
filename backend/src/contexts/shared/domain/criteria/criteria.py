@@ -1,7 +1,9 @@
-from src.contexts.shared.domain.criteria.filter import Filter, FilterDict
+from src.contexts.shared.domain.criteria.filter import Filter
+from src.contexts.shared.domain.criteria.filter import FilterDict
 from src.contexts.shared.domain.criteria.page_number import PageNumber
 from src.contexts.shared.domain.criteria.page_size import PageSize
-from src.contexts.shared.domain.criteria.sort import Sort, SortDict
+from src.contexts.shared.domain.criteria.sort import Sort
+from src.contexts.shared.domain.criteria.sort import SortDict
 
 
 class Criteria:

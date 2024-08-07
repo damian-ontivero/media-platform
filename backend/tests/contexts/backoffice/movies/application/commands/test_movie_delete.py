@@ -4,6 +4,7 @@ import pytest
 from src.contexts.backoffice.movies.application.commands.movie_delete_command import MovieDeleteCommand
 from src.contexts.backoffice.movies.application.commands.movie_delete_command_handler import MovieDeleteCommandHandler
 from src.contexts.backoffice.movies.application.services.movie_deleter import MovieDeleter
+
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 

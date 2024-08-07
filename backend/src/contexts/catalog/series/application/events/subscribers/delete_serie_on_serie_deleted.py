@@ -1,5 +1,5 @@
-from src.contexts.catalog.series.application.services.serie_deleter import SerieDeleter
 from src.contexts.backoffice.series.domain.serie_events import SerieDeletedDomainEvent
+from src.contexts.catalog.series.application.services.serie_deleter import SerieDeleter
 from src.contexts.shared.domain.domain_event import DomainEvent
 from src.contexts.shared.domain.domain_event_subscriber import DomainEventSubscriber
 

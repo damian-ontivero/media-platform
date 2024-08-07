@@ -1,4 +1,5 @@
-from src.contexts.backoffice.movies.domain.movie_exceptions import MovieAlreadyExists, MovieDoesNotExist
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieAlreadyExists
+from src.contexts.backoffice.movies.domain.movie_exceptions import MovieDoesNotExist
 from src.contexts.backoffice.movies.domain.movie_repository import MovieRepository
 from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery
 from src.contexts.shared.domain.criteria.criteria import Criteria

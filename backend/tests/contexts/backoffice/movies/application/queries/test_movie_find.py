@@ -4,6 +4,7 @@ import pytest
 from src.contexts.backoffice.movies.application.queries.movie_find_by_id_query import MovieFindByIdQuery
 from src.contexts.backoffice.movies.application.queries.movie_find_by_id_query_handler import MovieFindByIdQueryHandler
 from src.contexts.backoffice.movies.application.services.movie_finder import MovieFinder
+
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 

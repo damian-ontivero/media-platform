@@ -2,6 +2,7 @@ import faker
 import pytest
 
 from src.contexts.catalog.movies.application.services.movie_creator import MovieCreator
+
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 
 

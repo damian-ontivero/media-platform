@@ -1,4 +1,5 @@
-from fastapi import Response, status
+from fastapi import Response
+from fastapi import status
 
 from src.apps.shared.api.v0.controller import Controller
 from src.contexts.backoffice.media.application.commands.media_delete_command import MediaDeleteCommand

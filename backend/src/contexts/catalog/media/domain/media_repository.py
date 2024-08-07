@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
 from src.contexts.catalog.media.domain.media import Media
 from src.contexts.shared.domain.criteria.criteria import Criteria

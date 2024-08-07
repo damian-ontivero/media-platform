@@ -1,5 +1,6 @@
 from src.contexts.shared.domain.query_bus.query import Query
-from src.contexts.shared.domain.query_bus.query_bus import QueryBus, QueryHandlerNotFound
+from src.contexts.shared.domain.query_bus.query_bus import QueryBus
+from src.contexts.shared.domain.query_bus.query_bus import QueryHandlerNotFound
 from src.contexts.shared.domain.query_bus.query_handler import QueryHandler
 
 

@@ -2,6 +2,7 @@ import faker
 import pytest
 
 from src.contexts.catalog.media.application.services.media_updater import MediaUpdater
+
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 
 

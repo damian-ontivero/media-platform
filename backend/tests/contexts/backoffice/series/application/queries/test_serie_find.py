@@ -4,6 +4,7 @@ import pytest
 from src.contexts.backoffice.series.application.queries.serie_find_by_id_query import SerieFindByIdQuery
 from src.contexts.backoffice.series.application.queries.serie_find_by_id_query_handler import SerieFindByIdQueryHandler
 from src.contexts.backoffice.series.application.services.serie_finder import SerieFinder
+
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 

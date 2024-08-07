@@ -1,4 +1,5 @@
-from src.contexts.backoffice.series.domain.serie_exceptions import SerieAlreadyExists, SerieDoesNotExist
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieAlreadyExists
+from src.contexts.backoffice.series.domain.serie_exceptions import SerieDoesNotExist
 from src.contexts.backoffice.series.domain.serie_repository import SerieRepository
 from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery
 from src.contexts.shared.domain.criteria.criteria import Criteria

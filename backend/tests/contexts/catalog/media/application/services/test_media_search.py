@@ -1,6 +1,7 @@
 import pytest
 
 from src.contexts.catalog.media.application.services.media_searcher import MediaSearcher
+
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 
 

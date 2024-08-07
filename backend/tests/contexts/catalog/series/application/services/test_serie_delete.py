@@ -1,6 +1,7 @@
 import pytest
 
 from src.contexts.catalog.series.application.services.serie_deleter import SerieDeleter
+
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 
 

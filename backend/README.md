@@ -57,7 +57,7 @@ Stack:
 Another RDBMS could be used.
 As the project implements the repository pattern and clean architecture, the decision to change the
 DBMS should not be a problem. At the moment the migrations are running in the docker build and this is not the best aproach.
-If we would be using a CI/CD pipeline, de CD should be in charge of run migrations and the CI should deploy the env vars also. 
+If we would be using a CI/CD pipeline, de CD should be in charge of run migrations and the CI should deploy the env vars also.
 
 
 ### Filter in API
@@ -65,7 +65,7 @@ If we would be using a CI/CD pipeline, de CD should be in charge of run migratio
 In order to be able to filter the data retrive, the API implement the Criteria Pattern.
 The criteria must be a base64 encoded *INLINE* JSON string with the following structure:
 
-```json    
+```json
 {
     "filter": {
     "conjunction": "AND",
@@ -94,6 +94,7 @@ To convert the JSON into base64 you can use: https://www.base64encode.org/
 
 
 pdm add aio-pika alembic cryptography ditainer "fastapi>=0.111.0, <1.0.0" moviepy python-multipart python-dotenv psycopg2-binary sqlalchemy uvicorn werkzeug
-pdm add -dG dev ipdb
+pdm add -dG dev pre-commit
+pdm add -dG debug ipdb
 pdm add -dG format ruff
 pdm add -dG test factory-boy pytest pytest-asyncio pytest-mock

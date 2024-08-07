@@ -4,6 +4,7 @@ import pytest
 from src.contexts.backoffice.media.application.queries.media_find_by_id_query_handler import MediaFindByIdQueryHandler
 from src.contexts.backoffice.media.application.services.media_finder import MediaFinder
 from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_query import MediaFindByIdQuery
+
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 

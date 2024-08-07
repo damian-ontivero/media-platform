@@ -5,6 +5,7 @@ from src.contexts.backoffice.series.application.queries.serie_search_by_criteria
     SerieSearchByCriteriaQueryHandler,
 )
 from src.contexts.backoffice.series.application.services.serie_searcher import SerieSearcher
+
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 

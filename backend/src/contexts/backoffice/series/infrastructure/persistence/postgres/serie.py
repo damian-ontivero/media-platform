@@ -1,4 +1,5 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column
+from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 from src.contexts.backoffice.series.domain.serie import Serie

@@ -1,4 +1,5 @@
-from src.contexts.backoffice.movies.domain.movie_events import MovieCreatedDomainEvent, MovieUpdatedDomainEvent
+from src.contexts.backoffice.movies.domain.movie_events import MovieCreatedDomainEvent
+from src.contexts.backoffice.movies.domain.movie_events import MovieUpdatedDomainEvent
 from src.contexts.shared.domain.aggregate_root import AggregateRoot
 from src.contexts.shared.domain.entity_id import EntityId
 

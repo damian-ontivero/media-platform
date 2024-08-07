@@ -1,6 +1,7 @@
 import dotenv
 import pytest
 
+
 dotenv.load_dotenv("src/apps/backoffice/.env", override=True)
 
 

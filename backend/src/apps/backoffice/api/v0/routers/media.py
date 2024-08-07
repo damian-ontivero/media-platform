@@ -1,4 +1,11 @@
-from fastapi import APIRouter, Body, File, Header, Path, Query, UploadFile, status
+from fastapi import APIRouter
+from fastapi import Body
+from fastapi import File
+from fastapi import Header
+from fastapi import Path
+from fastapi import Query
+from fastapi import UploadFile
+from fastapi import status
 from typing_extensions import Annotated
 
 from src.apps.backoffice.api.v0.controllers.media.media_delete_controller import MediaDeleteController
@@ -8,7 +15,10 @@ from src.apps.backoffice.api.v0.controllers.media.media_post_controller import M
 from src.apps.backoffice.api.v0.controllers.media.media_put_controller import MediaPutController
 from src.apps.backoffice.api.v0.controllers.media.medias_get_controller import MediasGetController
 from src.apps.backoffice.api.v0.dependecy_injection import container
-from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema, MediaReadSchema, MediaWriteSchema
+from src.apps.backoffice.api.v0.schemas.media import MediaPaginatedResponseSchema
+from src.apps.backoffice.api.v0.schemas.media import MediaReadSchema
+from src.apps.backoffice.api.v0.schemas.media import MediaWriteSchema
+
 
 router = APIRouter(prefix="/media", tags=["Media"])
 
@@ -21,7 +31,7 @@ async def search(
             ...,
             description="""
     The criteria must be a base64 encoded *INLINE* JSON string with the following structure:
-    
+
     {
         "filter": {
         "conjunction": "AND",
