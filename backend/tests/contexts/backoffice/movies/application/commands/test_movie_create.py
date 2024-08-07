@@ -1,5 +1,4 @@
 import faker
-import pytest
 
 from src.contexts.backoffice.movies.application.commands.movie_create_command import MovieCreateCommand
 from src.contexts.backoffice.movies.application.commands.movie_create_command_handler import MovieCreateCommandHandler
@@ -8,7 +7,6 @@ from src.contexts.backoffice.movies.application.services.movie_creator import Mo
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_create__ok(mock_movie_repository, mock_query_bus, mock_event_bus) -> None:
     media = MediaFactory()
     mock_movie_repository.matching.return_value = None

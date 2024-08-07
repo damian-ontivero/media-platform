@@ -1,12 +1,13 @@
 __pycache__/
 .pytest_cache/
+var/
+
+.venv/
+.env
 
 .pdm.toml
 .pdm-python
 .pdm-build/
-
-.env
-.venv
 
 .ruff_cache/
 

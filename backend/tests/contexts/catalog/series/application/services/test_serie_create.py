@@ -1,5 +1,4 @@
 import faker
-import pytest
 
 from src.contexts.catalog.series.application.services.serie_creator import SerieCreator
 
@@ -7,7 +6,6 @@ from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 from tests.contexts.catalog.series.factory.serie_season_factory import SerieSeasonFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_create__ok(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     media = MediaFactory()
     seasons = SerieSeasonFactory.create_batch(3)

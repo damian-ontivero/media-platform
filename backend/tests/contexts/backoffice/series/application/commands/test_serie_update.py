@@ -11,7 +11,6 @@ from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 from tests.contexts.backoffice.series.factory.serie_season_factory import SerieSeasonFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_update__ok(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     serie = SerieFactory()
     seasons = SerieSeasonFactory.create_batch(3)
@@ -41,7 +40,6 @@ async def test_serie_update__ok(mock_serie_repository, mock_query_bus, mock_even
     mock_event_bus.publish.assert_called_once()
 
 
-@pytest.mark.asyncio
 async def test_serie_update__not_found(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     mock_serie_repository.search.return_value = None
     updater = SerieUpdater(mock_serie_repository, mock_query_bus, mock_event_bus)

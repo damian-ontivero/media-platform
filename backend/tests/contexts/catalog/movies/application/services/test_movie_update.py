@@ -1,5 +1,4 @@
 import faker
-import pytest
 
 from src.contexts.catalog.movies.application.services.movie_updater import MovieUpdater
 
@@ -7,7 +6,6 @@ from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 from tests.contexts.catalog.movies.factory.movie_factory import MovieFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_update__ok(mock_movie_repository, mock_query_bus, mock_event_bus) -> None:
     movie = MovieFactory()
     media = MediaFactory()

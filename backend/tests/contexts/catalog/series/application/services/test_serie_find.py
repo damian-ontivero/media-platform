@@ -6,7 +6,6 @@ from src.contexts.catalog.series.application.services.serie_finder import SerieF
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_finder__ok(mock_serie_repository) -> None:
     serie = SerieFactory()
     mock_serie_repository.search.return_value = serie
@@ -17,7 +16,6 @@ async def test_serie_finder__ok(mock_serie_repository) -> None:
     assert found_serie == serie
 
 
-@pytest.mark.asyncio
 async def test_serie_finder__not_found(mock_serie_repository) -> None:
     mock_serie_repository.search.return_value = None
     finder = SerieFinder(mock_serie_repository)

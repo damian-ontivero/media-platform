@@ -8,7 +8,6 @@ from src.contexts.backoffice.shared.media.application.queries.media_find_by_id_q
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-@pytest.mark.asyncio
 async def test_media_finder__ok(mock_media_repository) -> None:
     media = MediaFactory()
     mock_media_repository.search.return_value = media
@@ -21,7 +20,6 @@ async def test_media_finder__ok(mock_media_repository) -> None:
     assert found_media == media
 
 
-@pytest.mark.asyncio
 async def test_media_finder__not_found(mock_media_repository) -> None:
     mock_media_repository.search.return_value = None
     finder = MediaFinder(mock_media_repository)

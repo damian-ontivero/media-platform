@@ -10,7 +10,6 @@ from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_update__ok(mock_movie_repository, mock_query_bus, mock_event_bus) -> None:
     movie = MovieFactory()
     media = MediaFactory()
@@ -27,7 +26,6 @@ async def test_movie_update__ok(mock_movie_repository, mock_query_bus, mock_even
     mock_event_bus.publish.assert_called_once()
 
 
-@pytest.mark.asyncio
 async def test_movie_update__not_found(mock_movie_repository, mock_query_bus, mock_event_bus) -> None:
     media = MediaFactory()
     mock_movie_repository.search.return_value = None

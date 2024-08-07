@@ -1,5 +1,3 @@
-import pytest
-
 from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query import MediaSearchByCriteriaQuery
 from src.contexts.backoffice.media.application.queries.media_search_by_criteria_query_handler import (
     MediaSearchByCriteriaQueryHandler,
@@ -9,7 +7,6 @@ from src.contexts.backoffice.media.application.services.media_searcher import Me
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-@pytest.mark.asyncio
 async def test_searcher__ok(mock_media_repository):
     media = MediaFactory.create_batch(10)
     mock_media_repository.matching.return_value = media
@@ -22,7 +19,6 @@ async def test_searcher__ok(mock_media_repository):
     assert len(found_media) == 10
 
 
-@pytest.mark.asyncio
 async def test_searcher__with_criteria__ok(mock_media_repository):
     media = MediaFactory(title="The Godfather")
     mock_media_repository.matching.return_value = [media]

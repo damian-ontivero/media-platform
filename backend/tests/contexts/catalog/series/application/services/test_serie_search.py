@@ -1,11 +1,8 @@
-import pytest
-
 from src.contexts.catalog.series.application.services.serie_searcher import SerieSearcher
 
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 
 
-@pytest.mark.asyncio
 async def test_searcher__ok(mock_serie_repository):
     series = SerieFactory.create_batch(10)
     mock_serie_repository.matching.return_value = series
@@ -16,7 +13,6 @@ async def test_searcher__ok(mock_serie_repository):
     assert len(found_series) == 10
 
 
-@pytest.mark.asyncio
 async def test_searcher__with_criteria__ok(mock_serie_repository):
     serie = SerieFactory(title="The Godfather")
     mock_serie_repository.matching.return_value = [serie]

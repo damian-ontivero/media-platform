@@ -60,13 +60,15 @@ test = [
 
 [tool.ruff]
 line-length = 120
-src = ["backend/src"]
+src = ["src"]
 
 [tool.ruff.format]
 skip-magic-trailing-comma = false
 
 [tool.ruff.lint]
 select = [
+    # Pyflakes
+    "F",
     # isort
     "I",
 ]

@@ -1,11 +1,8 @@
-import pytest
-
 from src.contexts.catalog.movies.application.services.movie_deleter import MovieDeleter
 
 from tests.contexts.catalog.movies.factory.movie_factory import MovieFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_delete__ok(mock_movie_repository, mock_event_bus) -> None:
     movie = MovieFactory()
     mock_movie_repository.search.return_value = movie

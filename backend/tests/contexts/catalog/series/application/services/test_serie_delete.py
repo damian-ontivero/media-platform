@@ -1,11 +1,8 @@
-import pytest
-
 from src.contexts.catalog.series.application.services.serie_deleter import SerieDeleter
 
 from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_delete__ok(mock_serie_repository, mock_event_bus) -> None:
     serie = SerieFactory()
     mock_serie_repository.search.return_value = serie

@@ -1,5 +1,4 @@
 import faker
-import pytest
 
 from src.contexts.catalog.series.application.services.serie_updater import SerieUpdater
 
@@ -8,7 +7,6 @@ from tests.contexts.catalog.series.factory.serie_factory import SerieFactory
 from tests.contexts.catalog.series.factory.serie_season_factory import SerieSeasonFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_update__ok(mock_serie_repository, mock_query_bus, mock_event_bus) -> None:
     serie = SerieFactory()
     seasons = SerieSeasonFactory.create_batch(3)

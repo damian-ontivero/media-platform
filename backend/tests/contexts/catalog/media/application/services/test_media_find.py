@@ -6,7 +6,6 @@ from src.contexts.catalog.media.application.services.media_finder import MediaFi
 from tests.contexts.catalog.media.factory.media_factory import MediaFactory
 
 
-@pytest.mark.asyncio
 async def test_media_finder__ok(mock_media_repository) -> None:
     media = MediaFactory()
     mock_media_repository.search.return_value = media
@@ -17,7 +16,6 @@ async def test_media_finder__ok(mock_media_repository) -> None:
     assert found_media == media
 
 
-@pytest.mark.asyncio
 async def test_media_finder__not_found(mock_media_repository) -> None:
     mock_media_repository.search.return_value = None
     finder = MediaFinder(mock_media_repository)

@@ -9,7 +9,6 @@ from src.contexts.backoffice.media.domain.media_exceptions import MediaDoesNotEx
 from tests.contexts.backoffice.media.factory.media_factory import MediaFactory
 
 
-@pytest.mark.asyncio
 async def test_media_update__ok(mock_media_repository, mock_event_bus) -> None:
     media = MediaFactory()
     mock_media_repository.search.return_value = media
@@ -27,7 +26,6 @@ async def test_media_update__ok(mock_media_repository, mock_event_bus) -> None:
         mock_event_bus.publish.assert_called_once()
 
 
-@pytest.mark.asyncio
 async def test_media_update__not_found(mock_media_repository, mock_event_bus) -> None:
     media = MediaFactory()
     mock_media_repository.search.return_value = None

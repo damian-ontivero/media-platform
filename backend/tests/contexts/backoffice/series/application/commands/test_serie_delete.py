@@ -8,7 +8,6 @@ from src.contexts.backoffice.series.application.services.serie_deleter import Se
 from tests.contexts.backoffice.series.factory.serie_factory import SerieFactory
 
 
-@pytest.mark.asyncio
 async def test_serie_delete__ok(mock_serie_repository, mock_event_bus) -> None:
     serie = SerieFactory()
     mock_serie_repository.search.return_value = serie
@@ -22,7 +21,6 @@ async def test_serie_delete__ok(mock_serie_repository, mock_event_bus) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-@pytest.mark.asyncio
 async def test_serie_delete__not_found(mock_serie_repository, mock_event_bus) -> None:
     mock_serie_repository.search.return_value = None
     deleter = SerieDeleter(mock_serie_repository, mock_event_bus)

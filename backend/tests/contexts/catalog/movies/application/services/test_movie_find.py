@@ -6,7 +6,6 @@ from src.contexts.catalog.movies.application.services.movie_finder import MovieF
 from tests.contexts.catalog.movies.factory.movie_factory import MovieFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_finder__ok(mock_movie_repository) -> None:
     movie = MovieFactory()
     mock_movie_repository.search.return_value = movie
@@ -17,7 +16,6 @@ async def test_movie_finder__ok(mock_movie_repository) -> None:
     assert found_movie == movie
 
 
-@pytest.mark.asyncio
 async def test_movie_finder__not_found(mock_movie_repository) -> None:
     mock_movie_repository.search.return_value = None
     finder = MovieFinder(mock_movie_repository)

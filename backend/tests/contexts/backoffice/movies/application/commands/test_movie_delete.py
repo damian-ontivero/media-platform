@@ -8,7 +8,6 @@ from src.contexts.backoffice.movies.application.services.movie_deleter import Mo
 from tests.contexts.backoffice.movies.factory.movie_factory import MovieFactory
 
 
-@pytest.mark.asyncio
 async def test_movie_delete__ok(mock_movie_repository, mock_event_bus) -> None:
     movie = MovieFactory()
     mock_movie_repository.search.return_value = movie
@@ -22,7 +21,6 @@ async def test_movie_delete__ok(mock_movie_repository, mock_event_bus) -> None:
     mock_event_bus.publish.assert_called_once()
 
 
-@pytest.mark.asyncio
 async def test_movie_delete__not_found(mock_movie_repository, mock_event_bus) -> None:
     mock_movie_repository.search.return_value = None
     deleter = MovieDeleter(mock_movie_repository, mock_event_bus)
